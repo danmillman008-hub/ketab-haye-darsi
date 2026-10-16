@@ -1,0 +1,8 @@
+from pathlib import Path
+import zipfile
+BASE=Path(__file__).resolve().parents[1]
+files=[BASE/n for n in ['plan-1-aban-1405.pdf','plan-1-aban-1405.docx','student-report-1.docx','student-report-2.docx','index.html','README.md','QA.json']]
+files.extend(p for p in (BASE/'assets').rglob('*') if p.is_file())
+with zipfile.ZipFile(BASE/'stitch-13-deliverables.zip','w',zipfile.ZIP_DEFLATED) as z:
+ for p in files:z.write(p,p.relative_to(BASE))
+print('Packaged new planner PDF/Word and two blank student-report Word forms.')
