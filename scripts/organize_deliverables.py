@@ -29,10 +29,10 @@ completed=None
 calendar_rows=[]
 for month in calendar['months']:
  y,m,name=month['year'],month['month'],month['name']
- folder=plans/f'{fa(y)} - {fa(f"{m:02}")} {name}'
+ folder=plans/name
  folder.mkdir(exist_ok=True)
  for day in month['days']:
-  exam=folder/f'{fa(f"{day:02}")} {name} {fa(y)}'
+  exam=folder/f'{fa(day)} {name}'
   exam.mkdir(exist_ok=True)
   if f'{y}-{m:02}-{day:02}'==calendar['completed_exam']:
    completed=exam
@@ -53,11 +53,11 @@ for part in [1,2]:
 
 (plans/'README.md').write_text('''# برنامه تحصیلی — تقویم آزمون‌های ماز ۱۴۰۵–۱۴۰۶
 
-پوشه‌ها بر اساس **ماه آزمون** دسته‌بندی شده‌اند. پیشوند سال و شمارهٔ ماه، ترتیب زمانی را حفظ می‌کند. نام ماه‌ها و تاریخ آزمون‌ها فارسی است. این تقویم از نسخهٔ ارسالی ماز، ویژهٔ دوازدهم تجربی با شروع مهر، استخراج و با تصاویر صفحات ۵ تا ۷ تطبیق داده شده است؛ تقویم تازهٔ وب جایگزین منبع ارسالی نشده است.
+پوشه‌ها بر اساس **ماه آزمون** دسته‌بندی شده‌اند. نام پوشهٔ ماه فقط نام فارسی آن است، بدون سال و شمارهٔ اضافی؛ زیرپوشه‌ها به شکل «۱ آبان» هستند. سال تحصیلی در همین راهنما ثبت است. این تقویم از نسخهٔ ارسالی ماز، ویژهٔ دوازدهم تجربی با شروع مهر، استخراج و با تصاویر صفحات ۵ تا ۷ تطبیق داده شده است؛ تقویم تازهٔ وب جایگزین منبع ارسالی نشده است.
 
 ## برنامهٔ آماده
 
-[پوشهٔ آزمون ۱ آبان ۱۴۰۵](<۱۴۰۵ - ۰۸ آبان/۰۱ آبان ۱۴۰۵/>) شامل PDF چهارصفحه‌ای و Word قابل‌ویرایش نسخهٔ نهایی Stitch14 است. روزهای مطالعهٔ آن ۱۸ تا ۳۰ مهر و آزمون هدف آن ۱ آبان است؛ بنابراین در ماه **آبان** قرار گرفته است. محتوا و قالب برنامه تغییر نکرده‌اند.
+[پوشهٔ آزمون ۱ آبان ۱۴۰۵](<آبان/۱ آبان/>) شامل PDF چهارصفحه‌ای و Word قابل‌ویرایش نسخهٔ نهایی Stitch14 است. روزهای مطالعهٔ آن ۱۸ تا ۳۰ مهر و آزمون هدف آن ۱ آبان است؛ بنابراین در ماه **آبان** قرار گرفته است. محتوا و قالب برنامه تغییر نکرده‌اند.
 
 بقیهٔ پوشه‌ها فعلاً برای برنامه‌های بعدی آماده‌اند و برنامهٔ تحصیلی داخلشان تولید نشده است. فایل مخفی `.gitkeep` فقط برای حفظ پوشه‌های خالی در GitHub است. دو آزمون پریمیوم، طبق منبع هنوز تاریخ اعلام‌شده ندارند و در «تاریخ اعلام‌نشده» قرار دارند؛ تاریخ فرضی برایشان تعیین نشده است.
 
@@ -73,6 +73,11 @@ for part in [1,2]:
 
 منبع: فایل `nnn1pTQT401yrhukz2t0zJLr3KNuRZVJwGoorjHP.pdf` در Drive با شناسهٔ `1NLhRx-u-d3I2DiOGixzBNDsyqF_PFkZS`. فهرست ماشینی و اثرانگشت منبع در `docs/maz-calendar.json` مخزن است. فایل کامل بودجه‌بندی و کتاب‌های درسی در Git منتشر نشده‌اند. پوشه‌های نسخه‌های قبلی برای بازتولید و حفظ تاریخچه باقی مانده‌اند.
 ''')
+
+# Reject obsolete prefixed folders so future rebuilds cannot silently duplicate months.
+assert {p.name for p in plans.iterdir() if p.is_dir()} == {m['name'] for m in calendar['months']} | {'تاریخ اعلام‌نشده'}
+for month in calendar['months']:
+ assert {p.name for p in (plans/month['name']).iterdir() if p.is_dir()} == {f"{fa(day)} {month['name']}" for day in month['days']}
 
 with zipfile.ZipFile(ROOT/'organized-deliverables.zip','w',zipfile.ZIP_DEFLATED) as z:
  for top in [plans,reports]:
