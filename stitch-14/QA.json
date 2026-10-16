@@ -3,7 +3,7 @@
   "wordRendering": [
     {
       "file": "plan-1-aban-1405.docx",
-      "inputSha256": "8f0b18939091504ad4f1c218174a8560e9f06704c32b2cc3d571bd05c0cbcd1d",
+      "inputSha256": "363c82a4df011a369b259a9f330ffec27c73815e99660ac8b38fd9d9b8fc0328",
       "backend": "wasm",
       "missingFonts": [],
       "pageCount": 4
@@ -26,35 +26,35 @@
   "renderedContent": [
     {
       "file": "plan-1-aban-1405.docx",
-      "docxSha256": "8f0b18939091504ad4f1c218174a8560e9f06704c32b2cc3d571bd05c0cbcd1d",
+      "docxSha256": "363c82a4df011a369b259a9f330ffec27c73815e99660ac8b38fd9d9b8fc0328",
       "pages": [
         {
           "page": 1,
           "missingCharacters": 0,
           "extraCharacters": 0,
           "brandImages": 3,
-          "renderSha256At144Dpi": "553ce101e42bb2b2c7bc7b92d1d868da8fc2bf2ecdbeed5c39dd2456d2422f25"
+          "renderSha256At144Dpi": "4d18a119976be7938e44c318a4cb91f80407cb8ea672ad662355ecbb25815607"
         },
         {
           "page": 2,
           "missingCharacters": 0,
           "extraCharacters": 0,
           "brandImages": 3,
-          "renderSha256At144Dpi": "10a71e7ea25e07df080637b707316a8c4533fac8b31ad713669d4ff1c7b18162"
+          "renderSha256At144Dpi": "9431c93332af26b43441b737db96a4aef4f2d5db6e7c99c5d50e5e0300c0f3a7"
         },
         {
           "page": 3,
           "missingCharacters": 0,
           "extraCharacters": 0,
           "brandImages": 3,
-          "renderSha256At144Dpi": "5ee4451c4fd020ac293e2dc1df8e8dc3a610f060bb2db2db589ae14752dbf178"
+          "renderSha256At144Dpi": "4da35e10784ae34372c0d5f9dd6fd959604fbad854e532920ed7b0e4cafd9238"
         },
         {
           "page": 4,
           "missingCharacters": 0,
           "extraCharacters": 0,
           "brandImages": 3,
-          "renderSha256At144Dpi": "b43c423d3d3f40a0b7e271d03b874549befc4120b86b6146dcbef4229af0de11"
+          "renderSha256At144Dpi": "00de2fad789fb852fe94eaa4180468d62788af4f8995a5283d0c741d6d025a77"
         }
       ],
       "visibleCheckboxes": 74,
@@ -62,7 +62,7 @@
       "dailyTestsTotals": 14,
       "weeklyHoursTargets": 4,
       "weeklyTestsTargets": 4,
-      "publishedPdfSha256": "4716d311728c77e3c6509fb52566c28a64bc8ee28552fe45e62a314f35f0547f"
+      "publishedPdfSha256": "ee5cf72b1f79b3a6e340f62630a5320e18a9dc5158c71d425ae54ff909648ae1"
     },
     {
       "file": "student-report-1.docx",
@@ -100,7 +100,9 @@
     }
   ],
   "independentPixelComparisonAt144Dpi": true,
-  "planUnchanged": true,
+  "planMatchesCanonicalData": true,
+  "studyHours": 94,
+  "biologyTestBoxHours": 2,
   "blankPlannerCells": 18,
   "wordApplicationTested": false,
   "renderer": "LibreOffice WASM 0.2.0",

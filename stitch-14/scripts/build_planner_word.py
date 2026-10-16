@@ -58,7 +58,7 @@ for sheet in range(4):
    field(ft.cell(0,field_i))
   border(t.cell(1,0),'bottom','CCCCCC',3);border(t.cell(2,0),'top','CCCCCC',3)
   gap(1)
- text(doc.add_paragraph(),'* تست زیست: هر باکس ۱ ساعت پیشنهادی با تحلیل؛ استراحت و آزمون در جمع ساعت نیست. | '+fa(sheet+1)+' / ۴',6.5)
+ text(doc.add_paragraph(),'* تست زیست: هر باکس ۲ ساعت با تحلیل؛ استراحت و آزمون در جمع ساعت نیست. | '+fa(sheet+1)+' / ۴',6.5)
  branding.footer(w)
 
 doc.core_properties.title='برنامهٔ ۱ آبان ۱۴۰۵ — Stitch 14'

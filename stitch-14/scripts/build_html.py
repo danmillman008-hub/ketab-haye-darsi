@@ -16,7 +16,7 @@ for week in range(2):
    if span.get_text().strip()=='. ——':span.string=fa(week+1)+' ـ '+['دوازدهم','دهم'][week]
    if '____ /' in span.get_text():span.string=['۱۸ تا ۲۴ مهر ۱۴۰۵','۲۵ مهر تا ۱ آبان ۱۴۰۵'][week]
   fields=header.select('div.grid > div')
-  for i,value in [(1,'تجربی / '+['دوازدهم','دهم'][week]),(3,'۴۱ ساعت*'),(4,'۴۹۵ تست')]:fields[i].select('span')[-1].string=value
+  for i,value in [(1,'تجربی / '+['دوازدهم','دهم'][week]),(3,'۴۷ ساعت*'),(4,'۴۹۵ تست')]:fields[i].select('span')[-1].string=value
   for j,section in enumerate(sheet.select('section')):
    if j==3:
     section.select_one('span.font-title-md').string='جمعه | '+['۲۴ مهر','۱ آبان'][week]
@@ -36,7 +36,7 @@ for week in range(2):
      blanks=cell.select('span.border-b');blanks[0].string=fa(b['hours']);blanks[1].string=fa(b['tests'])
     # Unused cells retain the original template, including checkbox and blank
     # subject, hours and test fields, for handwritten additions.
-  note=src.new_tag('p',attrs={'class':'planning-note'});note.string='* تست زیست: هر باکس ۱ ساعت پیشنهادی با تحلیل؛ استراحت و آزمون در جمع ساعت نیست. | '+fa(week*2+half+1)+' / ۴'
+  note=src.new_tag('p',attrs={'class':'planning-note'});note.string='* تست زیست: هر باکس ۲ ساعت با تحلیل؛ استراحت و آزمون در جمع ساعت نیست. | '+fa(week*2+half+1)+' / ۴'
   sheet.select_one('footer').insert_before(note)
   root.main.append(sheet)
 (BASE / 'index.html').write_text(str(root))

@@ -97,7 +97,7 @@ for sheet in range(4):
  text(h.cell(0,1).paragraphs[0],'هفته: '+fa(week+1)+' ـ '+['دوازدهم','دهم'][week]+' | '+['۱۸ تا ۲۴ مهر ۱۴۰۵','۲۵ مهر تا ۱ آبان ۱۴۰۵'][week],8)
  meta=h.cell(1,0).merge(h.cell(1,1))
  for edge in ['left','right']:border(meta,edge,val='nil')
- text(meta.paragraphs[0],'نام داوطلب: ................    رشته / پایه: تجربی / '+['دوازدهم','دهم'][week]+'    مشاور: ................    هدف ساعت: ۴۱*    هدف تست: ۴۹۵',8)
+ text(meta.paragraphs[0],'نام داوطلب: ................    رشته / پایه: تجربی / '+['دوازدهم','دهم'][week]+'    مشاور: ................    هدف ساعت: ۴۷*    هدف تست: ۴۹۵',8)
  gap(1)
  for day in plan[week*6+half*3:week*6+half*3+3]:
   t=grid(5,3,'Planner Day')
@@ -122,7 +122,7 @@ for sheet in range(4):
   text(t.cell(2,0).paragraphs[0],'ساعت مطالعه: ..............       تعداد تست: ..............       تراز / درصد آزمون: ..............',8)
   border(t.cell(1,0),'bottom','CCCCCC',3);border(t.cell(2,0),'top','CCCCCC',3)
   gap(1)
- text(doc.add_paragraph(),'* تست زیست: هر باکس ۱ ساعت پیشنهادی با تحلیل؛ استراحت و آزمون در جمع ساعت نیست. | '+fa(sheet+1)+' / ۴',7)
+ text(doc.add_paragraph(),'* تست زیست: هر باکس ۲ ساعت با تحلیل؛ استراحت و آزمون در جمع ساعت نیست. | '+fa(sheet+1)+' / ۴',7)
 
 doc.core_properties.title='برنامهٔ آزمون ۱ آبان ۱۴۰۵'
 doc.core_properties.subject='فرم چهاربرگی قابل‌ویرایش با جدول ثابت و فونت تعبیه‌شده'

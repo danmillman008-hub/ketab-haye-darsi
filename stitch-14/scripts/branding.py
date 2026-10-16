@@ -83,7 +83,7 @@ def planner_header(w,week,half):
  w.gap(.7)
  meta=w.grid(1,5,'Planner Header',[42,45,43,38,34]);meta.rows[0].height=Mm(6)
  labels=['نام داوطلب:','رشته / پایه:','مشاور:','هدف ساعت:','هدف تست:']
- values=['','تجربی / '+['دوازدهم','دهم'][week],'','۴۱*','۴۹۵']
+ values=['','تجربی / '+['دوازدهم','دهم'][week],'',w.fa(sum(d['hours'] for d in w.plan if d['week']==week+1))+'*',w.fa(sum(d['tests'] for d in w.plan if d['week']==week+1))]
  for i,(label,value,width) in enumerate(zip(labels,values,[42,45,43,38,34])):
   cell=meta.cell(0,i);w.margins(cell,left=.5,right=.5)
   for edge in ['top','bottom','left','right']:w.border(cell,edge,'CCCCCC',3,val='single' if edge=='bottom' or (edge=='right' and i<4) else 'nil')

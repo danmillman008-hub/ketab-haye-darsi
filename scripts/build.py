@@ -14,7 +14,7 @@ for week in range(2):
   n=day//2;b=[]
   if day%2==0:
    topic=bios[week][n];subject='زیست '+grade
-   b=[box(subject,topic,'متن، شکل‌ها و قیدهای کتاب؛ مطالعهٔ دقیق',1),box(subject,topic,'۲۰ تست آموزشی + تحلیل همهٔ گزینه‌ها',1,20),box(subject,topic,'۲۰ تست تکمیلی + تحلیل و ثبت خطاها',1,20)]
+   b=[box(subject,topic,'متن، شکل‌ها و قیدهای کتاب؛ مطالعهٔ دقیق',1),box(subject,topic,'۲۰ تست آموزشی + تحلیل همهٔ گزینه‌ها',2,20),box(subject,topic,'۲۰ تست تکمیلی + تحلیل و ثبت خطاها',2,20)]
    if n==0:b.append(box('ریاضی',maths[week][0],'۱ ساعت درسنامهٔ مبحث؛ مثال‌های اصلی',1))
    for k in ([1] if n==0 else [2*n,2*n+1]):b.append(box('ریاضی',maths[week][k],('غیرزمان‌دار' if n==0 else 'ترجیحاً زمان‌دار')+'؛ ۳۰ تست + تحلیل در همین باکس',2,30))
   else:
@@ -38,7 +38,7 @@ for week in range(2):
    if span.get_text().strip()=='. ——':span.string=fa(week+1)+' ـ '+['دوازدهم','دهم'][week]
    if '____ /' in span.get_text():span.string=['۱۸ تا ۲۴ مهر ۱۴۰۵','۲۵ مهر تا ۱ آبان ۱۴۰۵'][week]
   fields=header.select('div.grid > div')
-  for i,value in [(1,'تجربی / '+['دوازدهم','دهم'][week]),(3,'۴۱ ساعت*'),(4,'۴۹۵ تست')]:fields[i].select('span')[-1].string=value
+  for i,value in [(1,'تجربی / '+['دوازدهم','دهم'][week]),(3,'۴۷ ساعت*'),(4,'۴۹۵ تست')]:fields[i].select('span')[-1].string=value
   for j,section in enumerate(sheet.select('section')):
    if j==3:
     section.select_one('span.font-title-md').string='جمعه | '+['۲۴ مهر','۱ آبان'][week]
@@ -58,7 +58,7 @@ for week in range(2):
      blanks=cell.select('span.border-b');blanks[0].string=fa(b['hours']);blanks[1].string=fa(b['tests'])
     # Unused cells retain the original template, including checkbox and blank
     # subject, hours and test fields, for handwritten additions.
-  sheet.select_one('footer span').string='* تست زیست: هر باکس ۱ ساعت پیشنهادی با تحلیل؛ استراحت و آزمون در جمع ساعت نیست. | '+fa(week*2+half+1)+' / ۴'
+  sheet.select_one('footer span').string='* تست زیست: هر باکس ۲ ساعت با تحلیل؛ استراحت و آزمون در جمع ساعت نیست. | '+fa(week*2+half+1)+' / ۴'
   root.main.append(sheet)
 Path('index.html').write_text(str(root))
 print('Built 4 sheets;',sum(d['tests'] for d in days),'tests;',sum(d['hours'] for d in days),'hours')

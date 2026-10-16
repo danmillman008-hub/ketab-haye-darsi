@@ -71,7 +71,9 @@ if publish:
 for c in checks:c['publishedPdfSha256']=sha(BASE/Path(c['file']).with_suffix('.pdf'))
 qa={'canonicalSource':'Editable DOCX; delivered PDFs are direct exports of the same files',
     'wordRendering':results,'renderedContent':checks,'independentPixelComparisonAt144Dpi':not publish,
-    'planUnchanged':True,'blankPlannerCells':18,'wordApplicationTested':False,
+    'planMatchesCanonicalData':json.loads((BASE/'plan.json').read_text())==json.loads((BASE.parent/'plan.json').read_text()),
+    'studyHours':sum(d['hours'] for d in json.loads((BASE/'plan.json').read_text())),
+    'biologyTestBoxHours':2,'blankPlannerCells':18,'wordApplicationTested':False,
     'renderer':'LibreOffice WASM 0.2.0','note':'Pixel equivalence is tested in this renderer, not guaranteed across all Microsoft Word versions.'}
 (BASE/'QA.json').write_text(json.dumps(qa,ensure_ascii=False,indent=2)+'\n')
 print('PASS: every page retains all text, symbols, totals and branding; '+('published exact Word exports.' if publish else 'independent render is pixel-identical to delivered PDFs.'))

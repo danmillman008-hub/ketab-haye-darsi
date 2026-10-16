@@ -8,9 +8,14 @@ from ooxml_order import validate as validate_order
 import pymupdf
 BASE=Path(__file__).resolve().parents[1]
 plan=json.loads((BASE/'plan.json').read_text())
-assert plan==json.loads((BASE.parent/'plan.json').read_text()), 'Only form changes are intended'
+assert plan==json.loads((BASE.parent/'plan.json').read_text()), 'Current form data must match the canonical plan'
 assert len(plan)==12
-assert sum(x['tests'] for x in plan)==990 and sum(x['hours'] for x in plan)==82
+for day in plan:
+ assert day['hours']==sum(b['hours'] for b in day['boxes'])
+ for b in day['boxes']:
+  if b['subject'].startswith('زیست'):assert b['hours']==(2 if b['tests'] else 1)
+for week in [1,2]:assert sum(d['hours'] for d in plan if d['week']==week)==47
+assert sum(x['tests'] for x in plan)==990 and sum(x['hours'] for x in plan)==94
 s=Soup((BASE/'index.html').read_text(),'html.parser')
 assert len(s.select('.sheet'))==4
 assert len(s.select('img[src="assets/rotbeland-logo.png"]'))==4
@@ -48,6 +53,10 @@ def word(name):
    assert table.xpath('./w:tblPr/w:tblLayout[@w:type="fixed"]',namespaces=ns), 'Every table must have fixed layout'
  return Document(BASE/name)
 doc=word('plan-1-aban-1405.docx')
+alltext=''.join(doc.element.xpath('.//w:t/text()'))
+assert alltext.count('۴۷*')==4
+assert alltext.count('هر باکس ۲ ساعت با تحلیل')==4
+assert '۱ ساعت پیشنهادی' not in alltext
 tables=[t for t in doc.tables if t.style.name=='Planner Day'];assert len(tables)==12
 for d,t in zip(plan,tables):
  header=t.cell(0,0).tables[0]
@@ -98,4 +107,4 @@ for part in [1,2]:
     count+=1;optional+=('درس اختیاری:' in text)
  assert count==(24 if part==1 else 28)
  assert optional==(12 if part==1 else 16)
-print('PASS: unchanged plan, 4-page PDF, original 18 blank cells, 3 editable RTL Word files, 24+28 report cells and all rating circles.')
+print('PASS: canonical plan (94 hours, two-hour biology tests), 4-page PDF, original 18 blank cells, 3 editable RTL Word files, 24+28 report cells and all rating circles.')
