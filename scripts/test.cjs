@@ -34,3 +34,17 @@ for(const d of p){
  }
 }
 console.log('PASS: biology reading remains 1h, each 20-test box is 2h; weekly 47h, total 94h');
+
+// Preserve the approved formula while balancing only the week-two biology scope.
+assert.deepEqual(JSON.parse(fs.readFileSync('stitch-14/plan.json')),p);
+const biologyTopics=[
+ 'جذب و تنظیم گوارش؛ فصل ۲، گفتار ۲؛ ص ۲۵–۲۹',
+ 'تنوع گوارش + سازوکار تنفس؛ فصل ۲ گفتار ۳ و فصل ۳ گفتار ۱ با مقدمه؛ ص ۳۰–۳۹',
+ 'تهویهٔ ششی + تنوع تبادلات گازی؛ فصل ۳، گفتارهای ۲ و ۳؛ ص ۴۰–۴۶'
+];
+for(const d of p.filter(d=>d.week===2 && d.day%2===0)){
+ const boxes=d.boxes.filter(b=>b.subject==='زیست دهم');
+ assert.equal(boxes.length,3);
+ for(const b of boxes)assert.equal(b.topic,biologyTopics[d.day/2]);
+}
+console.log('PASS: week-two biology covers 25–29 / 30–39 / 40–46 within the unchanged formula');

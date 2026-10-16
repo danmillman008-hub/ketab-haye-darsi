@@ -3,7 +3,7 @@
   "wordRendering": [
     {
       "file": "plan-1-aban-1405.docx",
-      "inputSha256": "363c82a4df011a369b259a9f330ffec27c73815e99660ac8b38fd9d9b8fc0328",
+      "inputSha256": "c5f1ddb0066efcc3bc09ce6835d542adf112be93ffb21d523480d8c8ee027789",
       "backend": "wasm",
       "missingFonts": [],
       "pageCount": 4
@@ -26,7 +26,7 @@
   "renderedContent": [
     {
       "file": "plan-1-aban-1405.docx",
-      "docxSha256": "363c82a4df011a369b259a9f330ffec27c73815e99660ac8b38fd9d9b8fc0328",
+      "docxSha256": "c5f1ddb0066efcc3bc09ce6835d542adf112be93ffb21d523480d8c8ee027789",
       "pages": [
         {
           "page": 1,
@@ -47,14 +47,14 @@
           "missingCharacters": 0,
           "extraCharacters": 0,
           "brandImages": 3,
-          "renderSha256At144Dpi": "4da35e10784ae34372c0d5f9dd6fd959604fbad854e532920ed7b0e4cafd9238"
+          "renderSha256At144Dpi": "6f11ea6d4d352b01eabae5db818f1a13e3ed72c5f818ec1e8a6ad2efc4ef6632"
         },
         {
           "page": 4,
           "missingCharacters": 0,
           "extraCharacters": 0,
           "brandImages": 3,
-          "renderSha256At144Dpi": "00de2fad789fb852fe94eaa4180468d62788af4f8995a5283d0c741d6d025a77"
+          "renderSha256At144Dpi": "d382ef5e614c1960e086a5e406fd6fa1cad599f1c6be49751d10711ef3dbde7a"
         }
       ],
       "visibleCheckboxes": 74,
@@ -62,7 +62,7 @@
       "dailyTestsTotals": 14,
       "weeklyHoursTargets": 4,
       "weeklyTestsTargets": 4,
-      "publishedPdfSha256": "ee5cf72b1f79b3a6e340f62630a5320e18a9dc5158c71d425ae54ff909648ae1"
+      "publishedPdfSha256": "b688accbc8e94c57a5e42923800295057df7c73c1c45ef8f66730609904e4224"
     },
     {
       "file": "student-report-1.docx",
