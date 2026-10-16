@@ -21,6 +21,10 @@ for week in range(2):
    if n==0:b.append(box('فیزیک '+grade,physics[week][0],'۲ ساعت درسنامه و مثال؛ تنها باکس درسنامهٔ فیزیک',2))
    for k in ([1] if n==0 else [2*n,2*n+1]):b.append(box('فیزیک '+grade,physics[week][k],('غیرزمان‌دار' if n==0 else 'ترجیحاً زمان‌دار')+'؛ ۳۰ تست + تحلیل',2,30))
    b.extend([box('شیمی '+grade,chems[week][n],'۱ ساعت متن کتاب، شکل‌ها و خود را بیازمایید',1),box('شیمی '+grade,chems[week][n],'۲۵ تست مرتبط + تحلیل کامل در همین باکس',2,25)])
+  # Alternate subjects while preserving lesson-before-test order within each.
+  groups={}
+  for item in b:groups.setdefault(item['subject'],[]).append(item)
+  b=[group[i] for i in range(max(map(len,groups.values()))) for group in groups.values() if i<len(group)]
   days.append(dict(week=week+1,day=day,name=['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه'][day],date=fa(18+week*7+day)+' مهر',boxes=b,hours=sum(x['hours'] for x in b),tests=sum(x['tests'] for x in b)))
 Path('plan.json').write_text(json.dumps(days,ensure_ascii=False,indent=2))
 root=Soup('<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>برنامهٔ آزمون ۱ آبان ۱۴۰۵</title><link rel="stylesheet" href="assets/planner.css"></head><body><nav class="no-print"><strong>برنامهٔ آزمون ۱ آبان ۱۴۰۵</strong> <button onclick="window.print()">چاپ / ذخیره PDF</button><p>۱۸ تا ۳۰ مهر • هفتهٔ اول دوازدهم، هفتهٔ دوم دهم • توضیحات منابع در README</p></nav><main></main></body></html>','html.parser')
@@ -52,8 +56,8 @@ for week in range(2):
      b=d['boxes'][k];label=cell.find('span',string='درس و مبحث:');label.string=b['subject'];label['class']=['subject']
      content['class']=['box-content'];content.append(Soup('<strong>'+b['topic']+'</strong><p>'+b['detail']+'</p>','html.parser'))
      blanks=cell.select('span.border-b');blanks[0].string=fa(b['hours']);blanks[1].string=fa(b['tests'])
-    else:
-     cell.clear();cell['class']=['unused'];cell.string='— بدون باکس درسی اضافه —'
+    # Unused cells retain the original template, including checkbox and blank
+    # subject, hours and test fields, for handwritten additions.
   sheet.select_one('footer span').string='* تست زیست: هر باکس ۱ ساعت پیشنهادی با تحلیل؛ استراحت و آزمون در جمع ساعت نیست. | '+fa(week*2+half+1)+' / ۴'
   root.main.append(sheet)
 Path('index.html').write_text(str(root))
