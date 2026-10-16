@@ -1,0 +1,6 @@
+{
+  "name": "stitch-14-planner-qa",
+  "private": true,
+  "scripts": {"check:word": "node scripts/render_word.mjs"},
+  "devDependencies": {"@deepseek-ai/libreoffice-kit": "0.2.0"}
+}
