@@ -1,0 +1,29 @@
+{
+  "name": "ketab-haye-darsi",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "css": "tailwindcss -c tailwind.config.cjs -i assets/input.css -o assets/planner.css --minify && cat assets/overrides.css >> assets/planner.css",
+    "test": "node scripts/test.cjs",
+    "pdf": "node scripts/pdf.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danmillman008-hub/ketab-haye-darsi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danmillman008-hub/ketab-haye-darsi/issues"
+  },
+  "homepage": "https://github.com/danmillman008-hub/ketab-haye-darsi#readme",
+  "devDependencies": {
+    "@sparticuz/chromium": "^153.0.0",
+    "playwright": "^1.64.1",
+    "tailwindcss": "^3.4.19"
+  },
+  "dependencies": {
+    "@fontsource/vazirmatn": "^5.3.0"
+  }
+}
