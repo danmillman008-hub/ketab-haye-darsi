@@ -51,8 +51,16 @@ for part in [1,2]:
   for row in list(t.rows)[1:]:
    assert len(row.cells)==4
    for c in row.cells:
-    assert all(x in c.text for x in ['مبحث:','زمان:','تست:','ص:','غ:'])
-    count+=1;optional+=('درس اختیاری:' in c.text)
+    assert len(c.tables)==1, 'Each report card must have its own fixed field grid'
+    inner=c.tables[0]
+    text=' '.join(inner._tbl.xpath('.//w:t/text()'))
+    assert all(x in text for x in ['مبحث:','زمان:','تست:','ص:','غ:'])
+    assert len(inner.rows)==4
+    for ri in [1,2,3]:
+     field=inner.cell(ri,1)
+     assert field.text=='', 'Writing field must be genuinely blank, not dots or spaces'
+     assert field._tc.xpath('.//w:pBdr/w:bottom[@w:val="dotted"]')
+    count+=1;optional+=('درس اختیاری:' in text)
  assert count==(24 if part==1 else 28)
  assert optional==(12 if part==1 else 16)
 print('PASS: unchanged plan, 4-page PDF, original 18 blank cells, 3 editable RTL Word files, 24+28 report cells and all rating circles.')

@@ -1,71 +1,150 @@
-"""Two blank editable student-report sheets, matching Stitch 13 a4_1/a4_2."""
+"""Native editable report forms: fixed card/field geometry, not space/dot padding.
+
+Only the two student-report outputs are written. Planner generation is untouched.
+"""
 import importlib
 import word_layout as w
-from docx.shared import Mm,Pt
+from docx.shared import Mm, Pt, RGBColor
 from docx.enum.style import WD_STYLE_TYPE
+from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ROW_HEIGHT_RULE, WD_CELL_VERTICAL_ALIGNMENT
+from docx.oxml.ns import qn
+
+GOLD='D1A843';EDGE='C59B27';GREY='D1D5DB';MUTED='6B7280'
+
+
+def tight(p):
+ p.paragraph_format.space_before=p.paragraph_format.space_after=Pt(0)
+ p.paragraph_format.line_spacing=Pt(1)
+ for r in p.runs:r.font.size=Pt(1)
+
+
+def paint(p,color):
+ for r in p.runs:r.font.color.rgb=RGBColor.from_string(color)
+ return p
+
+
+def underline(p,kind='dotted',color='9CA3AF'):
+ pr=p._p.get_or_add_pPr()
+ old=pr.find(qn('w:pBdr'))
+ if old is not None:pr.remove(old)
+ bs=w.el('pBdr');bs.append(w.el('bottom',val=kind,sz=3,space=1,color=color));pr.append(bs)
+
+
+def local_table(cell,rows,widths):
+ """A fixed-width nested table keeps labels and empty writing lines separate."""
+ t=cell.add_table(rows=rows,cols=len(widths));t.autofit=False
+ t.alignment=WD_TABLE_ALIGNMENT.CENTER
+ pr=t._tbl.tblPr
+ pr.append(w.el('bidiVisual',val='1'))
+ tw=pr.find(qn('w:tblW'));tw.set(qn('w:type'),'dxa');tw.set(qn('w:w'),str(int(Mm(sum(widths)).twips)))
+ m=w.el('tblCellMar')
+ for edge in ['top','bottom','left','right']:m.append(w.el(edge,w=0,type='dxa'))
+ pr.append(m)
+ for c,width in zip(t.columns,widths):c.width=Mm(width)
+ for row in t.rows:
+  row.height_rule=WD_ROW_HEIGHT_RULE.EXACTLY
+  row._tr.get_or_add_trPr().append(w.el('cantSplit'))
+  for c,width in zip(row.cells,widths):
+   c.width=Mm(width);c.vertical_alignment=WD_CELL_VERTICAL_ALIGNMENT.CENTER
+   for edge in ['top','bottom','left','right']:w.border(c,edge,val='nil')
+ for p in cell.paragraphs:tight(p)
+ return t
+
+
+def blank(cell):
+ # A real empty paragraph with a dotted border, rather than a run of periods.
+ p=w.text(cell.paragraphs[0],'',7.5)
+ underline(p)
+ return p
+
+
+def card(cell,title,optional,short):
+ if optional:w.shade(cell,'F9FAFB')
+ # The outer cells are 49.5 mm; 2 mm inset per side mirrors source px-2/py-2.5.
+ pr=cell._tc.get_or_add_tcPr();m=w.el('tcMar')
+ for edge,value in [('top',65),('bottom',65),('left',85),('right',85)]:m.append(w.el(edge,w=value,type='dxa'))
+ pr.append(m)
+ t=local_table(cell,4,[9,10,9,17.5])
+ heights=[5,9.5,9.5,8] if not short else [4.5,7.2,7.2,6.6]
+ for row,h in zip(t.rows,heights):row.height=Mm(h)
+ if optional:
+  label=t.cell(0,0).merge(t.cell(0,1));field=t.cell(0,2).merge(t.cell(0,3))
+  p=paint(w.text(label.paragraphs[0],'درس اختیاری:',7.5,True),MUTED)
+  blank(field);underline(p,'single',GREY)
+ else:
+  c=t.cell(0,0).merge(t.cell(0,3))
+  underline(w.text(c.paragraphs[0],title,8.5,True),'single',GREY)
+ for i,label in [(1,'مبحث:'),(2,'زمان:')]:
+  paint(w.text(t.cell(i,0).paragraphs[0],label,7.5),MUTED)
+  blank(t.cell(i,1).merge(t.cell(i,3)))
+ paint(w.text(t.cell(3,0).paragraphs[0],'تست:',7.5),MUTED)
+ blank(t.cell(3,1).merge(t.cell(3,2)))
+ paint(w.text(t.cell(3,3).paragraphs[0],'(ص: ... غ: ...)',6.5,align='end'),'9CA3AF')
+
 
 for part in [1,2]:
  if part==2:w=importlib.reload(w)
- doc=w.doc
- sec=doc.sections[0];sec.left_margin=sec.right_margin=Mm(6)
+ doc=w.doc;sec=doc.sections[0]
+ sec.left_margin=sec.right_margin=Mm(6)
  sec.top_margin=sec.bottom_margin=Mm(6)
  for name in ['Report Header','Report Metadata','Report Day','Report Friday']:
   doc.styles.add_style(name,WD_STYLE_TYPE.TABLE)
- h=w.grid(2,2,'Report Header',[132,66])
- h.rows[0].height=Mm(8);h.rows[1].height=Mm(6)
- for row in h.rows:
-  for c in row.cells:
-   for edge in ['top','bottom','left','right']:w.border(c,edge,val='nil')
- w.border(h.cell(0,0),'left','D1A843',16)
- w.text(h.cell(0,0).paragraphs[0],'گزارش کار و پایش تست هفتگی داوطلب',13,True)
- w.text(h.cell(0,1).paragraphs[0],'هفته: ..............',9)
- w.text(h.cell(1,0).paragraphs[0],('برگ ۲: سه‌شنبه تا جمعه' if part==2 else ''),8)
- w.text(h.cell(1,1).paragraphs[0],'تاریخ: .... / .... / ۱۴۰....',9)
- for c in h.rows[1].cells:w.border(c,'bottom','B88D1D',10)
- w.gap(1)
- meta=w.grid(1,4,'Report Metadata',[49.5]*4);meta.rows[0].height=Mm(9)
- for c,label in zip(meta.rows[0].cells,['نام داوطلب:','رشته / پایه:','مشاور ناظر:','هدف ساعت / تست:']):
-  w.shade(c,'F8F9FA')
-  for edge in ['top','bottom','left','right']:w.border(c,edge,'D1D5DB',3)
-  w.text(c.paragraphs[0],label,8,True)
-  w.text(c.add_paragraph(),'........................................',7)
- w.gap(2)
-
- def card(cell,title,optional,short):
-  if optional:w.shade(cell,'F8F9FA')
-  p=w.text(cell.paragraphs[0],title+(' ....................' if optional else ''),8.5,not optional)
-  pr=p._p.get_or_add_pPr();bs=w.el('pBdr');bs.append(w.el('bottom',val='single',sz=3,color='D1D5DB'));pr.append(bs)
-  for label in ['مبحث:','زمان:']:
-   p=w.text(cell.add_paragraph(),label+' ................................',8)
-   p.paragraph_format.space_before=Pt(7 if short else 14)
-  p=w.text(cell.add_paragraph(),'تست: ..............  (ص: ... غ: ...)',7.5)
-  p.paragraph_format.space_before=Pt(7 if short else 14)
+ # Header date and week are side-by-side, as in the original ZIP.
+ h=w.grid(1,3,'Report Header',[128,31,39]);h.rows[0].height=Mm(9)
+ for c in h.rows[0].cells:
+  c.vertical_alignment=WD_CELL_VERTICAL_ALIGNMENT.CENTER
+  for edge in ['top','left','right']:w.border(c,edge,val='nil')
+  w.border(c,'bottom',GOLD,10)
+ w.border(h.cell(0,0),'left',GOLD,16)
+ p=w.text(h.cell(0,0).paragraphs[0],'گزارش کار و پایش تست هفتگی داوطلب',11.5 if part==1 else 10.5,True)
+ if part==2:
+  w.text(p,'  (برگ ۲: سه‌شنبه تا جمعه)',7.5)
+  p.paragraph_format.line_spacing=Pt(15)
+ w.text(h.cell(0,1).paragraphs[0],'هفته: ..............',8)
+ w.text(h.cell(0,2).paragraphs[0],'تاریخ: .... / .... / ۱۴۰....',8)
+ w.gap(1.5)
+ meta=w.grid(1,8,'Report Metadata',[21,28.5]*3+[29,20.5]);meta.rows[0].height=Mm(8)
+ for c in meta.rows[0].cells:
+  w.shade(c,'F9FAFB');c.vertical_alignment=WD_CELL_VERTICAL_ALIGNMENT.CENTER
+  for edge in ['left','right']:w.border(c,edge,val='nil')
+  for edge in ['top','bottom']:w.border(c,edge,GREY,3)
+ for j,label in enumerate(['نام داوطلب:','رشته / پایه:','مشاور ناظر:','هدف ساعت / تست:']):
+  paint(w.text(meta.cell(0,j*2).paragraphs[0],label,7.5,True),MUTED)
+  blank(meta.cell(0,j*2+1))
+ w.gap(3)
 
  def day(name,friday=False):
   t=w.grid(2 if friday else 3,4,'Report Friday' if friday else 'Report Day',[49.5]*4)
   t.rows[0].height=Mm(6)
   daycell=t.cell(0,0);rating=t.cell(0,1).merge(t.cell(0,3))
-  for c in [daycell,rating]:w.shade(c,'B88D1D' if friday else 'D1A843')
-  w.text(daycell.paragraphs[0],name,8.5,True)
-  w.text(rating.paragraphs[0],'میزان رضایت:  ○ عالی   ○ خوب   ○ متوسط   ○ نیاز به بازنگری',8)
+  for c in [daycell,rating]:
+   w.shade(c,'B88D1D' if friday else GOLD)
+   c.vertical_alignment=WD_CELL_VERTICAL_ALIGNMENT.CENTER
+  w.text(daycell.paragraphs[0],name,9,True)
+  w.text(rating.paragraphs[0],'میزان رضایت:   ○ عالی   ○ خوب   ○ متوسط   ○ نیاز به بازنگری',7.5,align='end')
   for ri in range(1,len(t.rows)):
-   t.rows[ri].height=Mm(36.5 if part==1 else 30.5)
+   t.rows[ri].height=Mm(36.5 if part==1 else 29.5)
    for j,c in enumerate(t.rows[ri].cells):
     optional=(ri==2 or friday)
     card(c,'درس اختیاری:' if optional else ['زیست‌شناسی','فیزیک','شیمی','ریاضی'][j],optional,part==2)
-  # Gold perimeter, quiet grey inner grid, as in the supplied report form.
+  # Gold outside, grey column dividers and a single separator between card rows.
   for ri,row in enumerate(t.rows):
+   seen=set()
    for ci,c in enumerate(row.cells):
-    for edge in ['top','bottom','left','right']:w.border(c,edge,'D1D5DB',3)
-    if ri==0:w.border(c,'top','B88D1D',8)
-    if ri==len(t.rows)-1:w.border(c,'bottom','B88D1D',8)
-    if ci==0:w.border(c,'left','B88D1D',8)
-    if ci==3:w.border(c,'right','B88D1D',8)
-  w.gap(2)
+    if id(c._tc) in seen:continue
+    seen.add(id(c._tc))
+    for edge in ['top','bottom','left','right']:w.border(c,edge,GREY,3)
+    if ri==0:
+     for edge in ['top','left','right']:w.border(c,edge,GOLD,3)
+    if ri==len(t.rows)-1:w.border(c,'bottom',EDGE,8)
+   w.border(row.cells[0],'left',EDGE,8)
+   w.border(row.cells[-1],'right',EDGE,8)
+  w.gap(3 if not friday else 2)
  for name in (['شنبه','یکشنبه','دوشنبه'] if part==1 else ['سه‌شنبه','چهارشنبه','پنج‌شنبه']):day(name)
- if part==2:day('جمعه؛ آزمون، تحلیل و جبرانی',True)
- p=w.text(doc.add_paragraph(),'فرم پایش و سنجش عملکرد تحصیلی هفتگی داوطلبان کنکور سراسری       برگ '+w.fa(part)+' از ۲',7)
- bs=w.el('pBdr');bs.append(w.el('top',val='single',sz=8,color='B88D1D'));p._p.get_or_add_pPr().append(bs)
+ if part==2:day('جمعه (آزمون، تحلیل و جبرانی)',True)
+ # Match the original: first sheet has the closing rule only; second has a footer.
+ p=w.text(doc.add_paragraph(),'' if part==1 else 'فرم پایش و سنجش عملکرد تحصیلی هفتگی داوطلبان کنکور سراسری        برگ ۲ از ۲',6.5)
+ paint(p,'9CA3AF');bs=w.el('pBdr');bs.append(w.el('top',val='single',sz=8,color=GOLD));p._p.get_or_add_pPr().append(bs)
  doc.core_properties.title='گزارش دانش‌آموز — برگ '+w.fa(part)
  w.save(w.BASE/f'student-report-{part}.docx')
- print('Built report',part)
+ print('Built report',part,'with native blank writing fields')
