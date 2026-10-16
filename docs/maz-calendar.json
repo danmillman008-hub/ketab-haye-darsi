@@ -1,0 +1,129 @@
+{
+  "academic_year": "1405-1406",
+  "source": {
+    "drive_id": "1NLhRx-u-d3I2DiOGixzBNDsyqF_PFkZS",
+    "filename": "nnn1pTQT401yrhukz2t0zJLr3KNuRZVJwGoorjHP.pdf",
+    "sha256": "c9ecf7a0fce8afc87c2c6062dbfe9d2988911cd0a9945baf7a65a22938f78050",
+    "verified_pdf_pages": [
+      5,
+      6,
+      7
+    ],
+    "method": "Dates read visually from the source tables; no inferred exam dates."
+  },
+  "months": [
+    {
+      "year": 1405,
+      "month": 7,
+      "name": "مهر",
+      "days": [
+        17
+      ],
+      "source_page": 5
+    },
+    {
+      "year": 1405,
+      "month": 8,
+      "name": "آبان",
+      "days": [
+        1,
+        15,
+        29
+      ],
+      "source_page": 5
+    },
+    {
+      "year": 1405,
+      "month": 9,
+      "name": "آذر",
+      "days": [
+        13,
+        27
+      ],
+      "source_page": 5
+    },
+    {
+      "year": 1405,
+      "month": 10,
+      "name": "دی",
+      "days": [
+        25
+      ],
+      "source_page": 5
+    },
+    {
+      "year": 1405,
+      "month": 11,
+      "name": "بهمن",
+      "days": [
+        9,
+        23
+      ],
+      "source_page": 6
+    },
+    {
+      "year": 1405,
+      "month": 12,
+      "name": "اسفند",
+      "days": [
+        7,
+        21
+      ],
+      "source_page": 6
+    },
+    {
+      "year": 1406,
+      "month": 1,
+      "name": "فروردین",
+      "days": [
+        6,
+        20
+      ],
+      "source_page": 7
+    },
+    {
+      "year": 1406,
+      "month": 2,
+      "name": "اردیبهشت",
+      "days": [
+        3,
+        17,
+        24
+      ],
+      "source_page": 7
+    },
+    {
+      "year": 1406,
+      "month": 3,
+      "name": "خرداد",
+      "days": [
+        21,
+        28
+      ],
+      "source_page": 7
+    },
+    {
+      "year": 1406,
+      "month": 4,
+      "name": "تیر",
+      "days": [
+        4
+      ],
+      "source_page": 7
+    }
+  ],
+  "undated": [
+    {
+      "name": "آزمون جامع پریمیوم ۱",
+      "source_page": 7
+    },
+    {
+      "name": "آزمون جامع پریمیوم ۲",
+      "source_page": 7
+    }
+  ],
+  "completed_exam": "1405-08-01",
+  "completed_plan_source": "stitch-14",
+  "completed_study_start": "1405-07-18",
+  "completed_study_end": "1405-07-30"
+}
