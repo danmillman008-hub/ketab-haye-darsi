@@ -1,19 +1,23 @@
 {
+  "canonicalSource": "Editable DOCX; delivered PDFs are direct exports of the same files",
   "wordRendering": [
     {
       "file": "plan-1-aban-1405.docx",
+      "inputSha256": "8f0b18939091504ad4f1c218174a8560e9f06704c32b2cc3d571bd05c0cbcd1d",
       "backend": "wasm",
       "missingFonts": [],
       "pageCount": 4
     },
     {
       "file": "student-report-1.docx",
+      "inputSha256": "e190ece61c160fd17ba6b47637f37c75b38b0d76dec200b42994b49974c19569",
       "backend": "wasm",
       "missingFonts": [],
       "pageCount": 1
     },
     {
       "file": "student-report-2.docx",
+      "inputSha256": "b0019560f3dc1a1dfc93db8d710bb76b9f473555d82ab5eab7df939dba999bff",
       "backend": "wasm",
       "missingFonts": [],
       "pageCount": 1
@@ -22,51 +26,83 @@
   "renderedContent": [
     {
       "file": "plan-1-aban-1405.docx",
+      "docxSha256": "8f0b18939091504ad4f1c218174a8560e9f06704c32b2cc3d571bd05c0cbcd1d",
+      "pages": [
+        {
+          "page": 1,
+          "missingCharacters": 0,
+          "extraCharacters": 0,
+          "brandImages": 3,
+          "renderSha256At144Dpi": "553ce101e42bb2b2c7bc7b92d1d868da8fc2bf2ecdbeed5c39dd2456d2422f25"
+        },
+        {
+          "page": 2,
+          "missingCharacters": 0,
+          "extraCharacters": 0,
+          "brandImages": 3,
+          "renderSha256At144Dpi": "10a71e7ea25e07df080637b707316a8c4533fac8b31ad713669d4ff1c7b18162"
+        },
+        {
+          "page": 3,
+          "missingCharacters": 0,
+          "extraCharacters": 0,
+          "brandImages": 3,
+          "renderSha256At144Dpi": "5ee4451c4fd020ac293e2dc1df8e8dc3a610f060bb2db2db589ae14752dbf178"
+        },
+        {
+          "page": 4,
+          "missingCharacters": 0,
+          "extraCharacters": 0,
+          "brandImages": 3,
+          "renderSha256At144Dpi": "b43c423d3d3f40a0b7e271d03b874549befc4120b86b6146dcbef4229af0de11"
+        }
+      ],
       "visibleCheckboxes": 74,
-      "visibleBrandImagesPerPage": 3
+      "dailyHoursTotals": 14,
+      "dailyTestsTotals": 14,
+      "weeklyHoursTargets": 4,
+      "weeklyTestsTargets": 4,
+      "publishedPdfSha256": "4716d311728c77e3c6509fb52566c28a64bc8ee28552fe45e62a314f35f0547f"
     },
     {
       "file": "student-report-1.docx",
-      "visibleCards": 24,
+      "docxSha256": "e190ece61c160fd17ba6b47637f37c75b38b0d76dec200b42994b49974c19569",
+      "pages": [
+        {
+          "page": 1,
+          "missingCharacters": 0,
+          "extraCharacters": 0,
+          "brandImages": 3,
+          "renderSha256At144Dpi": "e630274ffa2e90f07e8f09fc4d59138722a644f8a5eb583ee9518b06df9372bb"
+        }
+      ],
+      "visibleReportCards": 24,
       "visibleRatingCircles": 12,
-      "visibleBrandImages": 3
+      "correctWrongFields": "Native empty fields; no clipped characters",
+      "publishedPdfSha256": "ea6d4296238d9a1ad99f1fc19bb9cb4d3e1330139264bfac1736c2d4b27496be"
     },
     {
       "file": "student-report-2.docx",
-      "visibleCards": 28,
+      "docxSha256": "b0019560f3dc1a1dfc93db8d710bb76b9f473555d82ab5eab7df939dba999bff",
+      "pages": [
+        {
+          "page": 1,
+          "missingCharacters": 0,
+          "extraCharacters": 0,
+          "brandImages": 3,
+          "renderSha256At144Dpi": "0d2e04590ac05e891b246f22b045ab159ad92d2524349623d4cd69ac23f4c7cc"
+        }
+      ],
+      "visibleReportCards": 28,
       "visibleRatingCircles": 16,
-      "visibleBrandImages": 3
+      "correctWrongFields": "Native empty fields; no clipped characters",
+      "publishedPdfSha256": "c4e6ae763b4f50253ab79c164b30b82ffc6f802a6878c2dcecaf7f5dfed704d6"
     }
   ],
-  "browserLayout": [
-    {
-      "page": "week-1-part-1",
-      "logoLoaded": true,
-      "overflowingCards": 0,
-      "footerClear": true
-    },
-    {
-      "page": "week-1-part-2",
-      "logoLoaded": true,
-      "overflowingCards": 0,
-      "footerClear": true
-    },
-    {
-      "page": "week-2-part-1",
-      "logoLoaded": true,
-      "overflowingCards": 0,
-      "footerClear": true
-    },
-    {
-      "page": "week-2-part-2",
-      "logoLoaded": true,
-      "overflowingCards": 0,
-      "footerClear": true
-    }
-  ],
+  "independentPixelComparisonAt144Dpi": true,
   "planUnchanged": true,
   "blankPlannerCells": 18,
-  "reportFields": "Native nested tables with empty dotted-border paragraphs",
   "wordApplicationTested": false,
-  "renderer": "LibreOffice WASM 0.2.0"
+  "renderer": "LibreOffice WASM 0.2.0",
+  "note": "Pixel equivalence is tested in this renderer, not guaranteed across all Microsoft Word versions."
 }

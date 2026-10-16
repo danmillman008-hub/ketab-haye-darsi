@@ -2,10 +2,11 @@
 import json, uuid, zipfile, re
 from pathlib import Path
 from lxml import etree
+from ooxml_order import normalize
 from docx import Document
 from docx.shared import Mm, Pt
 from docx.enum.style import WD_STYLE_TYPE
-from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ROW_HEIGHT_RULE
+from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ROW_HEIGHT_RULE, WD_CELL_VERTICAL_ALIGNMENT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 
@@ -29,10 +30,24 @@ normal=doc.styles['Normal'];normal.font.name=FONT;normal.font.size=Pt(9)
 nf=normal.paragraph_format
 nf.space_before=nf.space_after=Pt(0);nf.line_spacing=Pt(13)
 nf.widow_control=False
+# Explicit complex-script defaults avoid theme/locale font substitutions in Word.
+rp=normal.element.get_or_add_rPr()
+fonts=rp.find(qn('w:rFonts'))
+for key in list(fonts.attrib):
+ if 'Theme' in key:del fonts.attrib[key]
+for key in ['ascii','hAnsi','eastAsia','cs']:fonts.set(qn('w:'+key),FONT)
+rp.append(el('szCs',val=18));rp.append(el('lang',val='fa-IR',bidi='fa-IR'))
+settings=doc.settings.element
+compat=settings.find(qn('w:compat'))
+if compat is not None:
+ for setting in compat.findall(qn('w:compatSetting')):
+  if setting.get(qn('w:name'))=='compatibilityMode':setting.set(qn('w:val'),'15')
 for name in ['Planner Header','Planner Day','Planner Exam']:doc.styles.add_style(name,WD_STYLE_TYPE.TABLE)
 
 def text(p,s='',size=9,bold=False,align='start'):
  pp=p._p.get_or_add_pPr()
+ for tag in ['bidi','jc']:
+  for old in list(pp.findall(qn('w:'+tag))):pp.remove(old)
  pp.append(el('bidi',val='1'));pp.append(el('jc',val=align))
  p.paragraph_format.keep_with_next=False
  p.paragraph_format.widow_control=False
@@ -79,15 +94,69 @@ def gap(mm=1):
  p.paragraph_format.space_before=p.paragraph_format.space_after=Pt(0)
  p.add_run().font.size=Pt(1)
 
+def tight(p):
+ p.paragraph_format.space_before=p.paragraph_format.space_after=Pt(0)
+ p.paragraph_format.line_spacing=Pt(1)
+ p.paragraph_format.keep_with_next=False
+ for r in p.runs:r.font.size=Pt(1)
+
+
+def margins(cell,top=0,bottom=0,left=0,right=0):
+ pr=cell._tc.get_or_add_tcPr()
+ for old in list(pr.findall(qn('w:tcMar'))):pr.remove(old)
+ m=el('tcMar')
+ for edge,value in [('top',top),('bottom',bottom),('left',left),('right',right)]:m.append(el(edge,w=round(Mm(value).twips),type='dxa'))
+ pr.append(m)
+
+
+def local_table(cell,rows,widths):
+ t=cell.add_table(rows=rows,cols=len(widths));t.autofit=False
+ t.alignment=WD_TABLE_ALIGNMENT.CENTER
+ pr=t._tbl.tblPr;pr.append(el('bidiVisual',val='1'))
+ tw=pr.find(qn('w:tblW'));tw.set(qn('w:type'),'dxa');tw.set(qn('w:w'),str(int(Mm(sum(widths)).twips)))
+ mar=el('tblCellMar')
+ for side in ['top','bottom','left','right']:mar.append(el(side,w=0,type='dxa'))
+ pr.append(mar)
+ for col,width in zip(t.columns,widths):col.width=Mm(width)
+ for row in t.rows:
+  row.height_rule=WD_ROW_HEIGHT_RULE.EXACTLY
+  row._tr.get_or_add_trPr().append(el('cantSplit'))
+  for c,width in zip(row.cells,widths):
+   c.width=Mm(width);c.vertical_alignment=WD_CELL_VERTICAL_ALIGNMENT.CENTER
+   for edge in ['top','bottom','left','right']:border(c,edge,val='nil')
+ for p in cell.paragraphs:tight(p)
+ return t
+
+
+def line(p,edge='bottom',color='9CA3AF',kind='dotted'):
+ pr=p._p.get_or_add_pPr()
+ for old in list(pr.findall(qn('w:pBdr'))):pr.remove(old)
+ bs=el('pBdr');bs.append(el(edge,val=kind,sz=3,space=0,color=color));pr.append(bs)
+
+
+def field(cell,value='',size=7):
+ p=text(cell.paragraphs[0],value,size,align='center');line(p)
+ return p
+
+
+def metric_pair(cell,hours=None,tests=None):
+ # Native fixed columns, not runs of padding spaces: hours right, tests left.
+ margins(cell,left=.7,right=.7)
+ t=local_table(cell,1,[7,12,27.33,7,12]);t.rows[0].height=Mm(4.4)
+ text(t.cell(0,0).paragraphs[0],'ساعت:',7)
+ field(t.cell(0,1),'' if hours is None else fa(hours))
+ text(t.cell(0,3).paragraphs[0],'تست:',7)
+ field(t.cell(0,4),'' if tests is None else fa(tests))
+
+
 def fill(content,metrics,b):
+ margins(content,top=.6,bottom=.3,left=1,right=1)
  if b:
   text(content.paragraphs[0],'☐ '+b['subject'],9,True)
-  p=text(content.add_paragraph(),b['topic'],9,True);p.paragraph_format.space_before=Pt(5)
-  p=text(content.add_paragraph(),b['detail'],8.5);p.paragraph_format.space_before=Pt(5)
-  text(metrics.paragraphs[0],'ساعت: '+fa(b['hours'])+'                       تست: '+fa(b['tests']),7)
- else:
-  text(content.paragraphs[0],'☐ درس و مبحث:',8)
-  text(metrics.paragraphs[0],'ساعت: ..............           تست: ..............',7)
+  p=text(content.add_paragraph(),b['topic'],9,True);p.paragraph_format.space_before=Pt(4)
+  p=text(content.add_paragraph(),b['detail'],8.5);p.paragraph_format.space_before=Pt(4)
+ else:text(content.paragraphs[0],'☐ درس و مبحث:',8)
+ metric_pair(metrics,b['hours'] if b else None,b['tests'] if b else None)
  border(content,'bottom','CCCCCC',3);border(metrics,'top','CCCCCC',3)
 
 
@@ -122,5 +191,8 @@ def save(out):
  parts['[Content_Types].xml']=etree.tostring(ct,xml_declaration=True,encoding='UTF-8',standalone=True)
  settings=etree.fromstring(parts['word/settings.xml']);settings.append(el('embedTrueTypeFonts'));settings.append(el('saveSubsetFonts',val='0'))
  parts['word/settings.xml']=etree.tostring(settings,xml_declaration=True,encoding='UTF-8',standalone=True)
+ # Canonical schema order for properties added through low-level XML helpers.
+ for filename in ['word/document.xml','word/styles.xml','word/settings.xml']:
+  parts[filename]=etree.tostring(normalize(etree.fromstring(parts[filename])),xml_declaration=True,encoding='UTF-8',standalone=True)
  with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED) as z:
   for name,data in parts.items():z.writestr(name,data)

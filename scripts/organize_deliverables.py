@@ -2,7 +2,7 @@
 Usage: .venv/bin/python scripts/organize_deliverables.py <fresh-Word-render-directory>
 Render the latest Stitch14 DOCXs first with its render_word.mjs script.
 """
-import json, shutil, sys, zipfile
+import json, shutil, sys, zipfile, hashlib
 from pathlib import Path
 import pymupdf
 
@@ -13,6 +13,18 @@ source=ROOT/calendar['completed_plan_source']
 fa=lambda s:str(s).translate(str.maketrans('0123456789','۰۱۲۳۴۵۶۷۸۹'))
 plans=ROOT/'برنامه تحصیلی'
 reports=ROOT/'گزارش دانش آموز'
+
+# Refuse stale renders: published files must correspond to current editable sources.
+render_results=json.loads((rendered/'results.json').read_text())
+assert {r['file'] for r in render_results}=={'plan-1-aban-1405.docx','student-report-1.docx','student-report-2.docx'}
+for result in render_results:
+ assert result['inputSha256']==hashlib.sha256((source/result['file']).read_bytes()).hexdigest()
+ pdfname=Path(result['file']).with_suffix('.pdf').name
+ # The actual delivery PDFs are the validated canonical exports, not an HTML variant.
+ assert (source/pdfname).is_file()
+ with pymupdf.open(rendered/pdfname) as a, pymupdf.open(source/pdfname) as b:
+  assert len(a)==len(b)
+  for x,y in zip(a,b):assert x.get_pixmap(dpi=144).samples==y.get_pixmap(dpi=144).samples
 
 # Validate all report sources before publishing anything.
 for part in [1,2]:
@@ -52,7 +64,7 @@ for suffix in ['pdf','docx']:
 for part in [1,2]:
  stem=f'گزارش دانش آموز - برگ {fa(part)} - '+('شنبه تا دوشنبه' if part==1 else 'سه‌شنبه تا جمعه')
  shutil.copyfile(source/f'student-report-{part}.docx',reports/(stem+'.docx'))
- shutil.copyfile(rendered/f'student-report-{part}.pdf',reports/(stem+'.pdf'))
+ shutil.copyfile(source/f'student-report-{part}.pdf',reports/(stem+'.pdf'))
 
 (plans/'README.md').write_text('''# برنامه تحصیلی — تقویم آزمون‌های ماز ۱۴۰۵–۱۴۰۶
 
@@ -60,7 +72,7 @@ for part in [1,2]:
 
 ## برنامهٔ آماده
 
-[پوشهٔ آزمون ۱ آبان ۱۴۰۵](<۰۲ - آبان/۱ آبان/>) شامل PDF چهارصفحه‌ای و Word قابل‌ویرایش نسخهٔ نهایی Stitch14 است. روزهای مطالعهٔ آن ۱۸ تا ۳۰ مهر و آزمون هدف آن ۱ آبان است؛ بنابراین در ماه **آبان** قرار گرفته است. محتوا و قالب برنامه تغییر نکرده‌اند.
+[پوشهٔ آزمون ۱ آبان ۱۴۰۵](<۰۲ - آبان/۱ آبان/>) شامل PDF چهارصفحه‌ای و Word قابل‌ویرایش نسخهٔ نهایی Stitch14 است. روزهای مطالعهٔ آن ۱۸ تا ۳۰ مهر و آزمون هدف آن ۱ آبان است؛ بنابراین در ماه **آبان** قرار گرفته است. محتوای برنامه ثابت است. قالب Word با کادرهای مستقل مجموع ساعت/تست اصلاح شده و PDF مستقیماً از همین Word خروجی گرفته شده است؛ هر دو فایل یک مبنای چیدمان دارند.
 
 بقیهٔ پوشه‌ها فعلاً برای برنامه‌های بعدی آماده‌اند و برنامهٔ تحصیلی داخلشان تولید نشده است. فایل مخفی `.gitkeep` فقط برای حفظ پوشه‌های خالی در GitHub است. دو آزمون پریمیوم، طبق منبع هنوز تاریخ اعلام‌شده ندارند و در «تاریخ اعلام‌نشده» قرار دارند؛ تاریخ فرضی برایشان تعیین نشده است.
 
@@ -74,7 +86,7 @@ for part in [1,2]:
 
 در مجموع **۱۹ آزمون تاریخ‌دار و ۲ آزمون پریمیوم بدون تاریخ** ثبت شده است. آبان سه آزمون دارد: ۱، ۱۵ و ۲۹ آبان. نخستین آزمون این تقویم ۱۷ مهر است، نه ۱ مهر.
 
-گزارش‌های خالی دانش‌آموز در پوشهٔ مستقل [گزارش دانش آموز](<../گزارش دانش آموز/>) قرار دارند: دو برگ، هر برگ PDF و DOCX (چهار فایل).
+گزارش‌های خالی دانش‌آموز در پوشهٔ مستقل [گزارش دانش آموز](<../گزارش دانش آموز/>) قرار دارند: دو برگ، هر برگ PDF و DOCX (چهار فایل). PDF هر گزارش نیز خروجی مستقیم همان Word است. نمایش دقیق همهٔ نسخه‌های Microsoft Word تضمین نشده؛ کنترل تطابق پیکسلی با رندر مستقل LibreOffice انجام شده است.
 
 منبع: فایل `nnn1pTQT401yrhukz2t0zJLr3KNuRZVJwGoorjHP.pdf` در Drive با شناسهٔ `1NLhRx-u-d3I2DiOGixzBNDsyqF_PFkZS`. فهرست ماشینی و اثرانگشت منبع در `docs/maz-calendar.json` مخزن است. فایل کامل بودجه‌بندی و کتاب‌های درسی در Git منتشر نشده‌اند. پوشه‌های نسخه‌های قبلی برای بازتولید و حفظ تاریخچه باقی مانده‌اند.
 ''')
@@ -104,4 +116,8 @@ with zipfile.ZipFile(ROOT/'organized-deliverables.zip') as z:
   key=p.relative_to(ROOT).as_posix()+('/' if p.is_dir() else '')
   assert key in z.namelist(),key
   if p.is_file():assert z.read(key)==p.read_bytes()
+for part in [1,2]:
+ stem=f'گزارش دانش آموز - برگ {fa(part)} - '+('شنبه تا دوشنبه' if part==1 else 'سه‌شنبه تا جمعه')
+ for suffix in ['pdf','docx']:
+  assert (reports/(stem+'.'+suffix)).read_bytes()==(source/f'student-report-{part}.{suffix}').read_bytes()
 print('PASS: 12 ordered months (Mehr to Shahrivar), 19 dated + 2 undated exam folders; unchanged planner PDF/DOCX; two one-page report PDFs and two editable DOCXs; UTF-8 ZIP verified.')

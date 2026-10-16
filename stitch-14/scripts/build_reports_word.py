@@ -32,24 +32,7 @@ def underline(p,kind='dotted',color='9CA3AF'):
 
 
 def local_table(cell,rows,widths):
- """A fixed-width nested table keeps labels and empty writing lines separate."""
- t=cell.add_table(rows=rows,cols=len(widths));t.autofit=False
- t.alignment=WD_TABLE_ALIGNMENT.CENTER
- pr=t._tbl.tblPr
- pr.append(w.el('bidiVisual',val='1'))
- tw=pr.find(qn('w:tblW'));tw.set(qn('w:type'),'dxa');tw.set(qn('w:w'),str(int(Mm(sum(widths)).twips)))
- m=w.el('tblCellMar')
- for edge in ['top','bottom','left','right']:m.append(w.el(edge,w=0,type='dxa'))
- pr.append(m)
- for c,width in zip(t.columns,widths):c.width=Mm(width)
- for row in t.rows:
-  row.height_rule=WD_ROW_HEIGHT_RULE.EXACTLY
-  row._tr.get_or_add_trPr().append(w.el('cantSplit'))
-  for c,width in zip(row.cells,widths):
-   c.width=Mm(width);c.vertical_alignment=WD_CELL_VERTICAL_ALIGNMENT.CENTER
-   for edge in ['top','bottom','left','right']:w.border(c,edge,val='nil')
- for p in cell.paragraphs:tight(p)
- return t
+ return w.local_table(cell,rows,widths)
 
 
 def blank(cell):
@@ -80,7 +63,12 @@ def card(cell,title,optional,short):
   blank(t.cell(i,1).merge(t.cell(i,3)))
  paint(w.text(t.cell(3,0).paragraphs[0],'تست:',7.5),MUTED)
  blank(t.cell(3,1).merge(t.cell(3,2)))
- paint(w.text(t.cell(3,3).paragraphs[0],'(ص: ... غ: ...)',6.5,align='end'),'9CA3AF')
+ # Separate native correct/wrong entry fields; no padding-sensitive dot strings.
+ stats=t.cell(3,3)
+ w.margins(stats)
+ st=w.local_table(stats,1,[1.25,3.75,3.75,3.75,3.75,1.25]);st.rows[0].height=Mm(4.5)
+ for col,label in [(0,'('),(1,'ص:'),(3,'غ:'),(5,')')]:paint(w.text(st.cell(0,col).paragraphs[0],label,6),MUTED)
+ for col in [2,4]:blank(st.cell(0,col))
 
 
 for part in [1,2]:
@@ -113,7 +101,10 @@ for part in [1,2]:
    w.shade(c,'B88D1D' if friday else GOLD)
    c.vertical_alignment=WD_CELL_VERTICAL_ALIGNMENT.CENTER
   w.text(daycell.paragraphs[0],name,9,True)
-  w.text(rating.paragraphs[0],'میزان رضایت:   ○ عالی   ○ خوب   ○ متوسط   ○ نیاز به بازنگری',7.5,align='end')
+  w.margins(rating,left=1,right=1)
+  rt=w.local_table(rating,1,[50.5,21,15,15,17,28]);rt.rows[0].height=Mm(4.7)
+  for j,label in enumerate(['','میزان رضایت:','○ عالی','○ خوب','○ متوسط','○ نیاز به بازنگری']):
+   w.text(rt.cell(0,j).paragraphs[0],label,7,align='start')
   for ri in range(1,len(t.rows)):
    t.rows[ri].height=Mm(34.5 if part==1 else 27.5)
    for j,c in enumerate(t.rows[ri].cells):

@@ -4,7 +4,7 @@ import json
 BASE=Path(__file__).resolve().parents[1]
 days=json.loads((BASE/'plan.json').read_text())
 fa=lambda x:str(x).translate(str.maketrans('0123456789','۰۱۲۳۴۵۶۷۸۹'))
-root=Soup('<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>برنامهٔ آزمون ۱ آبان ۱۴۰۵</title><link rel="stylesheet" href="assets/planner.css"></head><body><nav class="no-print"><strong>برنامهٔ آزمون ۱ آبان ۱۴۰۵</strong> <button onclick="window.print()">چاپ / ذخیره PDF</button><p>۱۸ تا ۳۰ مهر • هفتهٔ اول دوازدهم، هفتهٔ دوم دهم • توضیحات منابع در README</p></nav><main></main></body></html>','html.parser')
+root=Soup('<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>برنامهٔ آزمون ۱ آبان ۱۴۰۵</title><link rel="stylesheet" href="assets/planner.css"></head><body><nav class="no-print"><strong>برنامهٔ آزمون ۱ آبان ۱۴۰۵</strong> <a href="plan-1-aban-1405.pdf">دریافت PDF مطابق Word</a><p>پیش‌نمایش HTML منابع؛ برای نسخهٔ نهاییِ منطبق با Word، PDF بالا را باز کنید. • ۱۸ تا ۳۰ مهر • هفتهٔ اول دوازدهم، هفتهٔ دوم دهم</p></nav><main></main></body></html>','html.parser')
 for week in range(2):
  for half in range(2):
   src=Soup((BASE / 'templates' / ['planner-first.html','planner-second.html'][half]).read_text(),'html.parser')

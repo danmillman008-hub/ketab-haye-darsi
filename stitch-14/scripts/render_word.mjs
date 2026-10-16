@@ -1,6 +1,7 @@
-// Real Word-format layout check via LibreOffice; the user's PDF stays untouched.
+// Render the canonical DOCX files; validate_rendered.py publishes these exact PDFs.
 import {createConverter} from '@deepseek-ai/libreoffice-kit';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import fs from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -12,7 +13,8 @@ try{
  for(const [name,pages] of [['plan-1-aban-1405',4],['student-report-1',1],['student-report-2',1]]){
   const result=await c.render({inputPath:path.join(base,name+'.docx'),outputPath:path.join(output,name+'.pdf')});
   if(result.pageCount!==pages||result.missingFonts.length)throw new Error('Layout/font check failed: '+name+': '+JSON.stringify(result));
-  results.push({file:name+'.docx',...result});
+  const inputSha256=createHash('sha256').update(await fs.readFile(path.join(base,name+'.docx'))).digest('hex');
+  results.push({file:name+'.docx',inputSha256,...result});
  }
 }finally{await c.dispose()}
 await fs.writeFile(path.join(output,'results.json'),JSON.stringify(results,null,2));
