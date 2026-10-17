@@ -85,5 +85,6 @@
     "1406-02-03": "فیزیک ۱ (کل کتاب): دهم",
     "1406-02-17": "فیزیک ۲ (کل کتاب): یازدهم",
     "source_pdf_page": 7
-  }
+  },
+  "provenance_status": "Historical sources used for initial generation; C111210/C112210 were superseded on 2026-10-17. Current file IDs and hashes are in BOOK_EDITIONS.json; historical hashes intentionally retained."
 }
