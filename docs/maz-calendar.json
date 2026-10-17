@@ -153,5 +153,28 @@
   "completed_exam": "1405-08-01",
   "completed_plan_source": "stitch-14",
   "completed_study_start": "1405-07-18",
-  "completed_study_end": "1405-07-30"
+  "completed_study_end": "1405-07-30",
+  "completed_exams": [
+    "1405-07-17",
+    "1405-08-01",
+    "1405-08-15",
+    "1405-08-29",
+    "1405-09-13",
+    "1405-09-27",
+    "1405-10-25",
+    "1405-11-09",
+    "1405-11-23",
+    "1405-12-07",
+    "1405-12-21",
+    "1406-01-06",
+    "1406-01-20",
+    "1406-02-03",
+    "1406-02-17",
+    "1406-02-24",
+    "1406-03-21",
+    "1406-03-28",
+    "1406-04-04"
+  ],
+  "annual_manifest": "annual/manifest.json",
+  "undated_status": "Two relative provisional Word/PDF plans; final dates and budget confirmation still required."
 }

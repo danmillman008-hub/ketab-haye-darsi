@@ -1,0 +1,89 @@
+{
+  "maz_verified_pages": [
+    5,
+    6,
+    7
+  ],
+  "files": {
+    "nnn1pTQT401yrhukz2t0zJLr3KNuRZVJwGoorjHP.pdf": {
+      "bytes": 3851220,
+      "sha256": "c9ecf7a0fce8afc87c2c6062dbfe9d2988911cd0a9945baf7a65a22938f78050"
+    },
+    "C110210.pdf": {
+      "bytes": 6891839,
+      "sha256": "ee15155a28806185a3620acbf3f45e4c2825d15e5fb38f57cf14a3bc17ce3e36"
+    },
+    "C112210.pdf": {
+      "bytes": 5883094,
+      "sha256": "52af54376f65c60029506a64a568558f5a68271f08f42bfe35aab3ee71bc39ed"
+    },
+    "C110214_0.pdf": {
+      "bytes": 11081074,
+      "sha256": "c899f72a5dd9f2be142c73cef3d780da4809b8d06b37f2498b0184ab6177cd4a"
+    },
+    "C111210.pdf": {
+      "bytes": 6934720,
+      "sha256": "9d2827e8008b62f34666286fc5b10cc68753a357023a4ef25fe9484bf391317b"
+    },
+    "C111211.pdf": {
+      "bytes": 8370423,
+      "sha256": "e91b76357725bf2a7125795fae552df67f61107c409fb1c013481d00317573d3"
+    },
+    "000-160-C111216.pdf": {
+      "bytes": 6485471,
+      "sha256": "3849b5a137834bf5272bd1ba19a4f0caa0a22e96f09a1d270638c7979bfce996"
+    },
+    "C11216.pdf": {
+      "bytes": 4577207,
+      "sha256": "6a45c348ac362aa987207b030d7783f7ab9ec740e537ec8e1966e74126029e3f"
+    },
+    "C110211.pdf": {
+      "bytes": 7823669,
+      "sha256": "e20ccb8cb88c75dab899ffb9c69801557e5327522044e97c0223840be83da59d"
+    },
+    "C112211.pdf": {
+      "bytes": 10641292,
+      "sha256": "9233b2ffb42128de22c17da5c39cd2c8543a633080c51ec10daba84264858444"
+    },
+    "C110216.pdf": {
+      "bytes": 5284038,
+      "sha256": "7e0e968b341681c36d8e59ee11d029160daccda16e5274edb020c9fa6d08ab5a"
+    },
+    "C112244.pdf": {
+      "bytes": 9488722,
+      "sha256": "774c1789a8e8fd70f59936c9aabebd89b51191bf3799c8820bcbacf34ff8d5eb"
+    },
+    "C111244.pdf": {
+      "bytes": 16031265,
+      "sha256": "60d829f85bc676e3ded4da5d4ab2573a25c9af1b7964b01ad04b70bd505b60ab"
+    }
+  },
+  "inspection": "MAZ rows visually read; textbook contents, goftar starts and boundary topics checked. Chemistry edition pagination differs; printed outputs explicitly label MAZ page references.",
+  "chemistry_edition_examples": {
+    "C110210.pdf": {
+      "chapter3_book_start": 85
+    },
+    "C111210.pdf": {
+      "chapter2_book_start": 49,
+      "chapter3_book_start": 97
+    },
+    "C112210.pdf": {
+      "chapter2_book_start": 37,
+      "chapter3_book_start": 65,
+      "chapter4_book_start": 89
+    }
+  },
+  "physics_17_ordibehesht": {
+    "maz_numeric_range": [
+      103,
+      125
+    ],
+    "book_nucleus_start": 112,
+    "decision": "Include 103–111 as review; disclose in special plan."
+  },
+  "spring_physics_base_visually_verified": {
+    "1406-02-03": "فیزیک ۱ (کل کتاب): دهم",
+    "1406-02-17": "فیزیک ۲ (کل کتاب): یازدهم",
+    "source_pdf_page": 7
+  }
+}
