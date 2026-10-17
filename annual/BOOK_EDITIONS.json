@@ -1,179 +1,138 @@
 {
-  "checked_on": "2026-10-17",
-  "scope": "Imprint year, chapter/goftar boundaries and selected MAZ boundary topics; not certification of latest official exam edition or word-for-word content equality.",
-  "drive_folder_id": "1accP5HJpUVaejhk_kHcQRXIQrWxrtBi6",
-  "active_books": [
+  "revision": "1405-rebuild",
+  "books": [
     {
-      "title": "شیمی دهم",
-      "filename": "C110210.pdf",
+      "key": "b10",
+      "file": "google_drive/C110216 (2).pdf",
+      "drive_id": "1pSgBQkHqVyyBdyQfhjuPLGXj7RWlDe3k",
       "print_year": 1405,
-      "drive_id": "1nG2VykDM_5doHYN0Diyabwhb47KOX38J",
+      "md5": "fbb3562f0b77392c05090c8fdc2c3201",
+      "sha256": "58f6685b03e63b07a10eb4243f89aca467264eb9d9f419febd2a25bf47320114",
+      "pdf_pages": 120,
+      "printed_content_end": 111,
+      "pdf_offset": 6
+    },
+    {
+      "key": "b11",
+      "file": "google_drive/C111216.pdf",
+      "drive_id": "1C_lHBjJmj6ZcytTvs36OJ3EFCxyRBiQF",
+      "print_year": 1405,
+      "md5": "0fffd7c057929fe09b877bf51ae8346e",
+      "sha256": "ea24ce40ecafd3f5dbdad5ac0e46984c8fe8d43dab33226bd09bda5c03b3262b",
+      "pdf_pages": 168,
+      "printed_content_end": 152,
+      "pdf_offset": 8
+    },
+    {
+      "key": "b12",
+      "file": "google_drive/C112216 (2).pdf",
+      "drive_id": "1eysOP0ItX2H9gcH5Qu7REdRk2qfxU7ug",
+      "print_year": 1405,
+      "md5": "2cbd2c2db66e5f895d674ea7ff196ddd",
+      "sha256": "e0b8f1be318499a2b162f30a9dea9fc8e8cc334e633ee9748ddfd38e6e0ebd91",
+      "pdf_pages": 136,
+      "printed_content_end": 124,
+      "pdf_offset": 8
+    },
+    {
+      "key": "c10",
+      "file": "google_drive/C110210 (4).pdf",
+      "drive_id": "1K2lbD6i-NyYcdQCHByPravQD5JJklW1r",
+      "print_year": 1405,
       "md5": "b5dc0abdf7e6fa80caaeadc3b13155e5",
       "sha256": "ee15155a28806185a3620acbf3f45e4c2825d15e5fb38f57cf14a3bc17ce3e36",
-      "bytes": 6891839,
-      "needs_target_edition_verification": false
+      "pdf_pages": 136,
+      "printed_content_end": 122,
+      "pdf_offset": 10
     },
     {
-      "title": "شیمی یازدهم",
-      "filename": "C111210.pdf",
-      "print_year": 1403,
-      "drive_id": "1urdOx5YK2fCzAKbkAhH7phleZcv5K_sG",
-      "md5": "de76651c7dce40af0ff5c6220c57745f",
-      "sha256": "1fe8a3383dec69c5ca2952ff67c2624c11a23da6a5702e8f84d4b877b96052c3",
-      "bytes": 7786453,
-      "needs_target_edition_verification": false
-    },
-    {
-      "title": "شیمی دوازدهم",
-      "filename": "C112210.pdf",
-      "print_year": 1404,
-      "drive_id": "1wnuo80nizjZ-usCKpcCaL9gfXZ1EtK_J",
-      "md5": "197bf95e720025045753269318c2b670",
-      "sha256": "28d6ef00ca53daff9ab3ab9337d17872600f401aeaba924363c6c235077d70e2",
-      "bytes": 6967641,
-      "needs_target_edition_verification": false
-    },
-    {
-      "title": "زیست دهم",
-      "filename": "C110216.pdf",
-      "print_year": 1399,
-      "drive_id": "1zyqJj7mWSaWOrL8SXrsO_7JC3TZh1cx4",
-      "md5": "96118e79a979bc3490fca4bef4959802",
-      "sha256": "7e0e968b341681c36d8e59ee11d029160daccda16e5274edb020c9fa6d08ab5a",
-      "bytes": 5284038,
-      "needs_target_edition_verification": true
-    },
-    {
-      "title": "زیست یازدهم",
-      "filename": "000-160-C111216.pdf",
-      "print_year": 1399,
-      "drive_id": "1NYPnsdyhMW2xykWM7jmZm-RTbxTI0DzE",
-      "md5": "bc029bad06a764e01e63c85ab807e288",
-      "sha256": "3849b5a137834bf5272bd1ba19a4f0caa0a22e96f09a1d270638c7979bfce996",
-      "bytes": 6485471,
-      "needs_target_edition_verification": true
-    },
-    {
-      "title": "زیست دوازدهم",
-      "filename": "C11216.pdf",
-      "print_year": 1397,
-      "drive_id": "1qocmlfCRhnY6ircX2cFekNL5vZ98UV_W",
-      "md5": "20718c135a9b8c2bc9d4ddcc69c80626",
-      "sha256": "6a45c348ac362aa987207b030d7783f7ab9ec740e537ec8e1966e74126029e3f",
-      "bytes": 4577207,
-      "needs_target_edition_verification": true
-    },
-    {
-      "title": "ریاضی دهم",
-      "filename": "C110211.pdf",
+      "key": "c11",
+      "file": "google_drive/C111210 (2).pdf",
+      "drive_id": "1-zZ8sQc2eFRnUYkLf0zPRVthUzYsnKq8",
       "print_year": 1405,
-      "drive_id": "1wXzB6xhywpvlwLQ6zruCmUW3aTIcs_6P",
+      "md5": "39a560cff59a6523f741d884fc009a2d",
+      "sha256": "c7e35f67ae84d6dedeeefbe3efb77881d39a7620b0e6fc12eeb28358f469f257",
+      "pdf_pages": 136,
+      "printed_content_end": 123,
+      "pdf_offset": 8
+    },
+    {
+      "key": "c12",
+      "file": "google_drive/C112210.pdf",
+      "drive_id": "1wnuo80nizjZ-usCKpcCaL9gfXZ1EtK_J",
+      "print_year": 1405,
+      "md5": "b9f7d18ab1ce2f94827c86972247e01d",
+      "sha256": "8dbf4ab4969abb48bcd55293a834b28fc189f27182d6e5dc7af9a51d6f5ce563",
+      "pdf_pages": 136,
+      "printed_content_end": 123,
+      "pdf_offset": 8
+    },
+    {
+      "key": "m10",
+      "file": "google_drive/C110211 (3).pdf",
+      "drive_id": "1Ff8JGImVmnI-0nmwHVbjFg07mcRx1rml",
+      "print_year": 1405,
       "md5": "93614c939a039ecaf56fea9cfa4258a0",
       "sha256": "e20ccb8cb88c75dab899ffb9c69801557e5327522044e97c0223840be83da59d",
-      "bytes": 7823669,
-      "needs_target_edition_verification": false
+      "pdf_pages": 176,
+      "printed_content_end": 170,
+      "pdf_offset": 6
     },
     {
-      "title": "ریاضی یازدهم",
-      "filename": "C111211.pdf",
-      "print_year": 1396,
-      "drive_id": "1YW6x0JKRifws-Yp06EsMbabKHQ7ruOhF",
-      "md5": "67fe9926d64f31db16350ed2c368a99e",
-      "sha256": "e91b76357725bf2a7125795fae552df67f61107c409fb1c013481d00317573d3",
-      "bytes": 8370423,
-      "needs_target_edition_verification": true
+      "key": "m11",
+      "file": "google_drive/C111211 (2).pdf",
+      "drive_id": "1U68kZ3vGkF5Apw9jfXoevoRk2gkSyrQk",
+      "print_year": 1405,
+      "md5": "b0ad03b8023dda94581694208dab8d64",
+      "sha256": "e5c287975ff848a499fc75ed4889120b1cd6aac6b9feb6357e083da3919185b1",
+      "pdf_pages": 176,
+      "printed_content_end": 166,
+      "pdf_offset": 8
     },
     {
-      "title": "ریاضی دوازدهم",
-      "filename": "C112211.pdf",
-      "print_year": 1397,
-      "drive_id": "1reDgB8JyZAfTZaGgEP-lsXRPs9w1ykeY",
-      "md5": "7d06d7c9b2b85086c005895fb7ba8783",
-      "sha256": "9233b2ffb42128de22c17da5c39cd2c8543a633080c51ec10daba84264858444",
-      "bytes": 10641292,
-      "needs_target_edition_verification": true
+      "key": "m12",
+      "file": "google_drive/C112211 (2).pdf",
+      "drive_id": "1U_I-KA0R11lNSBtKj71fA8o5Evwkrl7i",
+      "print_year": 1405,
+      "md5": "499d2759fc99ff74ca5a19557d81f29d",
+      "sha256": "bc1b9a3e2e8934025c464672cf0678ffcd7bf20fa2ad39ff14cb397881b1209c",
+      "pdf_pages": 160,
+      "printed_content_end": 148,
+      "pdf_offset": 8
     },
     {
-      "title": "فیزیک دهم",
-      "filename": "C110214_0.pdf",
-      "print_year": 1403,
-      "drive_id": "1ZtKK09UZWcQSPp3Hvnz0eXnKytnLQ0Uz",
-      "md5": "75d1f6fe7e59d873f0ec56ef0c96b7f0",
-      "sha256": "c899f72a5dd9f2be142c73cef3d780da4809b8d06b37f2498b0184ab6177cd4a",
-      "bytes": 11081074,
-      "needs_target_edition_verification": false
+      "key": "p10",
+      "file": "google_drive/C110214 (1).pdf",
+      "drive_id": "1G12GDK-VN5s415Dle985U-1oKPQZ3-DZ",
+      "print_year": 1405,
+      "md5": "f2c661233ca6247981ee52a51b715aeb",
+      "sha256": "5d8c8f85dc8b79e481694d559404fcf17eacaa1b51f93b746f6a755078a13db9",
+      "pdf_pages": 136,
+      "printed_content_end": 120,
+      "pdf_offset": 10
     },
     {
-      "title": "فیزیک یازدهم",
-      "filename": "C111244.pdf",
-      "print_year": 1403,
-      "drive_id": "1ATZzjLH5Bmx9RYA3gGvhVRebDRa5HG5l",
-      "md5": "942af19ca87fe440b4e3084000851198",
-      "sha256": "60d829f85bc676e3ded4da5d4ab2573a25c9af1b7964b01ad04b70bd505b60ab",
-      "bytes": 16031265,
-      "needs_target_edition_verification": false
+      "key": "p11",
+      "file": "google_drive/C111244 (1).pdf",
+      "drive_id": "1QzEd-1Yh-I7rIpjE6c0LMdPwKO1Zz3GQ",
+      "print_year": 1405,
+      "md5": "a2d1bd7f770af196cbf62e1d14f5a82a",
+      "sha256": "2fbda9ed4bdedb20ee3182e39e0eb39c15f908770cd7de56fff3d91a6160aac4",
+      "pdf_pages": 119,
+      "printed_content_end": 104,
+      "pdf_offset": 8
     },
     {
-      "title": "فیزیک دوازدهم",
-      "filename": "C112244.pdf",
-      "print_year": 1397,
-      "drive_id": "1yaE-GOjK5fWbNeQlieN8nkNHboYY6Spk",
-      "md5": "ea7ddfd1b333647b794f292cfa0d73a1",
-      "sha256": "774c1789a8e8fd70f59936c9aabebd89b51191bf3799c8820bcbacf34ff8d5eb",
-      "bytes": 9488722,
-      "needs_target_edition_verification": true
+      "key": "p12",
+      "file": "google_drive/C112244 (2).pdf",
+      "drive_id": "1i9UhPOaLrahssFAgr9DCW0Qt1DJV4lDV",
+      "print_year": 1405,
+      "md5": "094bd2391fd4c13614c19b462d43ca28",
+      "sha256": "25662ce9a7d292b0f70048a82b412e64ed9ac000add1f19730ba9c2b066ebc7e",
+      "pdf_pages": 143,
+      "printed_content_end": 125,
+      "pdf_offset": 9
     }
   ],
-  "replaced": [
-    {
-      "filename": "C111210.pdf",
-      "old_year": 1398,
-      "new_year": 1403,
-      "old_drive_id": "1eTtPD1I0gsRKpRrzkOyRb4ePwSIT7rR4",
-      "new_drive_id": "1urdOx5YK2fCzAKbkAhH7phleZcv5K_sG",
-      "old_file_action": "renamed with archive prefix; bytes and access preserved"
-    },
-    {
-      "filename": "C112210.pdf",
-      "old_year": 1399,
-      "new_year": 1404,
-      "old_drive_id": "16iaKV8iUnYfYBfpDG4mZ-DAYjGCZVuJ9",
-      "new_drive_id": "1wnuo80nizjZ-usCKpcCaL9gfXZ1EtK_J",
-      "old_file_action": "renamed with archive prefix; bytes and access preserved"
-    }
-  ],
-  "incoming_tenth": {
-    "filename": "C110210 (3).pdf",
-    "year": 1403,
-    "active_year": 1405,
-    "decision": "Not uploaded or substituted: older than active reference; chapter starts 1/47/85 and ppm location 94–96 do not resolve the MAZ boundary mismatch."
-  },
-  "remaining_boundary_discrepancies": [
-    {
-      "book": "C110210.pdf",
-      "topic": "ppm endpoint",
-      "maz_printed_page": 98,
-      "book_topic_pages": [
-        94,
-        95,
-        96
-      ],
-      "book_page_98": "molar concentration; topic title must be considered"
-    },
-    {
-      "book": "C112210.pdf",
-      "topic": "guided electron transfer start",
-      "maz_exam": "1405-09-27",
-      "maz_start_page": 42,
-      "book_heading_page": 44
-    },
-    {
-      "book": "C112244.pdf",
-      "topic": "nuclear structure",
-      "maz_exam": "1406-02-17",
-      "maz_start_page": 103,
-      "book_heading_page": 112,
-      "note": "Old 1397 edition; target-edition comparison still needed to identify cause."
-    }
-  ]
+  "scope": "Printed 1405 editions; not a certification of official entrance-exam eligibility."
 }

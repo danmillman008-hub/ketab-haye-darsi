@@ -1,10 +1,12 @@
-"""Generate all dated plans without touching the approved 1-Aban reference."""
+"""Rebuild all plans, including 1 Aban, from the reviewed 1405 edition scopes."""
 import sys,json,hashlib,copy,math
 from pathlib import Path
 from datetime import timedelta
 import jdatetime
 ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'annual'))
 from curriculum import *
+from revision1405 import apply, volumes, enrich_final, math_ranges
+apply()
 fa=lambda x:str(x).translate(str.maketrans('0123456789','۰۱۲۳۴۵۶۷۸۹'))
 MONTHS=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند']
 DAYS=['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه']
@@ -26,21 +28,38 @@ def bio_units(scopes):
     if x<=y:units.append(dict(grade=grade,chapter=chapter,goftar=idx+1,topic=topic,start=x,end=y))
  return units
 
+def weighted_groups(units,n=3):
+ # Respect complete goftars when possible. Only split a goftar when fewer
+ # units than study days exist; no extra study/test boxes are introduced.
+ units=copy.deepcopy(units)
+ while len(units)<n:
+  ix=max(range(len(units)),key=lambda i:units[i]['end']-units[i]['start'])
+  u=units[ix];assert u['end']>u['start']
+  mid=(u['start']+u['end'])//2
+  left=dict(u,end=mid);right=dict(u,start=mid+1)
+  units[ix:ix+1]=[left,right]
+ from itertools import combinations
+ def score(cuts):
+  points=(0,*cuts,len(units));loads=[sum(u['end']-u['start']+1 for u in units[a:b]) for a,b in zip(points,points[1:])]
+  return (max(loads)-min(loads),sum(x*x for x in loads),cuts)
+ cuts=min(combinations(range(1,len(units)),n-1),key=score)
+ points=(0,*cuts,len(units))
+ return [units[a:b] for a,b in zip(points,points[1:])]
+
 def bio_daily(w):
  if 'bio_daily' in w:return w['bio_daily']
  result=[]
- for chunk in groups(bio_units(w['bio']),3):
+ for chunk in weighted_groups(bio_units(w['bio'])):
   by={}
   for u in chunk:by.setdefault((u['grade'],u['chapter']),[]).append(u)
-  parts=[]
+  parts=[];grades=[]
   for (grade,ch),us in by.items():
+   if grade not in grades:grades.append(grade)
    gs=sorted(set(u['goftar'] for u in us));label=fa(gs[0]) if len(gs)==1 else fa(gs[0])+'–'+fa(gs[-1])
-   parts.append('فصل '+fa(ch)+'، گفتار '+label)
-  # Keep whole goftars together; never repartition the approved reference by page count.
-  first,last=chunk[0]['start'],chunk[-1]['end']
-  topic=' + '.join(parts)+'؛ ص '+fa(first)+'–'+fa(last)
-  if len(by)==1:topic=chunk[0]['topic']+'؛ '+topic if len(chunk)==1 else topic
-  result.append(('زیست '+GRADES[chunk[0]['grade']],topic))
+   prefix=(GRADES[grade]+'؛ ') if len(set(u['grade'] for u in chunk))>1 else ''
+   parts.append(prefix+'فصل '+fa(ch)+' گ'+label+'؛ ص'+fa(us[0]['start'])+'–'+fa(us[-1]['end']))
+  pages=sum(u['end']-u['start']+1 for u in chunk)
+  result.append(('زیست '+' و '.join(GRADES[g] for g in grades),' / '.join(parts)+'؛ '+fa(pages)+' صفحه'))
  return result
 
 def chem_daily(w):
@@ -54,9 +73,9 @@ def chem_daily(w):
    if runs and runs[-1][0]==g and runs[-1][3]==t and runs[-1][2]+1==p:runs[-1][2]=p
    else:runs.append([g,p,p,t])
   for g,a,b,t in runs:
-   # Page labels intentionally refer to MAZ, not a differently paginated supplied edition.
-   parts.append(t+'؛ ص ماز '+fa(a)+('–'+fa(b) if a!=b else ''))
-  result.append(('شیمی '+' و '.join(GRADES[g] for g in grades),' / '.join(parts)))
+   # Current printed pages; boundary restrictions are retained in the scope audit.
+   parts.append(t+'؛ ص'+fa(a)+('–'+fa(b) if a!=b else ''))
+  result.append(('شیمی '+' و '.join(GRADES[g] for g in grades),' / '.join(parts)+'؛ '+fa(len(chunk))+' صفحه'))
  return result
 
 def box(s,t,d,h,n=0):return dict(subject=s,topic=t,detail=d,hours=h,tests=n)
@@ -64,6 +83,8 @@ def make_days(weeks,start):
  days=[];metas=[]
  for wi,w in enumerate(weeks):
   bio=bio_daily(w);chem=chem_daily(w);g=w['grade'];review=w['review']
+  if w.get('chem_boundary'):chem[-1]=(chem[-1][0],chem[-1][1]+'؛ '+w['chem_boundary'])
+  if w.get('physics_boundary'):w['physics'][0]+='؛ '+w['physics_boundary']
   first=start+timedelta(days=wi*7) if start else None
   metas.append(dict(label=w['label'],date_range=(date_label(first)+' تا '+date_label(first+timedelta(days=6),True)) if first else 'هفتهٔ نسبی '+fa(wi+1)+'؛ تاریخ اعلام نشده',friday=date_label(first+timedelta(days=6)) if first else 'جمعهٔ هفتهٔ '+fa(wi+1)))
   for di in range(6):
@@ -73,6 +94,10 @@ def make_days(weeks,start):
     bt=[box(s,t,'۲۰ تست آموزشی + تحلیل همهٔ گزینه‌ها',2,20),box(s,t,'۲۰ تست تکمیلی + تحلیل و ثبت خطا',2,20)]
     mt=[box('ریاضی',w['math'][i],('غیرزمان‌دار' if n==0 else 'ترجیحاً زمان‌دار')+'؛ ۳۰ تست + تحلیل',2,30) for i in ([1] if n==0 else [n*2,n*2+1])]
     if n==0:mt.insert(0,box('ریاضی',w['math'][0],'۱ ساعت مرور درسنامه و مثال‌های اصلی' if review else '۱ ساعت درسنامه و مثال‌های اصلی',1))
+    for mb in mt:
+     if 'ریاضی' not in mb['topic']:
+      grades=list(dict.fromkeys(g for g,a,b in math_ranges(w)))
+      mb['topic']=' و '.join(GRADES[g] for g in grades)+'؛ '+mb['topic']
     bs=[study,mt[0],bt[0],mt[1],bt[1]]
    else:
     def ps(i):return 'فیزیک '+(GRADES[w['physics_daily_grades'][i]] if 'physics_daily_grades' in w else GRADES[g])
@@ -93,13 +118,14 @@ for month in calendar['months']:
   assert prev is None or (target-prev).days%7==0
   start=target-timedelta(days=n*7-1)
   dest=Path('برنامه تحصیلی')/month['folder']/(fa(day)+' '+month['name'])
-  label=date_label(target,True);existing=key=='1405-08-01'
+  label=date_label(target,True);existing=False
   if existing:
    data=copy.deepcopy(json.loads((ROOT/'stitch-14/plan.json').read_text()));metas=[];weeks=[]
    stem='برنامه آزمون ۰۱ آبان ۱۴۰۵'
   else:
    weeks=copy.deepcopy((NORMAL|SPECIAL)[key]);assert len(weeks)==n,(key,n,len(weeks))
    data,metas=make_days(weeks,start);stem='برنامه آزمون '+label
+   if key=='1405-08-01':stem='برنامه آزمون ۰۱ آبان ۱۴۰۵'
   special=key in REASONS
   notes=[REASONS[key]] if special else []
   if key=='1405-09-27':notes.append('گذار بودجهٔ پایه از دهم به یازدهم طبق خودِ ردیف ۲۷ آذر ماز انجام شده است.')
@@ -113,7 +139,7 @@ for month in calendar['months']:
   items.append(item);prev=target
 # Undated folders get reusable relative-week plans, never invented calendar dates.
 for number in [1,2]:
- weeks=[full_week(12),compressed_final()]
+ weeks=[full_week(12),enrich_final(compressed_final())]
  data,metas=make_days(weeks,None)
  for d in data:
   for b in d['boxes']:
@@ -121,6 +147,9 @@ for number in [1,2]:
  title='آزمون جامع پریمیوم '+fa(number)
  items.append(dict(id='premium-'+str(number),title=title,target=None,start=None,weeks=2,pages=5,special=True,reason='تاریخ رسمی اعلام نشده؛ فایل برآیندی با هفته‌های نسبی، نه برنامهٔ تقویمی قطعی.',notes=['پس از اعلام تاریخ و بودجهٔ نهایی ماز، تاریخ‌گذاری و انطباق نهایی لازم است.','مرور انتخابی و رفع خطا؛ این فایل جای مطالعهٔ اولیهٔ کل کتاب‌ها نیست.'],source_page=7,preserved=False,directory=str(Path('برنامه تحصیلی')/'تاریخ اعلام‌نشده'/title),stem='فایل برآیندی '+title+' - بدون تاریخ',days=data,week_meta=metas,scopes=weeks))
 for it in items:
+ for w in it['scopes']:w['page_volume']=volumes(w)
+ it['edition']='چاپ ۱۴۰۵'
+ it['page_count_method']='شمار صفحات چاپی در محدوده؛ صفحات مشترک مرزی یک بار؛ تکرار تست شمرده نمی‌شود. مرور موضوعی به معنای مطالعهٔ کامل همهٔ صفحات نیست.'
  for d in it['days']:
   assert d['hours']==[8,7,9,7,9,7][d['day']]
   assert d['tests']==[70,55,100,85,100,85][d['day']]
@@ -135,4 +164,4 @@ for it in items:
  (ROOT/'annual/data'/f"{it['id']}.json").write_text(json.dumps(it,ensure_ascii=False,indent=2)+'\n')
 summary=[{k:v for k,v in it.items() if k not in ['days','scopes','week_meta']} for it in items]
 (ROOT/'annual/manifest.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
-print('Generated',len(items),'plans;',sum(it['weeks'] for it in items if it['target']),'dated weeks;',sum(it['pages'] for it in items),'pages including preserved reference.')
+print('Generated',len(items),'plans;',sum(it['weeks'] for it in items if it['target']),'dated weeks;',sum(it['pages'] for it in items),'pages; all plans rebuilt.')

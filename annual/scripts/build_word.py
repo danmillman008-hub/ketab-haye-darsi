@@ -42,7 +42,7 @@ if meta['special']:
  note('زیست: کتاب ۱ ساعت و هر باکس ۲۰ تست با تحلیل ۲ ساعت. ریاضی: درسنامهٔ اولیه ۱ ساعت و تست ۳۰تایی ۲ ساعت. فیزیک: درسنامهٔ اولیه ۲ ساعت و تست ۳۰تایی ۲ ساعت. شیمی: کتاب ۱ ساعت و تست ۲۵تایی ۲ ساعت.')
  note('مدت این فایل: '+fa(meta['weeks'])+' هفته؛ '+fa(meta['weeks']*47)+' ساعت و '+fa(meta['weeks']*495)+' تست. آزمون و استراحت خارج از این مجموع‌اند.')
  note('در مرورهای جامع، مطالعهٔ کتاب به معنی بازیابی و مرور انتخابی متن و شکل‌های بودجه است، نه یادگیری اولیهٔ کل کتاب در یک ساعت؛ تست‌ها باید همهٔ سرفصل‌های تعیین‌شده را نمایندگی کنند.')
- note('ارجاع صفحه‌های شیمی با برچسب «ص ماز» مربوط به جدول ماز است. چاپ فایل‌های کتاب یکسان نیست؛ مرز موضوعی را تطبیق دهید و عدد ماز را شمارهٔ قطعی کتاب خود فرض نکنید.')
+ note('شماره‌ها صفحهٔ چاپی کتاب‌های ۱۴۰۵ هستند، نه شمارهٔ صفحهٔ PDF. صفحهٔ مشترک مرزی فقط تا عنوان تعیین‌شده مطالعه شود. تعداد صفحات، گسترهٔ بودجه است نه تعهد خواندن کامل در مرورهای جامع.')
  note('فقط چهار درس توافق‌شده برنامه‌ریزی شده‌اند؛ زمین‌شناسیِ جدول ماز به این فرمول اضافه نشده است. منبع: جدول رسمی ارسالی ماز، صفحهٔ '+fa(meta['source_page'])+'.')
  for i,wm in enumerate(meta['week_meta']):note('هفتهٔ '+fa(i+1)+' — '+wm['label']+' — '+wm['date_range'],9)
  branding.footer(w)
@@ -79,7 +79,8 @@ for sheet in range(meta['weeks']*2):
   for label_i,field_i,label in [(0,1,'ساعت مطالعه:'),(3,4,'تعداد تست:'),(6,7,'تراز / درصد آزمون:')]:
    text(ft.cell(0,label_i).paragraphs[0],label,7);field(ft.cell(0,field_i))
   border(t.cell(1,0),'bottom','CCCCCC',3);border(t.cell(2,0),'top','CCCCCC',3);gap(1)
- foot='تست زیست: ۲ ساعت با تحلیل؛ صفحات شیمی مطابق ماز، نه لزوماً چاپ کتاب شما. | '+meta['title']+' | '+fa(sheet+1)+' / '+fa(meta['weeks']*2)
+ v=meta['scopes'][week]['page_volume']
+ foot='چاپ ۱۴۰۵ | صفحات محدوده: زیست '+fa(v['biology']['unique_pages_in_scope'])+'؛ شیمی '+fa(v['chemistry']['unique_pages_in_scope'])+'؛ فیزیک '+fa(v['physics']['unique_pages_in_scope'])+'؛ ریاضی '+fa(v['math']['unique_pages_in_scope'])+' | '+('مرور انتخابی؛ نه خواندن کامل | ' if meta['scopes'][week]['review'] else '')+fa(sheet+1)+' / '+fa(meta['weeks']*2)
  text(doc.add_paragraph(),foot,6)
  branding.footer(w)
 doc.core_properties.title=meta['title']+(' — فایل برآیندی' if meta['special'] else '')

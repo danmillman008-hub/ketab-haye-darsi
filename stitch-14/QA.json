@@ -1,110 +1,37 @@
 {
-  "canonicalSource": "Editable DOCX; delivered PDFs are direct exports of the same files",
-  "wordRendering": [
-    {
-      "file": "plan-1-aban-1405.docx",
-      "inputSha256": "363c82a4df011a369b259a9f330ffec27c73815e99660ac8b38fd9d9b8fc0328",
-      "backend": "wasm",
-      "missingFonts": [],
-      "pageCount": 4
-    },
-    {
-      "file": "student-report-1.docx",
-      "inputSha256": "e190ece61c160fd17ba6b47637f37c75b38b0d76dec200b42994b49974c19569",
-      "backend": "wasm",
-      "missingFonts": [],
-      "pageCount": 1
-    },
-    {
-      "file": "student-report-2.docx",
-      "inputSha256": "b0019560f3dc1a1dfc93db8d710bb76b9f473555d82ab5eab7df939dba999bff",
-      "backend": "wasm",
-      "missingFonts": [],
-      "pageCount": 1
-    }
-  ],
-  "renderedContent": [
-    {
-      "file": "plan-1-aban-1405.docx",
-      "docxSha256": "363c82a4df011a369b259a9f330ffec27c73815e99660ac8b38fd9d9b8fc0328",
-      "pages": [
-        {
-          "page": 1,
-          "missingCharacters": 0,
-          "extraCharacters": 0,
-          "brandImages": 3,
-          "renderSha256At144Dpi": "4d18a119976be7938e44c318a4cb91f80407cb8ea672ad662355ecbb25815607"
-        },
-        {
-          "page": 2,
-          "missingCharacters": 0,
-          "extraCharacters": 0,
-          "brandImages": 3,
-          "renderSha256At144Dpi": "9431c93332af26b43441b737db96a4aef4f2d5db6e7c99c5d50e5e0300c0f3a7"
-        },
-        {
-          "page": 3,
-          "missingCharacters": 0,
-          "extraCharacters": 0,
-          "brandImages": 3,
-          "renderSha256At144Dpi": "4da35e10784ae34372c0d5f9dd6fd959604fbad854e532920ed7b0e4cafd9238"
-        },
-        {
-          "page": 4,
-          "missingCharacters": 0,
-          "extraCharacters": 0,
-          "brandImages": 3,
-          "renderSha256At144Dpi": "00de2fad789fb852fe94eaa4180468d62788af4f8995a5283d0c741d6d025a77"
-        }
-      ],
-      "visibleCheckboxes": 74,
-      "dailyHoursTotals": 14,
-      "dailyTestsTotals": 14,
-      "weeklyHoursTargets": 4,
-      "weeklyTestsTargets": 4,
-      "publishedPdfSha256": "ee5cf72b1f79b3a6e340f62630a5320e18a9dc5158c71d425ae54ff909648ae1"
-    },
-    {
-      "file": "student-report-1.docx",
-      "docxSha256": "e190ece61c160fd17ba6b47637f37c75b38b0d76dec200b42994b49974c19569",
-      "pages": [
-        {
-          "page": 1,
-          "missingCharacters": 0,
-          "extraCharacters": 0,
-          "brandImages": 3,
-          "renderSha256At144Dpi": "e630274ffa2e90f07e8f09fc4d59138722a644f8a5eb583ee9518b06df9372bb"
-        }
-      ],
-      "visibleReportCards": 24,
-      "visibleRatingCircles": 12,
-      "correctWrongFields": "Native empty fields; no clipped characters",
-      "publishedPdfSha256": "ea6d4296238d9a1ad99f1fc19bb9cb4d3e1330139264bfac1736c2d4b27496be"
-    },
-    {
-      "file": "student-report-2.docx",
-      "docxSha256": "b0019560f3dc1a1dfc93db8d710bb76b9f473555d82ab5eab7df939dba999bff",
-      "pages": [
-        {
-          "page": 1,
-          "missingCharacters": 0,
-          "extraCharacters": 0,
-          "brandImages": 3,
-          "renderSha256At144Dpi": "0d2e04590ac05e891b246f22b045ab159ad92d2524349623d4cd69ac23f4c7cc"
-        }
-      ],
-      "visibleReportCards": 28,
-      "visibleRatingCircles": 16,
-      "correctWrongFields": "Native empty fields; no clipped characters",
-      "publishedPdfSha256": "c4e6ae763b4f50253ab79c164b30b82ffc6f802a6878c2dcecaf7f5dfed704d6"
-    }
-  ],
-  "independentPixelComparisonAt144Dpi": true,
-  "planMatchesCanonicalData": true,
-  "studyHours": 94,
-  "biologyTestBoxHours": 2,
-  "blankPlannerCells": 18,
-  "wordApplicationTested": false,
-  "renderer": "LibreOffice WASM 0.2.0",
-  "note": "Pixel equivalence is tested in this renderer, not guaranteed across all Microsoft Word versions."
+  "status": "passed",
+  "source": "../annual/QA.json",
+  "scope": "Rebuilt 1405-08-01 native Word/PDF",
+  "independentPixelComparison": true,
+  "check": {
+    "id": "1405-08-01",
+    "docxSha256": "c199e564d6f336a60fdc9895bd155ba95d70791b64dc5e2026a784384bdffc10",
+    "pdfSha256": "70e8a5008c5f56ffed17c0546b99f82da2d04b264941d6ba7a9154ad3fedfbe7",
+    "pages": [
+      {
+        "page": 1,
+        "missingCharacters": 0,
+        "extraCharacters": 0,
+        "pixelSha256At100dpi": "21ceac15de7f6ff9cdd9cd8ed898b2ce274f3e3f27efc0d80d2b5a05ca930bf1"
+      },
+      {
+        "page": 2,
+        "missingCharacters": 0,
+        "extraCharacters": 0,
+        "pixelSha256At100dpi": "5e4e4953542a3ddcc5f6bd5cf50a2abd31bea6fd4373d3a9760996e6dade0327"
+      },
+      {
+        "page": 3,
+        "missingCharacters": 0,
+        "extraCharacters": 0,
+        "pixelSha256At100dpi": "5cc92fc54e66708ff6c6e07edabf4fa374c5db5f4e42309fb98493df5ecf3991"
+      },
+      {
+        "page": 4,
+        "missingCharacters": 0,
+        "extraCharacters": 0,
+        "pixelSha256At100dpi": "76cea820b17084e1d08204e7cafb5a83b9455e0c248e57267c0c724c255652be"
+      }
+    ]
+  }
 }

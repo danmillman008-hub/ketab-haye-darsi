@@ -1,26 +1,4 @@
-[
-  {
-    "page": "week-1-part-1",
-    "logoLoaded": true,
-    "overflowingCards": 0,
-    "footerClear": true
-  },
-  {
-    "page": "week-1-part-2",
-    "logoLoaded": true,
-    "overflowingCards": 0,
-    "footerClear": true
-  },
-  {
-    "page": "week-2-part-1",
-    "logoLoaded": true,
-    "overflowingCards": 0,
-    "footerClear": true
-  },
-  {
-    "page": "week-2-part-2",
-    "logoLoaded": true,
-    "overflowingCards": 0,
-    "footerClear": true
-  }
-]
+{
+  "status": "not-rerun",
+  "note": "HTML is reference only. Current final document validation is in annual/QA.json."
+}
