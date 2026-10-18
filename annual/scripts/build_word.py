@@ -29,26 +29,8 @@ def day_header(cell,name,goal,hours=None,tests=None):
   text(box.paragraphs[0],'' if value is None else fa(value),8,True,align='center')
  return t
 
-def note(s,size=10,bold=False):
- p=text(doc.add_paragraph(),s,size,bold);p.paragraph_format.space_after=Pt(12)
- return p
-if meta['special']:
- note('فایل برآیندی',19,True);note(meta['title'],15,True)
- note('این نسخه با حفظ فرمول باکس‌ها، برای وضعیت خاص بودجه یا تقویم تنظیم شده است.',11)
- note(meta['reason'],11,True)
- for s in meta['notes']:
-  if s!=meta['reason']:note(s)
- note('فرمول ثابت هر هفته: ۲۷ باکس، ۴۷ ساعت و ۴۹۵ تست؛ زیست + ریاضی در شنبه، دوشنبه و چهارشنبه؛ فیزیک + شیمی در روزهای دیگر.')
- note('زیست: کتاب ۱ ساعت و هر باکس ۲۰ تست با تحلیل ۲ ساعت. ریاضی: درسنامهٔ اولیه ۱ ساعت و تست ۳۰تایی ۲ ساعت. فیزیک: درسنامهٔ اولیه ۲ ساعت و تست ۳۰تایی ۲ ساعت. شیمی: کتاب ۱ ساعت و تست ۲۵تایی ۲ ساعت.')
- note('مدت این فایل: '+fa(meta['weeks'])+' هفته؛ '+fa(meta['weeks']*47)+' ساعت و '+fa(meta['weeks']*495)+' تست. آزمون و استراحت خارج از این مجموع‌اند.')
- note('در مرورهای جامع، مطالعهٔ کتاب به معنی بازیابی و مرور انتخابی متن و شکل‌های بودجه است، نه یادگیری اولیهٔ کل کتاب در یک ساعت؛ تست‌ها باید همهٔ سرفصل‌های تعیین‌شده را نمایندگی کنند.')
- note('شماره‌ها صفحهٔ چاپی کتاب‌های ۱۴۰۵ هستند، نه شمارهٔ صفحهٔ PDF. صفحهٔ مشترک مرزی فقط تا عنوان تعیین‌شده مطالعه شود. تعداد صفحات، گسترهٔ بودجه است نه تعهد خواندن کامل در مرورهای جامع.')
- note('فقط چهار درس توافق‌شده برنامه‌ریزی شده‌اند؛ زمین‌شناسیِ جدول ماز به این فرمول اضافه نشده است. منبع: جدول رسمی ارسالی ماز، صفحهٔ '+fa(meta['source_page'])+'.')
- for i,wm in enumerate(meta['week_meta']):note('هفتهٔ '+fa(i+1)+' — '+wm['label']+' — '+wm['date_range'],9)
- branding.footer(w)
-
 for sheet in range(meta['weeks']*2):
- if sheet or meta['special']:
+ if sheet:
   p=doc.add_paragraph();tight(p);p.add_run().add_break(__import__('docx').enum.text.WD_BREAK.PAGE)
  week=sheet//2;half=sheet%2
  branding.planner_header(w,week,half);gap(1)
@@ -71,20 +53,19 @@ for sheet in range(meta['weeks']*2):
  if half:
   t=grid(3,1,'Planner Exam');t.rows[0].height=Mm(7);t.rows[1].height=Mm(20);t.rows[2].height=Mm(5.5)
   final=week==meta['weeks']-1
-  day_header(t.cell(0,0),'جمعه | '+meta['week_meta'][week]['friday'],('آزمون هدف ماز' if meta['target'] else 'آزمون هدف؛ پس از اعلام تاریخ') if final else 'آزمون تمرینی پیشنهادی؛ غیررسمی')
+  day_header(t.cell(0,0),'جمعه | '+meta['week_meta'][week]['friday'],'آزمون' if final else 'آزمون تمرینی')
   text(t.cell(1,0).paragraphs[0],'☐ درس، آزمون یا مبحث:',8)
-  p=text(t.cell(1,0).add_paragraph(),'شرکت در آزمون و تحلیل غلط‌ها و نزده‌ها؛ ثبت علت خطا و مباحث نیازمند مرور. ساعت و تعداد سؤال مطابق آزمون ثبت شود؛ باکس مطالعهٔ جدید ندارد.',9);p.paragraph_format.space_before=Pt(4)
+  p=text(t.cell(1,0).add_paragraph(),'شرکت در آزمون و تحلیل غلط‌ها و نزده‌ها؛ ثبت علت خطا و مباحث نیازمند مرور.',9);p.paragraph_format.space_before=Pt(4)
   margins(t.cell(2,0),left=1,right=1)
   ft=local_table(t.cell(2,0),1,[21,32,15,21,32,15,32,32]);ft.rows[0].height=Mm(4.3)
   for label_i,field_i,label in [(0,1,'ساعت مطالعه:'),(3,4,'تعداد تست:'),(6,7,'تراز / درصد آزمون:')]:
    text(ft.cell(0,label_i).paragraphs[0],label,7);field(ft.cell(0,field_i))
   border(t.cell(1,0),'bottom','CCCCCC',3);border(t.cell(2,0),'top','CCCCCC',3);gap(1)
- v=meta['scopes'][week]['page_volume']
- foot='چاپ ۱۴۰۵ | صفحات محدوده: زیست '+fa(v['biology']['unique_pages_in_scope'])+'؛ شیمی '+fa(v['chemistry']['unique_pages_in_scope'])+'؛ فیزیک '+fa(v['physics']['unique_pages_in_scope'])+'؛ ریاضی '+fa(v['math']['unique_pages_in_scope'])+' | '+('مرور انتخابی؛ نه خواندن کامل | ' if meta['scopes'][week]['review'] else '')+fa(sheet+1)+' / '+fa(meta['weeks']*2)
+ foot='تست زیست: هر باکس ۲ ساعت با تحلیل؛ استراحت و آزمون در جمع ساعت نیست. | '+fa(sheet+1)+' / '+fa(meta['weeks']*2)
  text(doc.add_paragraph(),foot,6)
  branding.footer(w)
 doc.core_properties.title=meta['title']+(' — فایل برآیندی' if meta['special'] else '')
-doc.core_properties.subject='فرمول ثابت رتبه لند؛ '+meta['reason']
+doc.core_properties.subject='برنامهٔ مطالعاتی'
 output=ROOT/'.work/annual/docx';output.mkdir(parents=True,exist_ok=True)
 save(output/(meta['id']+'.docx'))
 print('Built',meta['id'],meta['pages'],'expected pages')

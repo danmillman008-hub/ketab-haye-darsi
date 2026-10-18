@@ -47,9 +47,9 @@ for sheet in range(4):
  if half:
   t=grid(3,1,'Planner Exam');t.rows[0].height=Mm(7);t.rows[1].height=Mm(20);t.rows[2].height=Mm(5.5)
   day_header(t.cell(0,0),'جمعه | '+['۲۴ مهر','۱ آبان'][week],
-   ['آزمون تمرینی هفتهٔ دوازدهم','آزمون ماز ۱ آبان ۱۴۰۵'][week])
+   ['آزمون تمرینی هفتهٔ دوازدهم','آزمون ۱ آبان ۱۴۰۵'][week])
   text(t.cell(1,0).paragraphs[0],'☐ درس، آزمون یا مبحث:',8)
-  p=text(t.cell(1,0).add_paragraph(),'شرکت در آزمون و سپس تحلیل غلط‌ها و نزده‌ها؛ ثبت علت خطا و مباحث نیازمند مرور. ساعت و تعداد سؤال مطابق آزمون ثبت شود؛ باکس مطالعهٔ جدید ندارد.',9)
+  p=text(t.cell(1,0).add_paragraph(),'شرکت در آزمون و تحلیل غلط‌ها و نزده‌ها؛ ثبت علت خطا و مباحث نیازمند مرور.',9)
   p.paragraph_format.space_before=Pt(4)
   margins(t.cell(2,0),left=1,right=1)
   ft=local_table(t.cell(2,0),1,[21,32,15,21,32,15,32,32]);ft.rows[0].height=Mm(4.3)

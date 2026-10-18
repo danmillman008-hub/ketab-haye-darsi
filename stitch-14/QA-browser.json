@@ -1,4 +1,4 @@
 {
   "status": "not-rerun",
-  "note": "HTML is reference only. Current final document validation is in annual/QA.json."
+  "scope": "HTML is a reference; native Word/PDF are checked in annual/QA.json"
 }

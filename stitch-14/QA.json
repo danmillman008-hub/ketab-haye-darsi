@@ -1,37 +1,37 @@
 {
-  "status": "passed",
-  "source": "../annual/QA.json",
-  "scope": "Rebuilt 1405-08-01 native Word/PDF",
-  "independentPixelComparison": true,
+  "status": "passed-for-current-planner",
+  "canonical": "../annual/QA.json",
+  "content_regression": "../annual/STYLE_QA.json",
   "check": {
     "id": "1405-08-01",
-    "docxSha256": "c199e564d6f336a60fdc9895bd155ba95d70791b64dc5e2026a784384bdffc10",
-    "pdfSha256": "70e8a5008c5f56ffed17c0546b99f82da2d04b264941d6ba7a9154ad3fedfbe7",
+    "docxSha256": "fda620f8ba39f27673fdbe40e2cc1ad6d4d2511d789e4f3c20a8dc9ca420ca04",
+    "pdfSha256": "4e078a2ac67d5eac9974b0862ab499574474d7c4ae23123b594d00ce7227380b",
     "pages": [
       {
         "page": 1,
         "missingCharacters": 0,
         "extraCharacters": 0,
-        "pixelSha256At100dpi": "21ceac15de7f6ff9cdd9cd8ed898b2ce274f3e3f27efc0d80d2b5a05ca930bf1"
+        "pixelSha256At100dpi": "a901141d90fdafd954c633ac31822fc4b246061b5be99be70b6f33e82b0f0b35"
       },
       {
         "page": 2,
         "missingCharacters": 0,
         "extraCharacters": 0,
-        "pixelSha256At100dpi": "5e4e4953542a3ddcc5f6bd5cf50a2abd31bea6fd4373d3a9760996e6dade0327"
+        "pixelSha256At100dpi": "12f255f6a09d1223f8b912f45a068a33e730f636db62ab981719efce98727e20"
       },
       {
         "page": 3,
         "missingCharacters": 0,
         "extraCharacters": 0,
-        "pixelSha256At100dpi": "5cc92fc54e66708ff6c6e07edabf4fa374c5db5f4e42309fb98493df5ecf3991"
+        "pixelSha256At100dpi": "1a1f7520c0daa21df275121e9fd8caf3514867b19474c6511c2e983258e3896f"
       },
       {
         "page": 4,
         "missingCharacters": 0,
         "extraCharacters": 0,
-        "pixelSha256At100dpi": "76cea820b17084e1d08204e7cafb5a83b9455e0c248e57267c0c724c255652be"
+        "pixelSha256At100dpi": "c4e177026e378751f9a6b170c778cd8c60d926015c96dd6f728a08b3bfcf284d"
       }
     ]
-  }
+  },
+  "student_reports": "unchanged"
 }

@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup as Soup
 from pathlib import Path
 import json
 fa=lambda x:str(x).translate(str.maketrans('0123456789','۰۱۲۳۴۵۶۷۸۹'))
-# Annual data is now the single source; never reconstruct an obsolete hard-coded plan.
+# Use the accepted annual sample; do not create a competing hard-coded schedule.
 days=json.loads(Path('annual/data/1405-08-01.json').read_text())['days']
 Path('plan.json').write_text(json.dumps(days,ensure_ascii=False,indent=2))
 root=Soup('<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>برنامهٔ آزمون ۱ آبان ۱۴۰۵</title><link rel="stylesheet" href="assets/planner.css"></head><body><nav class="no-print"><strong>برنامهٔ آزمون ۱ آبان ۱۴۰۵</strong> <button onclick="window.print()">چاپ / ذخیره PDF</button><p>۱۸ تا ۳۰ مهر • هفتهٔ اول دوازدهم، هفتهٔ دوم دهم • توضیحات منابع در README</p></nav><main></main></body></html>','html.parser')
@@ -20,8 +20,8 @@ for week in range(2):
   for j,section in enumerate(sheet.select('section')):
    if j==3:
     section.select_one('span.font-title-md').string='جمعه | '+['۲۴ مهر','۱ آبان'][week]
-    section.select_one('span.font-body-sm').string=['آزمون تمرینی هفتهٔ دوازدهم','آزمون ماز ۱ آبان ۱۴۰۵'][week]
-    section.select_one('div.flex-1').string='شرکت در آزمون و سپس تحلیل غلط‌ها و نزده‌ها؛ ثبت علت خطا و مباحث نیازمند مرور. ساعت و تعداد سؤال مطابق آزمون ثبت شود؛ باکس مطالعهٔ جدید ندارد.'
+    section.select_one('span.font-body-sm').string=['آزمون تمرینی هفتهٔ دوازدهم','آزمون ۱ آبان ۱۴۰۵'][week]
+    section.select_one('div.flex-1').string='شرکت در آزمون و تحلیل غلط‌ها و نزده‌ها؛ ثبت علت خطا و مباحث نیازمند مرور.'
     continue
    d=days[week*6+half*3+j]
    section.select_one('span.font-title-md').string=d['name']+' | '+d['date']

@@ -20,8 +20,8 @@ for week in range(2):
   for j,section in enumerate(sheet.select('section')):
    if j==3:
     section.select_one('span.font-title-md').string='جمعه | '+['۲۴ مهر','۱ آبان'][week]
-    section.select_one('span.font-body-sm').string=['آزمون تمرینی هفتهٔ دوازدهم','آزمون ماز ۱ آبان ۱۴۰۵'][week]
-    section.select_one('div.flex-1').string='شرکت در آزمون و سپس تحلیل غلط‌ها و نزده‌ها؛ ثبت علت خطا و مباحث نیازمند مرور. ساعت و تعداد سؤال مطابق آزمون ثبت شود؛ باکس مطالعهٔ جدید ندارد.'
+    section.select_one('span.font-body-sm').string=['آزمون تمرینی هفتهٔ دوازدهم','آزمون ۱ آبان ۱۴۰۵'][week]
+    section.select_one('div.flex-1').string='شرکت در آزمون و تحلیل غلط‌ها و نزده‌ها؛ ثبت علت خطا و مباحث نیازمند مرور.'
     continue
    d=days[week*6+half*3+j]
    section.select_one('span.font-title-md').string=d['name']+' | '+d['date']

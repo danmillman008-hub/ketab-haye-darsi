@@ -61,11 +61,12 @@ for entry in json.loads((ROOT/'annual/manifest.json').read_text()):
  for i,(page,txt) in enumerate(zip(doc,expected)):
   actual=page.get_text();missing=chars(txt)-chars(actual);extra=chars(actual)-chars(txt)
   if missing or extra:errors.append((entry['id'],i+1,dict(missing),dict(extra)))
-  assert len(page.get_image_info())==(2 if entry['special'] and i==0 else 3)
-  if not(entry['special'] and i==0):
-   assert actual.count('مجموع ساعت')==(4 if (i-int(entry['special']))%2 else 3)
-   assert actual.count('هدف ساعت')==1
-   if entry['special']:assert 'فایل برآیندی' in actual
+  assert len(page.get_image_info())==3
+  assert actual.count('مجموع ساعت')==(4 if i%2 else 3)
+  assert actual.count('هدف ساعت')==1
+  if entry['special']:assert 'فایل برآیندی' in actual
+  for forbidden in ['ماز','مطابق بودجه','صفحات محدوده','چاپ ۱۴۰۵']:
+   assert forbidden not in actual,(entry['id'],i+1,forbidden)
   for word in page.get_text('words'):assert -1<=word[0]<=word[2]<=page.rect.width+1 and -1<=word[1]<=word[3]<=page.rect.height+1
   pix=page.get_pixmap(dpi=100)
   if compare:

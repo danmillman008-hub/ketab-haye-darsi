@@ -1,20 +1,37 @@
-[
-  {
-    "file": "plan-1-aban-1405.docx",
-    "backend": "wasm",
-    "missingFonts": [],
-    "pageCount": 4
+{
+  "status": "passed-for-current-planner",
+  "canonical": "../annual/QA.json",
+  "content_regression": "../annual/STYLE_QA.json",
+  "check": {
+    "id": "1405-08-01",
+    "docxSha256": "fda620f8ba39f27673fdbe40e2cc1ad6d4d2511d789e4f3c20a8dc9ca420ca04",
+    "pdfSha256": "4e078a2ac67d5eac9974b0862ab499574474d7c4ae23123b594d00ce7227380b",
+    "pages": [
+      {
+        "page": 1,
+        "missingCharacters": 0,
+        "extraCharacters": 0,
+        "pixelSha256At100dpi": "a901141d90fdafd954c633ac31822fc4b246061b5be99be70b6f33e82b0f0b35"
+      },
+      {
+        "page": 2,
+        "missingCharacters": 0,
+        "extraCharacters": 0,
+        "pixelSha256At100dpi": "12f255f6a09d1223f8b912f45a068a33e730f636db62ab981719efce98727e20"
+      },
+      {
+        "page": 3,
+        "missingCharacters": 0,
+        "extraCharacters": 0,
+        "pixelSha256At100dpi": "1a1f7520c0daa21df275121e9fd8caf3514867b19474c6511c2e983258e3896f"
+      },
+      {
+        "page": 4,
+        "missingCharacters": 0,
+        "extraCharacters": 0,
+        "pixelSha256At100dpi": "c4e177026e378751f9a6b170c778cd8c60d926015c96dd6f728a08b3bfcf284d"
+      }
+    ]
   },
-  {
-    "file": "student-report-1.docx",
-    "backend": "wasm",
-    "missingFonts": [],
-    "pageCount": 1
-  },
-  {
-    "file": "student-report-2.docx",
-    "backend": "wasm",
-    "missingFonts": [],
-    "pageCount": 1
-  }
-]
+  "student_reports": "unchanged"
+}

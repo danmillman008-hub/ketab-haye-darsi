@@ -1,5 +1,5 @@
 {
-  "revision": "1405-rebuild",
+  "revision": "source-location-only; restored descriptive plan baseline fc85e03",
   "books": [
     {
       "key": "b10",
@@ -134,5 +134,10 @@
       "pdf_offset": 9
     }
   ],
-  "scope": "Printed 1405 editions; not a certification of official entrance-exam eligibility."
+  "scope": "Source metadata retained from earlier verification. This turn restores the prior plan and does not claim a fresh page-by-page textbook audit.",
+  "active_folder": {
+    "id": "1jUwSmhyhmG7gYwdYWs1LzMuzTw4tKPNV",
+    "name": "کتاب‌های درسی تجربی ۱۴۰۵",
+    "url": "https://drive.google.com/drive/folders/1jUwSmhyhmG7gYwdYWs1LzMuzTw4tKPNV"
+  }
 }
