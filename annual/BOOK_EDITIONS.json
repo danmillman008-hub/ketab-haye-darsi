@@ -1,5 +1,5 @@
 {
-  "revision": "source-location-only; restored descriptive plan baseline fc85e03",
+  "revision": "current-source checks with descriptive student form",
   "books": [
     {
       "key": "b10",
@@ -134,7 +134,7 @@
       "pdf_offset": 9
     }
   ],
-  "scope": "Source metadata retained from earlier verification. This turn restores the prior plan and does not claim a fresh page-by-page textbook audit.",
+  "scope": "Active PDF hashes rechecked; 69 biology starts and selected boundary headings checked. See SOURCE_QA.json for bounded verification, not a full line-by-line textbook audit.",
   "active_folder": {
     "id": "1jUwSmhyhmG7gYwdYWs1LzMuzTw4tKPNV",
     "name": "کتاب‌های درسی تجربی ۱۴۰۵",

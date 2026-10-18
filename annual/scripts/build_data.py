@@ -1,5 +1,5 @@
-"""Use the pre-rewrite allocation and descriptive titles; keep source notes out of student plans."""
-import sys,json,hashlib,copy,math
+"""Use current-book scopes and named topics; keep the approved formula and clean form."""
+import sys,json,hashlib,copy,math,itertools
 from pathlib import Path
 from datetime import timedelta
 import jdatetime
@@ -26,10 +26,24 @@ def bio_units(scopes):
     if x<=y:units.append(dict(grade=grade,chapter=chapter,goftar=idx+1,topic=topic,start=x,end=y))
  return units
 
+def topic_groups(units):
+ # Only whole, ordered goftars may move. No arbitrary equal-page cuts.
+ if len(units)==2:return [[units[0]],[units[1]],units]
+ if len(units)<2:return groups(units,3)
+ def score(cuts):
+  a,b=cuts;chunks=[units[:a],units[a:b],units[b:]]
+  loads=[sum(u['end']-u['start']+1 for u in ch) for ch in chunks]
+  # Prefer chapter boundaries when the load difference is comparable.
+  crossing=sum(units[i-1]['chapter']==units[i]['chapter'] for i in cuts)
+  return (max(loads)-min(loads)+2*crossing,sum(x*x for x in loads),cuts)
+ a,b=min(itertools.combinations(range(1,len(units)),2),key=score)
+ return [units[:a],units[a:b],units[b:]]
+
 def bio_daily(w):
  if 'bio_daily' in w:return w['bio_daily']
  result=[]
- for chunk in groups(bio_units(w['bio']),3):
+ units=bio_units(w['bio'])
+ for day_index,chunk in enumerate(topic_groups(units)):
   by={}
   for u in chunk:by.setdefault((u['grade'],u['chapter']),[]).append(u)
   parts=[]
@@ -44,23 +58,29 @@ def bio_daily(w):
   if w['review'] and len(by)>1:
    titles=[next(c[1] for c in BIO[g] if c[0]==ch) for g,ch in by]
    topic=' + '.join(titles)+'؛ فصل '+fa(chunk[0]['chapter'])+'–'+fa(chunk[-1]['chapter'])+'؛ ص '+fa(chunk[0]['start'])+'–'+fa(chunk[-1]['end'])
+  if len(units)<3 and day_index==2:topic='مرور و تثبیت: '+topic
   result.append(('زیست '+GRADES[chunk[0]['grade']],topic))
  return result
 
 def chem_daily(w):
  if 'chem_daily' in w:return w['chem_daily']
- pages=[(g,p,t) for g,a,b,t in w['chem'] for p in range(a,b+1)]
+ pages=[]
+ for g,a,b,_ in w['chem']:
+  for p in range(a,b+1):
+   title=next(t for lo,hi,t in CHEM_CHAPTERS[g] if lo<=p<=hi)
+   pages.append((g,p,title))
  result=[]
- for chunk in groups(pages,3):
-  parts=[];grades=[];runs=[]
+ for n,chunk in enumerate(groups(pages,3)):
+  grades=[];runs=[]
   for g,p,t in chunk:
    if g not in grades:grades.append(g)
    if runs and runs[-1][0]==g and runs[-1][3]==t and runs[-1][2]+1==p:runs[-1][2]=p
    else:runs.append([g,p,p,t])
-  for g,a,b,t in runs:
-   # Page labels intentionally refer to MAZ, not a differently paginated supplied edition.
-   parts.append(t+'؛ ص '+fa(a)+('–'+fa(b) if a!=b else ''))
-  result.append(('شیمی '+' و '.join(GRADES[g] for g in grades),' / '.join(parts)))
+  parts=[t+'؛ ص '+fa(a)+('–'+fa(b) if a!=b else '') for g,a,b,t in runs]
+  topic=' / '.join(parts)
+  if n==0 and w.get('chem_start_note'):topic+='؛ '+w['chem_start_note']
+  if n==2 and w.get('chem_end_note'):topic+='؛ '+w['chem_end_note']
+  result.append(('شیمی '+' و '.join(GRADES[g] for g in grades),topic))
  return result
 
 def box(s,t,d,h,n=0):return dict(subject=s,topic=t,detail=d,hours=h,tests=n)
@@ -73,7 +93,7 @@ def make_days(weeks,start):
   for di in range(6):
    n=di//2
    if di%2==0:
-    s,t=bio[n];study=box(s,t,'مرور متن، شکل‌ها و نکات نشان‌دار' if review else 'مطالعهٔ دقیق متن، شکل‌ها و قیدهای کتاب',1)
+    s,t=bio[n];study=box(s,t,'مرور متن، شکل‌ها و نکات نشان‌دار' if review or t.startswith('مرور و تثبیت:') else 'مطالعهٔ دقیق متن، شکل‌ها و قیدهای کتاب',1)
     bt=[box(s,t,'۲۰ تست آموزشی + تحلیل همهٔ گزینه‌ها',2,20),box(s,t,'۲۰ تست تکمیلی + تحلیل و ثبت خطا',2,20)]
     mt=[box('ریاضی',w['math'][i],('غیرزمان‌دار' if n==0 else 'ترجیحاً زمان‌دار')+'؛ ۳۰ تست + تحلیل',2,30) for i in ([1] if n==0 else [n*2,n*2+1])]
     if n==0:mt.insert(0,box('ریاضی',w['math'][0],'۱ ساعت مرور درسنامه و مثال‌های اصلی' if review else '۱ ساعت درسنامه و مثال‌های اصلی',1))

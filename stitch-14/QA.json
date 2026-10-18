@@ -4,8 +4,8 @@
   "content_regression": "../annual/STYLE_QA.json",
   "check": {
     "id": "1405-08-01",
-    "docxSha256": "fda620f8ba39f27673fdbe40e2cc1ad6d4d2511d789e4f3c20a8dc9ca420ca04",
-    "pdfSha256": "4e078a2ac67d5eac9974b0862ab499574474d7c4ae23123b594d00ce7227380b",
+    "docxSha256": "24de39735121afe3d60ccba2382d33d6cbef67b1d651e313f13c887e9babf7cd",
+    "pdfSha256": "b75dc047707d4ed942f51e6a996be0222dc1a61991e70d41ef4ff7c81da04c69",
     "pages": [
       {
         "page": 1,
