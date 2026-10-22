@@ -1,18 +1,18 @@
 {
   "status": "passed",
-  "baseline": "fc85e03",
+  "baseline": "50b9922",
   "unchanged_formula_and_calendar": true,
-  "aban_box_content_unchanged": true,
+  "instructions_hours_tests_unchanged": true,
   "plans": 21,
   "student_source_notes_forbidden": true,
   "checks": [
     {
       "id": "1405-07-17",
-      "data_sha256": "5150bec113c0c372530d9a34dec37651e2839dde0164a2d25916d86a9b5126ef"
+      "data_sha256": "d2ed39678b0b1a0d77c33a615382d80458ab61df25aa6297c37d413abc5d04c2"
     },
     {
       "id": "1405-08-01",
-      "data_sha256": "528fd08bb9bc9ea56e2504893e6430d17c33e50a6296011f8cd7e507b5ea6c52"
+      "data_sha256": "0f2da293d78e102f2a53854f1ac331b9cf6408519c8ae5fd1140a5eaece643d0"
     },
     {
       "id": "1405-08-15",
@@ -60,11 +60,11 @@
     },
     {
       "id": "1406-02-03",
-      "data_sha256": "edb4a8d8036376f7513077eae03ccc93e929fa6af40a4519ecd983754952885a"
+      "data_sha256": "e0ab61884ee45bf3af273aa825a292feea9c85966ffe2368ba4443450ff48f51"
     },
     {
       "id": "1406-02-17",
-      "data_sha256": "8b0d1bbea37ae8d19874a2c4727a335f0b264511d04ac26cacdc27610a34b171"
+      "data_sha256": "7e3417f7c6c8c65f01bb0abeeba950e944147dbaa14379931e486013b32649fc"
     },
     {
       "id": "1406-02-24",

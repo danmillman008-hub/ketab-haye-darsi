@@ -55,6 +55,17 @@ for entry in json.loads((ROOT/'annual/manifest.json').read_text()):
  docx=ROOT/'.work/annual/docx'/(entry['id']+'.docx');pdf=render/(entry['id']+'.pdf')
  r=results[entry['id']];assert r['inputSha256']==sha(docx)
  assert not r['missingFonts']
+ # Bind native Word content to the current dataset, not merely to its own PDF.
+ with zipfile.ZipFile(docx) as z:
+  xml=etree.fromstring(z.read('word/document.xml'))
+ paragraph_list=[''.join(p.xpath('.//w:t/text()',namespaces=NS)) for p in xml.xpath('//w:p',namespaces=NS)]
+ paragraphs=Counter(paragraph_list)
+ topics=Counter(b['topic'] for day in days for b in day['boxes'])
+ assert [p for p in paragraph_list if p in topics]==[b['topic'] for day in days for b in day['boxes']],('Word day/box topic order',entry['id'])
+ details=Counter(b['detail'] for day in days for b in day['boxes'])
+ subjects=Counter('☐ '+b['subject'] for day in days for b in day['boxes'])
+ assert not (details-paragraphs) and not (subjects-paragraphs),('Word instructions/subjects',entry['id'])
+ assert not (topics-paragraphs),('Stale or changed Word topics',entry['id'],topics-paragraphs)
  expected=source_pages(docx);doc=fitz.open(pdf)
  assert len(doc)==len(expected)==entry['pages']
  pp=[]
@@ -74,7 +85,7 @@ for entry in json.loads((ROOT/'annual/manifest.json').read_text()):
   pp.append({'page':i+1,'missingCharacters':sum(missing.values()),'extraCharacters':sum(extra.values()),'pixelSha256At100dpi':hashlib.sha256(pix.samples).hexdigest()})
   # Contact images are scratch QA only, not delivery.
   if not compare and i in [0,1,len(doc)-1]:page.get_pixmap(dpi=90).save(str(render/(entry['id']+f'-p{i+1}.png')))
- checks.append(dict(id=entry['id'],docxSha256=sha(docx),pdfSha256=sha(pdf),pages=pp))
+ checks.append(dict(id=entry['id'],docxSha256=sha(docx),pdfSha256=sha(pdf),dataSha256=sha(ROOT/'annual/data'/(entry['id']+'.json')),pages=pp))
 for name,h in json.loads((ROOT/'annual/preserved.json').read_text()).items():assert sha(ROOT/name)==h,name
 print('Character errors:',json.dumps(errors,ensure_ascii=False))
 if errors:sys.exit(1)

@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "scope": "Actual source hashes; 69 biology goftar starts; selected printed-page boundary anchors; exact ordinary biology/chemistry page-set coverage; unchanged formula. Not a full line-by-line audit of every textbook or individual student feasibility.",
+  "scope": "Actual source hashes; 69 biology goftar starts; 220 named-unit page/keyword probes (not a line-by-line semantic audit); selected printed-page boundary anchors; exact ordinary biology/chemistry page-set coverage; unchanged formula. Not a full line-by-line audit of every textbook or individual student feasibility.",
   "books_verified": 12,
   "biology_starts": 69,
   "anchors": [
@@ -113,6 +113,1131 @@
       "book": "m10",
       "printed_page": 94,
       "anchor": "تابع"
+    }
+  ],
+  "catalog_heading_probes": [
+    {
+      "book": "b10",
+      "printed_page": 2,
+      "anchor": "زیست"
+    },
+    {
+      "book": "b10",
+      "printed_page": 7,
+      "anchor": "گسترهٔ"
+    },
+    {
+      "book": "b10",
+      "printed_page": 11,
+      "anchor": "یاخته"
+    },
+    {
+      "book": "b10",
+      "printed_page": 18,
+      "anchor": "ساختار"
+    },
+    {
+      "book": "b10",
+      "printed_page": 25,
+      "anchor": "جذب"
+    },
+    {
+      "book": "b10",
+      "printed_page": 30,
+      "anchor": "تنوع"
+    },
+    {
+      "book": "b10",
+      "printed_page": 34,
+      "anchor": "سازوکار"
+    },
+    {
+      "book": "b10",
+      "printed_page": 40,
+      "anchor": "تهویهٔ"
+    },
+    {
+      "book": "b10",
+      "printed_page": 45,
+      "anchor": "تنوع"
+    },
+    {
+      "book": "b10",
+      "printed_page": 48,
+      "anchor": "قلب"
+    },
+    {
+      "book": "b10",
+      "printed_page": 55,
+      "anchor": "رگ"
+    },
+    {
+      "book": "b10",
+      "printed_page": 61,
+      "anchor": "خون"
+    },
+    {
+      "book": "b10",
+      "printed_page": 65,
+      "anchor": "تنوع"
+    },
+    {
+      "book": "b10",
+      "printed_page": 70,
+      "anchor": "هم"
+    },
+    {
+      "book": "b10",
+      "printed_page": 73,
+      "anchor": "تشکیل"
+    },
+    {
+      "book": "b10",
+      "printed_page": 76,
+      "anchor": "تنوع"
+    },
+    {
+      "book": "b10",
+      "printed_page": 80,
+      "anchor": "یاختهٔ"
+    },
+    {
+      "book": "b10",
+      "printed_page": 86,
+      "anchor": "سامانهٔ"
+    },
+    {
+      "book": "b10",
+      "printed_page": 90,
+      "anchor": "ساختار"
+    },
+    {
+      "book": "b10",
+      "printed_page": 98,
+      "anchor": "تغذیهٔ"
+    },
+    {
+      "book": "b10",
+      "printed_page": 102,
+      "anchor": "جانداران"
+    },
+    {
+      "book": "b10",
+      "printed_page": 105,
+      "anchor": "انتقال"
+    },
+    {
+      "book": "b11",
+      "printed_page": 2,
+      "anchor": "یاخته"
+    },
+    {
+      "book": "b11",
+      "printed_page": 9,
+      "anchor": "دستگاه"
+    },
+    {
+      "book": "b11",
+      "printed_page": 20,
+      "anchor": "گیرنده"
+    },
+    {
+      "book": "b11",
+      "printed_page": 23,
+      "anchor": "حواس"
+    },
+    {
+      "book": "b11",
+      "printed_page": 33,
+      "anchor": "گیرنده"
+    },
+    {
+      "book": "b11",
+      "printed_page": 38,
+      "anchor": "استخوان"
+    },
+    {
+      "book": "b11",
+      "printed_page": 45,
+      "anchor": "ماهیچه"
+    },
+    {
+      "book": "b11",
+      "printed_page": 54,
+      "anchor": "ارتباط"
+    },
+    {
+      "book": "b11",
+      "printed_page": 56,
+      "anchor": "غدد"
+    },
+    {
+      "book": "b11",
+      "printed_page": 64,
+      "anchor": "خط"
+    },
+    {
+      "book": "b11",
+      "printed_page": 66,
+      "anchor": "خط"
+    },
+    {
+      "book": "b11",
+      "printed_page": 72,
+      "anchor": "دفاع"
+    },
+    {
+      "book": "b11",
+      "printed_page": 80,
+      "anchor": "فام"
+    },
+    {
+      "book": "b11",
+      "printed_page": 84,
+      "anchor": "رشتمان"
+    },
+    {
+      "book": "b11",
+      "printed_page": 92,
+      "anchor": "کاستمان"
+    },
+    {
+      "book": "b11",
+      "printed_page": 98,
+      "anchor": "تولیدمثل"
+    },
+    {
+      "book": "b11",
+      "printed_page": 102,
+      "anchor": "تولیدمثل"
+    },
+    {
+      "book": "b11",
+      "printed_page": 108,
+      "anchor": "رشد"
+    },
+    {
+      "book": "b11",
+      "printed_page": 115,
+      "anchor": "تولیدمثل"
+    },
+    {
+      "book": "b11",
+      "printed_page": 120,
+      "anchor": "تولیدمثل"
+    },
+    {
+      "book": "b11",
+      "printed_page": 124,
+      "anchor": "تولیدمثل"
+    },
+    {
+      "book": "b11",
+      "printed_page": 130,
+      "anchor": "از"
+    },
+    {
+      "book": "b11",
+      "printed_page": 138,
+      "anchor": "تنظیم"
+    },
+    {
+      "book": "b11",
+      "printed_page": 146,
+      "anchor": "پاسخ"
+    },
+    {
+      "book": "b12",
+      "printed_page": 2,
+      "anchor": "نوکلئیک"
+    },
+    {
+      "book": "b12",
+      "printed_page": 9,
+      "anchor": "همانندسازی"
+    },
+    {
+      "book": "b12",
+      "printed_page": 15,
+      "anchor": "پروتئین"
+    },
+    {
+      "book": "b12",
+      "printed_page": 22,
+      "anchor": "رونویسی"
+    },
+    {
+      "book": "b12",
+      "printed_page": 27,
+      "anchor": "به"
+    },
+    {
+      "book": "b12",
+      "printed_page": 33,
+      "anchor": "تنظیم"
+    },
+    {
+      "book": "b12",
+      "printed_page": 38,
+      "anchor": "مفاهیم"
+    },
+    {
+      "book": "b12",
+      "printed_page": 42,
+      "anchor": "انواع"
+    },
+    {
+      "book": "b12",
+      "printed_page": 48,
+      "anchor": "تغییر"
+    },
+    {
+      "book": "b12",
+      "printed_page": 53,
+      "anchor": "تغییر"
+    },
+    {
+      "book": "b12",
+      "printed_page": 57,
+      "anchor": "تغییر"
+    },
+    {
+      "book": "b12",
+      "printed_page": 64,
+      "anchor": "تأمین"
+    },
+    {
+      "book": "b12",
+      "printed_page": 69,
+      "anchor": "اکسایش"
+    },
+    {
+      "book": "b12",
+      "printed_page": 73,
+      "anchor": "زیستن"
+    },
+    {
+      "book": "b12",
+      "printed_page": 78,
+      "anchor": "فتوسنتز"
+    },
+    {
+      "book": "b12",
+      "printed_page": 82,
+      "anchor": "واکنش"
+    },
+    {
+      "book": "b12",
+      "printed_page": 86,
+      "anchor": "فتوسنتز"
+    },
+    {
+      "book": "b12",
+      "printed_page": 92,
+      "anchor": "مهندسی"
+    },
+    {
+      "book": "b12",
+      "printed_page": 97,
+      "anchor": "مهندسی"
+    },
+    {
+      "book": "b12",
+      "printed_page": 101,
+      "anchor": "کاربردهای"
+    },
+    {
+      "book": "b12",
+      "printed_page": 108,
+      "anchor": "اساس"
+    },
+    {
+      "book": "b12",
+      "printed_page": 115,
+      "anchor": "انتخاب"
+    },
+    {
+      "book": "b12",
+      "printed_page": 121,
+      "anchor": "ارتباط"
+    },
+    {
+      "book": "m10",
+      "printed_page": 2,
+      "anchor": "مجموعه"
+    },
+    {
+      "book": "m10",
+      "printed_page": 8,
+      "anchor": "متمم"
+    },
+    {
+      "book": "m10",
+      "printed_page": 14,
+      "anchor": "الگو"
+    },
+    {
+      "book": "m10",
+      "printed_page": 21,
+      "anchor": "دنباله"
+    },
+    {
+      "book": "m10",
+      "printed_page": 29,
+      "anchor": "نسبت"
+    },
+    {
+      "book": "m10",
+      "printed_page": 36,
+      "anchor": "دایرهٔ"
+    },
+    {
+      "book": "m10",
+      "printed_page": 42,
+      "anchor": "روابط"
+    },
+    {
+      "book": "m10",
+      "printed_page": 48,
+      "anchor": "ریشه"
+    },
+    {
+      "book": "m10",
+      "printed_page": 54,
+      "anchor": "ریشهٔ"
+    },
+    {
+      "book": "m10",
+      "printed_page": 59,
+      "anchor": "توان"
+    },
+    {
+      "book": "m10",
+      "printed_page": 62,
+      "anchor": "عبارت"
+    },
+    {
+      "book": "m10",
+      "printed_page": 70,
+      "anchor": "معادلهٔ"
+    },
+    {
+      "book": "m10",
+      "printed_page": 78,
+      "anchor": "سهمی"
+    },
+    {
+      "book": "m10",
+      "printed_page": 83,
+      "anchor": "تعیین"
+    },
+    {
+      "book": "m10",
+      "printed_page": 95,
+      "anchor": "مفهوم"
+    },
+    {
+      "book": "m10",
+      "printed_page": 101,
+      "anchor": "دامنه"
+    },
+    {
+      "book": "m10",
+      "printed_page": 109,
+      "anchor": "انواع"
+    },
+    {
+      "book": "m10",
+      "printed_page": 119,
+      "anchor": "شمارش"
+    },
+    {
+      "book": "m10",
+      "printed_page": 127,
+      "anchor": "جایگشت"
+    },
+    {
+      "book": "m10",
+      "printed_page": 133,
+      "anchor": "ترکیب"
+    },
+    {
+      "book": "m10",
+      "printed_page": 142,
+      "anchor": "احتمال"
+    },
+    {
+      "book": "m10",
+      "printed_page": 152,
+      "anchor": "آمار"
+    },
+    {
+      "book": "m10",
+      "printed_page": 159,
+      "anchor": "متغیر"
+    },
+    {
+      "book": "m11",
+      "printed_page": 2,
+      "anchor": "هندسهٔ"
+    },
+    {
+      "book": "m11",
+      "printed_page": 11,
+      "anchor": "معادله"
+    },
+    {
+      "book": "m11",
+      "printed_page": 19,
+      "anchor": "معادلات"
+    },
+    {
+      "book": "m11",
+      "printed_page": 26,
+      "anchor": "ترسیم"
+    },
+    {
+      "book": "m11",
+      "printed_page": 31,
+      "anchor": "استدلال"
+    },
+    {
+      "book": "m11",
+      "printed_page": 42,
+      "anchor": "تشابه"
+    },
+    {
+      "book": "m11",
+      "printed_page": 48,
+      "anchor": "انواع"
+    },
+    {
+      "book": "m11",
+      "printed_page": 57,
+      "anchor": "وارون"
+    },
+    {
+      "book": "m11",
+      "printed_page": 65,
+      "anchor": "اعمال"
+    },
+    {
+      "book": "m11",
+      "printed_page": 72,
+      "anchor": "واحدهای"
+    },
+    {
+      "book": "m11",
+      "printed_page": 77,
+      "anchor": "روابط"
+    },
+    {
+      "book": "m11",
+      "printed_page": 88,
+      "anchor": "توابع"
+    },
+    {
+      "book": "m11",
+      "printed_page": 96,
+      "anchor": "تابع"
+    },
+    {
+      "book": "m11",
+      "printed_page": 105,
+      "anchor": "تابع"
+    },
+    {
+      "book": "m11",
+      "printed_page": 115,
+      "anchor": "نمودار"
+    },
+    {
+      "book": "m11",
+      "printed_page": 120,
+      "anchor": "فرایندهای"
+    },
+    {
+      "book": "m11",
+      "printed_page": 128,
+      "anchor": "محاسبهٔ"
+    },
+    {
+      "book": "m11",
+      "printed_page": 137,
+      "anchor": "پیوستگی"
+    },
+    {
+      "book": "m11",
+      "printed_page": 144,
+      "anchor": "احتمال"
+    },
+    {
+      "book": "m11",
+      "printed_page": 153,
+      "anchor": "آمار"
+    },
+    {
+      "book": "m12",
+      "printed_page": 2,
+      "anchor": "توابع"
+    },
+    {
+      "book": "m12",
+      "printed_page": 11,
+      "anchor": "ترکیب"
+    },
+    {
+      "book": "m12",
+      "printed_page": 24,
+      "anchor": "تابع"
+    },
+    {
+      "book": "m12",
+      "printed_page": 32,
+      "anchor": "تناوب"
+    },
+    {
+      "book": "m12",
+      "printed_page": 42,
+      "anchor": "دو برابر"
+    },
+    {
+      "book": "m12",
+      "printed_page": 50,
+      "anchor": "حد"
+    },
+    {
+      "book": "m12",
+      "printed_page": 58,
+      "anchor": "حد"
+    },
+    {
+      "book": "m12",
+      "printed_page": 66,
+      "anchor": "مفهوم"
+    },
+    {
+      "book": "m12",
+      "printed_page": 77,
+      "anchor": "مشتق"
+    },
+    {
+      "book": "m12",
+      "printed_page": 93,
+      "anchor": "آهنگ"
+    },
+    {
+      "book": "m12",
+      "printed_page": 102,
+      "anchor": "اکسترمم"
+    },
+    {
+      "book": "m12",
+      "printed_page": 113,
+      "anchor": "بهینه"
+    },
+    {
+      "book": "m12",
+      "printed_page": 122,
+      "anchor": "تفکر"
+    },
+    {
+      "book": "m12",
+      "printed_page": 134,
+      "anchor": "دایره"
+    },
+    {
+      "book": "m12",
+      "printed_page": 144,
+      "anchor": "قانون"
+    },
+    {
+      "book": "p10",
+      "printed_page": 2,
+      "anchor": "فیزیک"
+    },
+    {
+      "book": "p10",
+      "printed_page": 5,
+      "anchor": "مدل"
+    },
+    {
+      "book": "p10",
+      "printed_page": 6,
+      "anchor": "کمیت"
+    },
+    {
+      "book": "p10",
+      "printed_page": 7,
+      "anchor": "دستگاه"
+    },
+    {
+      "book": "p10",
+      "printed_page": 14,
+      "anchor": "دقت"
+    },
+    {
+      "book": "p10",
+      "printed_page": 16,
+      "anchor": "چگالی"
+    },
+    {
+      "book": "p10",
+      "printed_page": 19,
+      "anchor": "پرسش"
+    },
+    {
+      "book": "p10",
+      "printed_page": 24,
+      "anchor": "حالت"
+    },
+    {
+      "book": "p10",
+      "printed_page": 28,
+      "anchor": "نیروهای"
+    },
+    {
+      "book": "p10",
+      "printed_page": 32,
+      "anchor": "فشار"
+    },
+    {
+      "book": "p10",
+      "printed_page": 40,
+      "anchor": "شناوری"
+    },
+    {
+      "book": "p10",
+      "printed_page": 43,
+      "anchor": "شاره"
+    },
+    {
+      "book": "p10",
+      "printed_page": 48,
+      "anchor": "پرسش"
+    },
+    {
+      "book": "p10",
+      "printed_page": 54,
+      "anchor": "انرژی"
+    },
+    {
+      "book": "p10",
+      "printed_page": 55,
+      "anchor": "کار"
+    },
+    {
+      "book": "p10",
+      "printed_page": 61,
+      "anchor": "کار"
+    },
+    {
+      "book": "p10",
+      "printed_page": 64,
+      "anchor": "کار"
+    },
+    {
+      "book": "p10",
+      "printed_page": 68,
+      "anchor": "پایستگی"
+    },
+    {
+      "book": "p10",
+      "printed_page": 71,
+      "anchor": "کار"
+    },
+    {
+      "book": "p10",
+      "printed_page": 73,
+      "anchor": "توان"
+    },
+    {
+      "book": "p10",
+      "printed_page": 78,
+      "anchor": "پرسش"
+    },
+    {
+      "book": "p10",
+      "printed_page": 84,
+      "anchor": "دما"
+    },
+    {
+      "book": "p10",
+      "printed_page": 87,
+      "anchor": "انبساط"
+    },
+    {
+      "book": "p10",
+      "printed_page": 96,
+      "anchor": "گرما"
+    },
+    {
+      "book": "p10",
+      "printed_page": 103,
+      "anchor": "تغییر"
+    },
+    {
+      "book": "p10",
+      "printed_page": 111,
+      "anchor": "انتقال"
+    },
+    {
+      "book": "p10",
+      "printed_page": 118,
+      "anchor": "پرسش"
+    },
+    {
+      "book": "p11",
+      "printed_page": 2,
+      "anchor": "بار"
+    },
+    {
+      "book": "p11",
+      "printed_page": 3,
+      "anchor": "پایستگی"
+    },
+    {
+      "book": "p11",
+      "printed_page": 5,
+      "anchor": "قانون"
+    },
+    {
+      "book": "p11",
+      "printed_page": 10,
+      "anchor": "میدان"
+    },
+    {
+      "book": "p11",
+      "printed_page": 11,
+      "anchor": "میدان"
+    },
+    {
+      "book": "p11",
+      "printed_page": 16,
+      "anchor": "خطوط"
+    },
+    {
+      "book": "p11",
+      "printed_page": 20,
+      "anchor": "انرژی"
+    },
+    {
+      "book": "p11",
+      "printed_page": 22,
+      "anchor": "پتانسیل"
+    },
+    {
+      "book": "p11",
+      "printed_page": 25,
+      "anchor": "توزیع"
+    },
+    {
+      "book": "p11",
+      "printed_page": 28,
+      "anchor": "خازن"
+    },
+    {
+      "book": "p11",
+      "printed_page": 33,
+      "anchor": "انرژی"
+    },
+    {
+      "book": "p11",
+      "printed_page": 36,
+      "anchor": "پرسش"
+    },
+    {
+      "book": "p11",
+      "printed_page": 40,
+      "anchor": "جریان"
+    },
+    {
+      "book": "p11",
+      "printed_page": 43,
+      "anchor": "مقاومت"
+    },
+    {
+      "book": "p11",
+      "printed_page": 45,
+      "anchor": "عوامل"
+    },
+    {
+      "book": "p11",
+      "printed_page": 50,
+      "anchor": "نیروی"
+    },
+    {
+      "book": "p11",
+      "printed_page": 53,
+      "anchor": "توان"
+    },
+    {
+      "book": "p11",
+      "printed_page": 55,
+      "anchor": "ترکیب"
+    },
+    {
+      "book": "p11",
+      "printed_page": 62,
+      "anchor": "پرسش"
+    },
+    {
+      "book": "p11",
+      "printed_page": 66,
+      "anchor": "قطب"
+    },
+    {
+      "book": "p11",
+      "printed_page": 67,
+      "anchor": "میدان"
+    },
+    {
+      "book": "p11",
+      "printed_page": 71,
+      "anchor": "نیروی"
+    },
+    {
+      "book": "p11",
+      "printed_page": 73,
+      "anchor": "نیروی"
+    },
+    {
+      "book": "p11",
+      "printed_page": 76,
+      "anchor": "میدان"
+    },
+    {
+      "book": "p11",
+      "printed_page": 83,
+      "anchor": "ویژگی"
+    },
+    {
+      "book": "p11",
+      "printed_page": 85,
+      "anchor": "القای"
+    },
+    {
+      "book": "p11",
+      "printed_page": 87,
+      "anchor": "قانون"
+    },
+    {
+      "book": "p11",
+      "printed_page": 91,
+      "anchor": "قانون"
+    },
+    {
+      "book": "p11",
+      "printed_page": 93,
+      "anchor": "القاگرها"
+    },
+    {
+      "book": "p11",
+      "printed_page": 97,
+      "anchor": "جریان"
+    },
+    {
+      "book": "p11",
+      "printed_page": 100,
+      "anchor": "پرسش"
+    },
+    {
+      "book": "p12",
+      "printed_page": 2,
+      "anchor": "شناخت"
+    },
+    {
+      "book": "p12",
+      "printed_page": 13,
+      "anchor": "حرکت"
+    },
+    {
+      "book": "p12",
+      "printed_page": 15,
+      "anchor": "حرکت"
+    },
+    {
+      "book": "p12",
+      "printed_page": 22,
+      "anchor": "پرسش"
+    },
+    {
+      "book": "p12",
+      "printed_page": 28,
+      "anchor": "قوانین"
+    },
+    {
+      "book": "p12",
+      "printed_page": 33,
+      "anchor": "نیروهای"
+    },
+    {
+      "book": "p12",
+      "printed_page": 44,
+      "anchor": "تکانه"
+    },
+    {
+      "book": "p12",
+      "printed_page": 46,
+      "anchor": "نیروی"
+    },
+    {
+      "book": "p12",
+      "printed_page": 50,
+      "anchor": "پرسش"
+    },
+    {
+      "book": "p12",
+      "printed_page": 54,
+      "anchor": "نوسان"
+    },
+    {
+      "book": "p12",
+      "printed_page": 55,
+      "anchor": "حرکت"
+    },
+    {
+      "book": "p12",
+      "printed_page": 58,
+      "anchor": "انرژی"
+    },
+    {
+      "book": "p12",
+      "printed_page": 60,
+      "anchor": "تشدید"
+    },
+    {
+      "book": "p12",
+      "printed_page": 61,
+      "anchor": "موج"
+    },
+    {
+      "book": "p12",
+      "printed_page": 62,
+      "anchor": "مشخصه"
+    },
+    {
+      "book": "p12",
+      "printed_page": 76,
+      "anchor": "بازتاب"
+    },
+    {
+      "book": "p12",
+      "printed_page": 81,
+      "anchor": "شکست"
+    },
+    {
+      "book": "p12",
+      "printed_page": 89,
+      "anchor": "پرسش"
+    },
+    {
+      "book": "p12",
+      "printed_page": 96,
+      "anchor": "فوتون"
+    },
+    {
+      "book": "p12",
+      "printed_page": 99,
+      "anchor": "طیف"
+    },
+    {
+      "book": "p12",
+      "printed_page": 103,
+      "anchor": "مدل"
+    },
+    {
+      "book": "p12",
+      "printed_page": 110,
+      "anchor": "لیزر"
+    },
+    {
+      "book": "p12",
+      "printed_page": 112,
+      "anchor": "ساختار"
+    },
+    {
+      "book": "p12",
+      "printed_page": 115,
+      "anchor": "پرتوزایی"
+    },
+    {
+      "book": "p12",
+      "printed_page": 122,
+      "anchor": "پرسش"
+    },
+    {
+      "book": "c10",
+      "printed_page": 1,
+      "anchor": "کیهان"
+    },
+    {
+      "book": "c10",
+      "printed_page": 47,
+      "anchor": "ردپای"
+    },
+    {
+      "book": "c10",
+      "printed_page": 85,
+      "anchor": "آب"
+    },
+    {
+      "book": "c11",
+      "printed_page": 1,
+      "anchor": "قدر"
+    },
+    {
+      "book": "c11",
+      "printed_page": 51,
+      "anchor": "در"
+    },
+    {
+      "book": "c11",
+      "printed_page": 99,
+      "anchor": "پوشاک"
+    },
+    {
+      "book": "c12",
+      "printed_page": 1,
+      "anchor": "مولکول"
+    },
+    {
+      "book": "c12",
+      "printed_page": 37,
+      "anchor": "آسایش"
+    },
+    {
+      "book": "c12",
+      "printed_page": 67,
+      "anchor": "شیمی"
+    },
+    {
+      "book": "c12",
+      "printed_page": 91,
+      "anchor": "شیمی"
+    }
+  ],
+  "catalog_sha256": "033963450502854810f6687c01d84737bdc3af4519657c48a9b35e4df346389d",
+  "full_text_line_by_line_claim": false,
+  "unresolved_source_conflicts": [],
+  "resolved_source_conflicts": [
+    {
+      "id": "1406-02-17",
+      "week": 1,
+      "subject": "physics12",
+      "maz_pdf_page": 7,
+      "maz_numeric_range": [
+        103,
+        125
+      ],
+      "maz_start_heading": "ساختار هسته",
+      "current_book_heading_page": 112,
+      "status": "resolved-current-textbook-first",
+      "corrected_range": [
+        112,
+        125
+      ],
+      "note": "User explicitly prioritized current textbooks over MAZ; heading verified on current textbook p112."
     }
   ],
   "weeks": 41,
@@ -324,8 +1449,8 @@
     }
   ],
   "data_hashes": {
-    "1405-07-17": "5150bec113c0c372530d9a34dec37651e2839dde0164a2d25916d86a9b5126ef",
-    "1405-08-01": "528fd08bb9bc9ea56e2504893e6430d17c33e50a6296011f8cd7e507b5ea6c52",
+    "1405-07-17": "d2ed39678b0b1a0d77c33a615382d80458ab61df25aa6297c37d413abc5d04c2",
+    "1405-08-01": "0f2da293d78e102f2a53854f1ac331b9cf6408519c8ae5fd1140a5eaece643d0",
     "1405-08-15": "5cad567923a93dec7e2f8034902402446301dd75f51dd3d8edbeb7128552f57c",
     "1405-08-29": "9d0c7c31859d036480269ed7065a33fd674641d938f5013aa5bfbf06000fe3d6",
     "1405-09-13": "34d5693309ee1a85feba4323f70a06258ea84e12ee689f0c576b3747a9217573",
@@ -337,8 +1462,8 @@
     "1405-12-21": "f9209f6f43cccd016f16613a9759e0144184553e974190cf66a94eefa4f50e31",
     "1406-01-06": "1e6550124e6cf9b26b4385330cf99ac13353fa593c6270ffed56fc73b12af93a",
     "1406-01-20": "9460c5a9481de12a6ba2a0a335e4b42808803cf1307fad41438356477f853dcb",
-    "1406-02-03": "edb4a8d8036376f7513077eae03ccc93e929fa6af40a4519ecd983754952885a",
-    "1406-02-17": "8b0d1bbea37ae8d19874a2c4727a335f0b264511d04ac26cacdc27610a34b171",
+    "1406-02-03": "e0ab61884ee45bf3af273aa825a292feea9c85966ffe2368ba4443450ff48f51",
+    "1406-02-17": "7e3417f7c6c8c65f01bb0abeeba950e944147dbaa14379931e486013b32649fc",
     "1406-02-24": "a0e46b4ebe5201b9780a94daa43bcc495b53e4d7d4c118adef89db8376e9b112",
     "1406-03-21": "2ee2be337094419137aa3cd3c1bf5659ecab40313e636b2b5c66e00aa1120702",
     "1406-03-28": "adc5bfa3ad8c0102bcba36c82513bf628f8484f49fc02754b01657504770e9f1",

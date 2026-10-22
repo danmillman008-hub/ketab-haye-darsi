@@ -1,5 +1,5 @@
 """Use current-book scopes and named topics; keep the approved formula and clean form."""
-import sys,json,hashlib,copy,math,itertools
+import sys,json,hashlib,copy,math,itertools,subprocess
 from pathlib import Path
 from datetime import timedelta
 import jdatetime
@@ -59,6 +59,8 @@ def bio_daily(w):
    titles=[next(c[1] for c in BIO[g] if c[0]==ch) for g,ch in by]
    topic=' + '.join(titles)+'؛ فصل '+fa(chunk[0]['chapter'])+'–'+fa(chunk[-1]['chapter'])+'؛ ص '+fa(chunk[0]['start'])+'–'+fa(chunk[-1]['end'])
   if len(units)<3 and day_index==2:topic='مرور و تثبیت: '+topic
+  if day_index>0 and len(units)>=3 and sum(u['end']-u['start']+1 for u in chunk)<=3:
+   topic+=' + مرور گفتارهای پیشین همین هفته'
   result.append(('زیست '+GRADES[chunk[0]['grade']],topic))
  return result
 
@@ -119,7 +121,7 @@ for month in calendar['months']:
   dest=Path('برنامه تحصیلی')/month['folder']/(fa(day)+' '+month['name'])
   label=date_label(target,True);existing=key=='1405-08-01'
   if existing:
-   data=copy.deepcopy(json.loads((ROOT/'stitch-14/plan.json').read_text()));metas=[];weeks=[]
+   data=json.loads(subprocess.check_output(['git','show','50b9922:stitch-14/plan.json'],cwd=ROOT));metas=[];weeks=[]
    for wi in range(n):
     first=start+timedelta(days=wi*7)
     metas.append(dict(label=['دوازدهم','دهم'][wi],date_range=['۱۸ تا ۲۴ مهر ۱۴۰۵','۲۵ مهر تا ۱ آبان ۱۴۰۵'][wi],friday=date_label(first+timedelta(days=6))))
@@ -131,7 +133,7 @@ for month in calendar['months']:
   special=key in REASONS
   notes=[REASONS[key]] if special else []
   if key=='1405-09-27':notes.append('گذار بودجهٔ پایه از دهم به یازدهم طبق خودِ ردیف ۲۷ آذر ماز انجام شده است.')
-  if key=='1406-02-17':notes.append('فیزیک: ماز بازهٔ ۱۰۳–۱۲۵ را کنار «از ساختار هسته» نوشته؛ ساختار هسته در کتاب از ۱۱۲ است. برای حذف‌نشدن بودجه، ۱۰۳–۱۱۱ نیز مرور شده است.')
+  if key=='1406-02-17':notes.append('فیزیک: ماز بازهٔ ۱۰۳–۱۲۵ را کنار «از ساختار هسته» نوشته؛ ساختار هسته در کتاب از ۱۱۲ است. طبق اولویت کتاب فعال، محدودهٔ این بخش ۱۱۲–۱۲۵ است.')
   if key in ['1406-03-28','1406-04-04']:
    for w in weeks:w['review']=True
    for d in data:
@@ -149,6 +151,11 @@ for number in [1,2]:
  title='آزمون جامع پریمیوم '+fa(number)
  items.append(dict(id='premium-'+str(number),title=title,target=None,start=None,weeks=2,pages=4,special=True,reason='تاریخ رسمی اعلام نشده؛ فایل برآیندی با هفته‌های نسبی، نه برنامهٔ تقویمی قطعی.',notes=['پس از اعلام تاریخ و بودجهٔ نهایی ماز، تاریخ‌گذاری و انطباق نهایی لازم است.','مرور انتخابی و رفع خطا؛ این فایل جای مطالعهٔ اولیهٔ کل کتاب‌ها نیست.'],source_page=7,preserved=False,directory=str(Path('برنامه تحصیلی')/'تاریخ اعلام‌نشده'/title),stem='فایل برآیندی '+title+' - بدون تاریخ',days=data,week_meta=metas,scopes=weeks))
 for it in items:
+ if it['id']=='1405-08-01':
+  for d in it['days']:
+   if d['week']==2 and d['day']==4:
+    for b in d['boxes']:
+     if b['subject'].startswith('زیست'):b['topic']+=' + مرور گفتارهای پیشین همین هفته'
  for d in it['days']:
   for b in d['boxes']:
    b['topic']=b['topic'].replace('بازهٔ عددی ماز','').replace('ص ماز','ص').replace('مسیر مرور ۵۰درصدی؛ ','').replace('مسیر مرور؛ ','')
@@ -168,3 +175,6 @@ for it in items:
 summary=[{k:v for k,v in it.items() if k not in ['days','scopes','week_meta']} for it in items]
 (ROOT/'annual/manifest.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
 print('Generated',len(items),'plans;',sum(it['weeks'] for it in items if it['target']),'dated weeks;',sum(it['pages'] for it in items),'pages in the restored clean form.')
+
+
+(ROOT/'annual/YEAR_PLAN.json').write_text(json.dumps(items,ensure_ascii=False,indent=2)+'\n')

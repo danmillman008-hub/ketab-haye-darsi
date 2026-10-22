@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "method": "whole-topics-and-review",
+  "equal_page_load_required": false,
+  "whole_goftar_weeks": 37,
+  "short_goftar_review_days": [
+    [
+      "1405-08-01",
+      2,
+      4
+    ]
+  ],
+  "selected_review_weeks": [
+    [
+      "1406-02-03",
+      2,
+      "bio"
+    ],
+    [
+      "1406-02-17",
+      2,
+      "bio"
+    ],
+    [
+      "1406-03-28",
+      1,
+      "bio"
+    ],
+    [
+      "1406-04-04",
+      1,
+      "bio"
+    ],
+    [
+      "premium-1",
+      2,
+      "bio"
+    ],
+    [
+      "premium-2",
+      2,
+      "bio"
+    ]
+  ],
+  "data_hashes": {
+    "1405-07-17": "d2ed39678b0b1a0d77c33a615382d80458ab61df25aa6297c37d413abc5d04c2",
+    "1405-08-01": "0f2da293d78e102f2a53854f1ac331b9cf6408519c8ae5fd1140a5eaece643d0",
+    "1405-08-15": "5cad567923a93dec7e2f8034902402446301dd75f51dd3d8edbeb7128552f57c",
+    "1405-08-29": "9d0c7c31859d036480269ed7065a33fd674641d938f5013aa5bfbf06000fe3d6",
+    "1405-09-13": "34d5693309ee1a85feba4323f70a06258ea84e12ee689f0c576b3747a9217573",
+    "1405-09-27": "7241c711f919bd9dabd42e8a20b461e9d70515e02e926e5d3de9a9a55eb78129",
+    "1405-10-25": "cb3ed08f9ab0f35dcc3dbae785cf910fbb3b3d101b8fc361e009e78e86b9c924",
+    "1405-11-09": "68928e461f254388ad69e9290bd85370d4ab47daf0db1f33bac301433660979c",
+    "1405-11-23": "aa73bf0b98ac4af9a2810c3a8b542fb21341e556848d45dc170a7f81e7c23b8b",
+    "1405-12-07": "60d547af9acd133310d5bd0ba17d62893edaeb1bac2cef47f0af94fba5228544",
+    "1405-12-21": "f9209f6f43cccd016f16613a9759e0144184553e974190cf66a94eefa4f50e31",
+    "1406-01-06": "1e6550124e6cf9b26b4385330cf99ac13353fa593c6270ffed56fc73b12af93a",
+    "1406-01-20": "9460c5a9481de12a6ba2a0a335e4b42808803cf1307fad41438356477f853dcb",
+    "1406-02-03": "e0ab61884ee45bf3af273aa825a292feea9c85966ffe2368ba4443450ff48f51",
+    "1406-02-17": "7e3417f7c6c8c65f01bb0abeeba950e944147dbaa14379931e486013b32649fc",
+    "1406-02-24": "a0e46b4ebe5201b9780a94daa43bcc495b53e4d7d4c118adef89db8376e9b112",
+    "1406-03-21": "2ee2be337094419137aa3cd3c1bf5659ecab40313e636b2b5c66e00aa1120702",
+    "1406-03-28": "adc5bfa3ad8c0102bcba36c82513bf628f8484f49fc02754b01657504770e9f1",
+    "1406-04-04": "b09cf5b0e3759780a3271260aa88fba639bd71e2e4170af409b509ef32a4bc05",
+    "premium-1": "952aaa8b607f827f9d821f8f6907ef57fa1c194cb9585e0f5b0d1421b102301d",
+    "premium-2": "9c847b96e7989cf2268586af9f635c082de24471182f9094135e10ba3e78c344"
+  }
+}

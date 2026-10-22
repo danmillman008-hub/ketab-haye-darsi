@@ -1,11 +1,12 @@
 {
   "status": "passed-for-current-planner",
   "canonical": "../annual/QA.json",
-  "content_regression": "../annual/STYLE_QA.json",
+  "content_regression": "../annual/TOPIC_QA.json",
   "check": {
     "id": "1405-08-01",
-    "docxSha256": "24de39735121afe3d60ccba2382d33d6cbef67b1d651e313f13c887e9babf7cd",
-    "pdfSha256": "b75dc047707d4ed942f51e6a996be0222dc1a61991e70d41ef4ff7c81da04c69",
+    "docxSha256": "3c62e37929c99545beee3fbc3711f16efdf9092827055716e59a1a59069b0c8b",
+    "pdfSha256": "06b4008d5285a6123d194cc58f1dafa79d677ec3d327129c8f981b7bfbb3df49",
+    "dataSha256": "0f2da293d78e102f2a53854f1ac331b9cf6408519c8ae5fd1140a5eaece643d0",
     "pages": [
       {
         "page": 1,
@@ -29,9 +30,9 @@
         "page": 4,
         "missingCharacters": 0,
         "extraCharacters": 0,
-        "pixelSha256At100dpi": "c4e177026e378751f9a6b170c778cd8c60d926015c96dd6f728a08b3bfcf284d"
+        "pixelSha256At100dpi": "3424cff95bf99bf7e0f6e19e49b4f8c2c8ccf91bd4d8368d2ef00bdc2842f43a"
       }
     ]
   },
-  "student_reports": "unchanged"
+  "reports": "Unchanged; see annual/preserved.json"
 }
