@@ -1,0 +1,16 @@
+{
+  "status": "reviewed",
+  "pages_reviewed": 4,
+  "checks": [
+    {
+      "id": "g10-1405-08-15-week1",
+      "pdf_sha256": "afe6fbae98e076fce2f266946b618493d3c948be6f22df5c15650c0fa65d537f",
+      "notes": "All pages visually reviewed: text readable, optional hints gray, unused cells empty, headings and footer within bounds."
+    },
+    {
+      "id": "g11-1405-08-15-week1",
+      "pdf_sha256": "7398bb8fbbe365f13bc701ac37238688698aabf81b4488570208cdc01f4ca522",
+      "notes": "All pages visually reviewed: text readable, optional hints gray, unused cells empty, headings and footer within bounds."
+    }
+  ]
+}
