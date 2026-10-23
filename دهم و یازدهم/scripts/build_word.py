@@ -19,11 +19,11 @@ src=src.replace("'برنامه‌ریزی هفتگی',12,True","('فایل بر�
 exec(compile(src,'annual_branding','exec'),branding.__dict__)
 w.annual_meta=meta
 
-def day_header(cell,name,goal,hours=None,tests=None):
+def day_header(cell,name,goal,hours=None,tests=None,totals=True):
  margins(cell,top=.3,bottom=.3,left=1,right=1);shade(cell)
- t=local_table(cell,1,[32,93,25,12,3,23,12]);t.rows[0].height=Mm(5)
+ t=local_table(cell,1,[32,93,25,12,3,23,12] if totals else [32,120]);t.rows[0].height=Mm(5)
  text(t.cell(0,0).paragraphs[0],name,8.5,True);text(t.cell(0,1).paragraphs[0],goal,8)
- for label_i,box_i,label,value in [(2,3,'مجموع ساعت:',hours),(5,6,'مجموع تست:',tests)]:
+ for label_i,box_i,label,value in ([(2,3,'مجموع ساعت:',hours),(5,6,'مجموع تست:',tests)] if totals else []):
   text(t.cell(0,label_i).paragraphs[0],label,8,True)
   box=t.cell(0,box_i);shade(box,'FFFFFF')
   for edge in ['top','bottom','left','right']:border(box,edge,'775A00',4)
@@ -57,26 +57,59 @@ for sheet in range(meta['weeks']*2):
     for cell in row.cells:border(cell,'top' if ri==0 else 'bottom','C59B27')
   t.rows[0].height=Mm(7)
   head=t.cell(0,0).merge(t.cell(0,2))
-  day_header(head,day['name']+' | '+day['date'],'اهداف: '+('زیست و ریاضی' if day['day']%2==0 else 'فیزیک و شیمی')+(' و دروس نهایی' if any(b['subject']=='دروس نهایی' for b in day['boxes']) else ''),day['hours'],day['tests'])
-  for row in [1,3]:
-   t.rows[row].height=Mm(31.8 if half==0 else 25.8)
-   t.rows[row+1].height=Mm(5.5)
-   for col in range(3):
-    i=((row-1)//2)*3+col
-    fill(t.cell(row,col),t.cell(row+1,col),day['boxes'][i] if i<len(day['boxes']) else None)
+  fam=[]
+  for b in day['boxes']:
+   name=b['subject'] if b['subject']=='دروس نهایی' else b['subject'].split()[0]
+   if name not in fam:fam.append(name)
+  goals='، '.join(fam)
+  day_header(head,day['name']+' | '+day['date'],'اهداف: '+goals,day['hours'],day['tests'])
+  boxes=day['boxes']
+  single_mm=(52 if half==0 else 44) if meta.get('compact_layout') else (31.8 if half==0 else 25.8)
+  def place(row,items):
+   h=single_mm/2 if (meta.get('compact_layout') and len(boxes)>3) else single_mm
+   t.rows[row].height=Mm(h);t.rows[row+1].height=Mm(5.5)
+   for idx,b in enumerate(items):
+    content=t.cell(row,idx);metrics=t.cell(row+1,idx)
+    if idx==len(items)-1 and len(items)<3:
+     content=content.merge(t.cell(row,2));metrics=metrics.merge(t.cell(row+1,2))
+    fill(content,metrics,b)
+  if meta.get('compact_layout'):
+   # Annual pages: no empty bordered rows; a trailing box takes the full width.
+   if len(boxes)<=3:
+    place(1,boxes)
+    for r in (t.rows[3],t.rows[4]):t._tbl.remove(r._tr)
+   else:
+    place(1,boxes[:3]);place(3,boxes[3:])
+    if len(boxes)<=4:
+     # A lone fourth box spans the width; the freed row can then be removed.
+     for r in (t.rows[4],):t._tbl.remove(r._tr)
+  else:
+   place(1,boxes[:3]);place(3,boxes[3:6])
   gap(1)
  if half:
-  t=grid(3,1,'Planner Exam');t.rows[0].height=Mm(7);t.rows[1].height=Mm(20);t.rows[2].height=Mm(5.5)
   final=meta['week_meta'][week]['official_exam']
-  day_header(t.cell(0,0),'جمعه | '+meta['week_meta'][week]['friday'],'آزمون' if final else 'خودسنجی هفتگی')
-  text(t.cell(1,0).paragraphs[0],'☐ درس، آزمون یا مبحث:',8)
-  p=text(t.cell(1,0).add_paragraph(),'خودسنجی از مطالب همین هفته؛ تحلیل غلط‌ها و نزده‌ها و ثبت مباحث نیازمند مرور.',9);p.paragraph_format.space_before=Pt(4)
-  margins(t.cell(2,0),left=1,right=1)
-  ft=local_table(t.cell(2,0),1,[21,32,15,21,32,15,32,32]);ft.rows[0].height=Mm(4.3)
-  for label_i,field_i,label in [(0,1,'ساعت مطالعه:'),(3,4,'تعداد تست:'),(6,7,'تراز / درصد آزمون:')]:
-   text(ft.cell(0,label_i).paragraphs[0],label,7);field(ft.cell(0,field_i))
-  border(t.cell(1,0),'bottom','CCCCCC',3);border(t.cell(2,0),'top','CCCCCC',3);gap(1)
- foot='هدف: آزمون ۱۵ آبان ۱۴۰۵ | تست ریاضی/فیزیک: انتخاب آزاد در محدودهٔ عنوان | خودسنجی خارج از جمع ساعت | '+fa(sheet+1)+' / '+fa(meta['weeks']*2)
+  compact=meta.get('compact_layout')
+  t=grid(3 if not compact else 2,1,'Planner Exam')
+  t.rows[0].height=Mm(7);t.rows[1].height=Mm(20)
+  if not compact:t.rows[2].height=Mm(5.5)
+  day_header(t.cell(0,0),'جمعه | '+meta['week_meta'][week]['friday'],'آزمون' if final else 'خودسنجی هفتگی',totals=not compact)
+  body=t.cell(1,0)
+  text(body.paragraphs[0],'☐ درس، آزمون یا مبحث:',8)
+  hint=('آزمون رسمی از محدودهٔ اعلام‌شده؛ تحلیل غلط‌ها و نزده‌ها' if final else 'خودسنجی از مطالب همین هفته؛ تحلیل غلط‌ها و نزده‌ها و ثبت مباحث نیازمند مرور')
+  p=text(body.add_paragraph(),hint,9);p.paragraph_format.space_before=Pt(4)
+  if compact:
+   # Text-only entry line: no nested table, so nothing can overlap the prompt.
+   p=text(body.add_paragraph(),'ساعت مطالعه: ....................    تعداد تست: ....................    تراز یا درصد: ....................',8)
+   p.paragraph_format.space_before=Pt(10)
+  else:
+   margins(body,left=1,right=1)
+   ft=local_table(body,1,[21,32,15,21,32,15,32,32]);ft.rows[0].height=Mm(4.3)
+   for label_i,field_i,label in [(0,1,'ساعت مطالعه:'),(3,4,'تعداد تست:'),(6,7,'تراز / درصد آزمون:')]:
+    text(ft.cell(0,label_i).paragraphs[0],label,7);field(ft.cell(0,field_i))
+   border(t.cell(2,0),'top','CCCCCC',3)
+  border(body,'bottom','CCCCCC',3)
+  gap(1)
+ foot='هدف: آزمون '+meta.get('footer_target','')+' | تست ریاضی/فیزیک: انتخاب آزاد در محدودهٔ عنوان | خودسنجی خارج از جمع ساعت | '+fa(sheet+1)+' / '+fa(meta['weeks']*2)
  text(doc.add_paragraph(),foot,6)
  branding.footer(w)
 doc.core_properties.title=meta['title']+(' — فایل برآیندی' if meta['special'] else '')

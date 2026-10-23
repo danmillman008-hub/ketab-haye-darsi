@@ -1,0 +1,57 @@
+{
+  "plans": 34,
+  "negatives": [
+    [
+      "missing box",
+      "REJECTED"
+    ],
+    [
+      "wrong date",
+      "REJECTED"
+    ],
+    [
+      "week two not review",
+      "REJECTED"
+    ],
+    [
+      "outside budget",
+      "REJECTED"
+    ],
+    [
+      "test before study",
+      "REJECTED"
+    ],
+    [
+      "Thursday hours",
+      "REJECTED"
+    ],
+    [
+      "geology in grade 10",
+      "REJECTED"
+    ],
+    [
+      "latin digits",
+      "REJECTED"
+    ],
+    [
+      "bad preference",
+      "REJECTED"
+    ],
+    [
+      "consecutive subject",
+      "REJECTED"
+    ]
+  ],
+  "totals": {
+    "10": {
+      "hours": 1330,
+      "tests": 10640,
+      "pages": 76
+    },
+    "11": {
+      "hours": 1330,
+      "tests": 10260,
+      "pages": 76
+    }
+  }
+}

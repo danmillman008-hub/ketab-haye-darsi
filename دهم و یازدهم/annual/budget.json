@@ -1,0 +1,1651 @@
+[
+  {
+    "grade": 10,
+    "exam": "1405-07-17",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            8
+          ]
+        ],
+        "boundary": "قبل از مولکول‌های زیستی"
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            11
+          ]
+        ],
+        "boundary": "قبل از نمادگذاری علمی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            9
+          ]
+        ],
+        "boundary": "تا پایان تکنسیم، عنصر ساخت بشر"
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            10
+          ]
+        ],
+        "boundary": "قبل از تعداد عضوهای اجتماع دو مجموعه"
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1405-08-01",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            15
+          ]
+        ],
+        "boundary": "قبل از بافت‌های بدن انسان"
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            22
+          ]
+        ],
+        "boundary": ""
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            15
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            20
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1405-08-15",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            21
+          ]
+        ],
+        "boundary": "قبل از شیرهٔ معده"
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            32
+          ]
+        ],
+        "boundary": "قبل از فشار در شاره‌ها"
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            23
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            27
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1405-08-29",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            17,
+            29
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            23,
+            38
+          ]
+        ],
+        "boundary": "قبل از فشارسنج شاره‌ها"
+      },
+      "chem": {
+        "ranges": [
+          [
+            16,
+            30
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            21,
+            35
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1405-09-13",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            39
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            40
+          ]
+        ],
+        "boundary": "قبل از شناوری"
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            38
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            46
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1405-09-27",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            33,
+            44
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            37,
+            52
+          ]
+        ],
+        "boundary": ""
+      },
+      "chem": {
+        "ranges": [
+          [
+            24,
+            46
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            36,
+            61
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1405-10-25",
+    "source_pdf_page": 4,
+    "weeks": 4,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            33,
+            51
+          ]
+        ],
+        "boundary": "قبل از شبکهٔ هادی قلب"
+      },
+      "physics": {
+        "ranges": [
+          [
+            38,
+            55
+          ]
+        ],
+        "boundary": "قبل از کار انجام‌شده توسط نیروی ثابت"
+      },
+      "chem": {
+        "ranges": [
+          [
+            24,
+            58
+          ]
+        ],
+        "boundary": "تا پایان ترکیب اکسیژن با فلزها و نافلزها"
+      },
+      "math": {
+        "ranges": [
+          [
+            36,
+            68
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1405-11-09",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            54
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            60
+          ]
+        ],
+        "boundary": "قبل از کار و انرژی جنبشی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            61
+          ]
+        ],
+        "boundary": "تا پایان رفتار اکسیدهای فلزی و نافلزی"
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            77
+          ]
+        ],
+        "boundary": "تا پایان معادلهٔ درجهٔ دوم و روش‌های حل آن"
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1405-11-23",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            47,
+            60
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            53,
+            64
+          ]
+        ],
+        "boundary": "قبل از کار و انرژی پتانسیل"
+      },
+      "chem": {
+        "ranges": [
+          [
+            47,
+            69
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            62,
+            93
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1405-12-07",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            55,
+            68
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            61,
+            70
+          ]
+        ],
+        "boundary": "قبل از انرژی درونی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            62,
+            75
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            78,
+            100
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1405-12-21",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            55,
+            75
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            61,
+            82
+          ]
+        ],
+        "boundary": ""
+      },
+      "chem": {
+        "ranges": [
+          [
+            62,
+            84
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            78,
+            108
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1406-01-06",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            54
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            60
+          ]
+        ],
+        "boundary": "قبل از کار و انرژی جنبشی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            61
+          ]
+        ],
+        "boundary": "تا پایان رفتار اکسیدهای فلزی و نافلزها"
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            77
+          ]
+        ],
+        "boundary": "تا پایان معادلهٔ درجهٔ دوم و روش‌های حل آن"
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1406-01-20",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            55,
+            78
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            61,
+            87
+          ]
+        ],
+        "boundary": "قبل از انبساط گرمایی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            62,
+            92
+          ]
+        ],
+        "boundary": "تا پایان همراهان ناپیدای آب"
+      },
+      "math": {
+        "ranges": [
+          [
+            78,
+            117
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1406-02-03",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            76,
+            89
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            83,
+            102
+          ]
+        ],
+        "boundary": "قبل از تغییر حالت‌های ماده"
+      },
+      "chem": {
+        "ranges": [
+          [
+            85,
+            103
+          ]
+        ],
+        "boundary": "قبل از رفتار آب و دیگر مولکول‌ها در میدان الکتریکی"
+      },
+      "math": {
+        "ranges": [
+          [
+            109,
+            132
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1406-02-17",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            79,
+            101
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            87,
+            111
+          ]
+        ],
+        "boundary": "قبل از روش‌های انتقال گرما"
+      },
+      "chem": {
+        "ranges": [
+          [
+            93,
+            116
+          ]
+        ],
+        "boundary": "تا پایان آیا گازها هم در آب حل می‌شوند؟"
+      },
+      "math": {
+        "ranges": [
+          [
+            118,
+            151
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1406-02-24",
+    "source_pdf_page": 5,
+    "weeks": 1,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            79,
+            111
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            87,
+            120
+          ]
+        ],
+        "boundary": ""
+      },
+      "chem": {
+        "ranges": [
+          [
+            93,
+            122
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            118,
+            170
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 10,
+    "exam": "1406-03-28",
+    "source_pdf_page": 5,
+    "weeks": 5,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            111
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            120
+          ]
+        ],
+        "boundary": ""
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            122
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            170
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1405-07-17",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            10
+          ]
+        ],
+        "boundary": "تا پایان حفاظت از مغز و نخاع"
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            7
+          ]
+        ],
+        "boundary": "قبل از برآیند نیروهای الکتریکی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            14
+          ]
+        ],
+        "boundary": "تا پایان رفتار عنصرها و شعاع اتم"
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            10
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            9,
+            15
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1405-08-01",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            18
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            13
+          ]
+        ],
+        "boundary": "قبل از برآیند میدان‌های الکتریکی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            22
+          ]
+        ],
+        "boundary": "تا پایان عنصرها به چه شکلی در طبیعت یافت می‌شوند؟"
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            18
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            9,
+            21
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1405-08-15",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            28
+          ]
+        ],
+        "boundary": "قبل از شنوایی و تعادل"
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            21
+          ]
+        ],
+        "boundary": "قبل از پتانسیل الکتریکی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            24
+          ]
+        ],
+        "boundary": "قبل از خود را بیازمایید ص۲۴"
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            30
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            9,
+            29
+          ]
+        ],
+        "boundary": "قبل از طبقه‌بندی کانسنگ‌ها"
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1405-08-29",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            19,
+            36
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            13,
+            27
+          ]
+        ],
+        "boundary": "از برآیند میدان‌ها تا قبل از خازن"
+      },
+      "chem": {
+        "ranges": [
+          [
+            14,
+            29
+          ]
+        ],
+        "boundary": "از دنیای رنگی تا پایان جریان فلز بین محیط زیست و جامعه"
+      },
+      "math": {
+        "ranges": [
+          [
+            19,
+            41
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            23,
+            39
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1405-09-13",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            44
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            38
+          ]
+        ],
+        "boundary": ""
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            40
+          ]
+        ],
+        "boundary": "تا پایان نام‌گذاری آلکان‌ها"
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            46
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            9,
+            44
+          ]
+        ],
+        "boundary": "قبل از آب زیرزمینی"
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1405-09-27",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            37,
+            62
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            28,
+            45
+          ]
+        ],
+        "boundary": "از خازن تا قبل از عوامل مؤثر بر مقاومت الکتریکی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            29,
+            50
+          ]
+        ],
+        "boundary": "از نفت هدیه‌ای شگفت‌انگیز تا پایان فصل"
+      },
+      "math": {
+        "ranges": [
+          [
+            42,
+            64
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            41,
+            51
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1405-10-25",
+    "source_pdf_page": 4,
+    "weeks": 4,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            37,
+            71
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            28,
+            49
+          ]
+        ],
+        "boundary": "از خازن تا قبل از نیروی محرکهٔ الکتریکی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            29,
+            58
+          ]
+        ],
+        "boundary": "تا پایان دماهای ماده از چه خبر می‌دهد؟"
+      },
+      "math": {
+        "ranges": [
+          [
+            42,
+            70
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            41,
+            53
+          ]
+        ],
+        "boundary": "قبل از فرسایش"
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1405-11-09",
+    "source_pdf_page": 4,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            78
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            53
+          ]
+        ],
+        "boundary": "قبل از توان در مدارهای الکتریکی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            65
+          ]
+        ],
+        "boundary": "تا پایان گرما در واکنش‌های شیمیایی"
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            76
+          ]
+        ],
+        "boundary": "تا پایان درس اول مثلثات"
+      },
+      "geo": {
+        "ranges": [
+          [
+            9,
+            58
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1405-11-23",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            63,
+            83
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            45,
+            64
+          ]
+        ],
+        "boundary": "از عوامل مؤثر بر مقاومت تا پایان فصل۲"
+      },
+      "chem": {
+        "ranges": [
+          [
+            51,
+            72
+          ]
+        ],
+        "boundary": "تا پایان آنتالپی پیوند؛ قبل از آنتالپی سوختن"
+      },
+      "math": {
+        "ranges": [
+          [
+            65,
+            87
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            47,
+            65
+          ]
+        ],
+        "boundary": "قبل از آتشفشان"
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1405-12-07",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            79,
+            96
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            53,
+            70
+          ]
+        ],
+        "boundary": "از توان در مدار تا قبل از نیروی مغناطیسی وارد بر ذرهٔ باردار متحرک"
+      },
+      "chem": {
+        "ranges": [
+          [
+            65,
+            77
+          ]
+        ],
+        "boundary": "از آنتالپی همان محتوای انرژی است تا پایان قانون هس"
+      },
+      "math": {
+        "ranges": [
+          [
+            77,
+            94
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            59,
+            71
+          ]
+        ],
+        "boundary": "تا پایان امواج لرزه‌ای"
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1405-12-21",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            79,
+            101
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            53,
+            76
+          ]
+        ],
+        "boundary": "از توان در مدار تا قبل از میدان مغناطیسی حاصل از جریان الکتریکی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            65,
+            85
+          ]
+        ],
+        "boundary": "از آنتالپی همان محتوای انرژی است تا پایان آهنگ واکنش"
+      },
+      "math": {
+        "ranges": [
+          [
+            77,
+            104
+          ]
+        ],
+        "boundary": "تا پایان درس اول توابع نمایی و لگاریتمی"
+      },
+      "geo": {
+        "ranges": [
+          [
+            59,
+            82
+          ]
+        ],
+        "boundary": "قبل از منشأ بیماری‌های زمین‌زاد"
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1406-01-06",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            78
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            53
+          ]
+        ],
+        "boundary": "قبل از توان در مدارهای الکتریکی"
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            65
+          ]
+        ],
+        "boundary": "تا پایان گرما در واکنش‌های شیمیایی"
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            76
+          ]
+        ],
+        "boundary": "تا پایان درس اول مثلثات"
+      },
+      "geo": {
+        "ranges": [
+          [
+            9,
+            58
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1406-01-20",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            79,
+            114
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            53,
+            83
+          ]
+        ],
+        "boundary": "از توان در مدار تا قبل از ویژگی‌های مغناطیسی مواد"
+      },
+      "chem": {
+        "ranges": [
+          [
+            65,
+            92
+          ]
+        ],
+        "boundary": "از آنتالپی همان محتوای انرژی است تا پایان خوراکی‌های طبیعی رنگین؛ بازدارنده‌هایی مفید و مؤثر"
+      },
+      "math": {
+        "ranges": [
+          [
+            77,
+            118
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            59,
+            91
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1406-02-03",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            115,
+            129
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            83,
+            91
+          ]
+        ],
+        "boundary": "از ویژگی‌های مغناطیسی مواد تا قبل از قانون لنز"
+      },
+      "chem": {
+        "ranges": [
+          [
+            92,
+            106
+          ]
+        ],
+        "boundary": "از سرعت واکنش تا پایان فصل۲ و آغاز فصل۳ تا پایان پلیمری‌شدن"
+      },
+      "math": {
+        "ranges": [
+          [
+            119,
+            142
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            93,
+            108
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1406-02-17",
+    "source_pdf_page": 5,
+    "weeks": 2,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            130,
+            152
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            91,
+            104
+          ]
+        ],
+        "boundary": "از قانون لنز تا پایان کتاب"
+      },
+      "chem": {
+        "ranges": [
+          [
+            107,
+            123
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            143,
+            166
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            109,
+            125
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1406-02-24",
+    "source_pdf_page": 5,
+    "weeks": 1,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            119,
+            152
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            83,
+            104
+          ]
+        ],
+        "boundary": "از ویژگی‌های مغناطیسی مواد تا پایان کتاب"
+      },
+      "chem": {
+        "ranges": [
+          [
+            99,
+            123
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            119,
+            166
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            93,
+            125
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  },
+  {
+    "grade": 11,
+    "exam": "1406-03-28",
+    "source_pdf_page": 5,
+    "weeks": 5,
+    "subjects": {
+      "bio": {
+        "ranges": [
+          [
+            1,
+            152
+          ]
+        ],
+        "boundary": ""
+      },
+      "physics": {
+        "ranges": [
+          [
+            1,
+            104
+          ]
+        ],
+        "boundary": ""
+      },
+      "chem": {
+        "ranges": [
+          [
+            1,
+            123
+          ]
+        ],
+        "boundary": ""
+      },
+      "math": {
+        "ranges": [
+          [
+            1,
+            166
+          ]
+        ],
+        "boundary": ""
+      },
+      "geo": {
+        "ranges": [
+          [
+            9,
+            125
+          ]
+        ],
+        "boundary": ""
+      }
+    }
+  }
+]
