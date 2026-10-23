@@ -29,6 +29,19 @@ def day_header(cell,name,goal,hours=None,tests=None):
   text(box.paragraphs[0],'' if value is None else fa(value),8,True,align='center')
  return t
 
+base_fill=fill
+def fill(content,metrics,b):
+ if not b or 'preference' not in b:return base_fill(content,metrics,b)
+ from docx.shared import RGBColor
+ margins(content,top=.6,bottom=.3,left=1,right=1)
+ text(content.paragraphs[0],'☐ '+b['subject'],9,True)
+ p=text(content.add_paragraph(),b['topic'],9,True);p.paragraph_format.space_before=Pt(2)
+ p=text(content.add_paragraph(),b['detail'],8.5);p.paragraph_format.space_before=Pt(2)
+ p=text(content.add_paragraph(),b['preference'],7.5);p.paragraph_format.space_before=Pt(1)
+ for run in p.runs:run.font.color.rgb=RGBColor.from_string('707070')
+ metric_pair(metrics,b['hours'],b['tests'])
+ border(content,'bottom','CCCCCC',3);border(metrics,'top','CCCCCC',3)
+
 for sheet in range(meta['weeks']*2):
  if sheet:
   p=doc.add_paragraph();tight(p);p.add_run().add_break(__import__('docx').enum.text.WD_BREAK.PAGE)
@@ -42,7 +55,7 @@ for sheet in range(meta['weeks']*2):
     for cell in row.cells:border(cell,'top' if ri==0 else 'bottom','C59B27')
   t.rows[0].height=Mm(7)
   head=t.cell(0,0).merge(t.cell(0,2))
-  day_header(head,day['name']+' | '+day['date'],'اهداف: '+('زیست و ریاضی' if day['day']%2==0 else 'فیزیک و شیمی'),day['hours'],day['tests'])
+  day_header(head,day['name']+' | '+day['date'],'اهداف: '+('زیست و ریاضی' if day['day']%2==0 else 'فیزیک و شیمی')+(' و دروس نهایی' if any(b['subject']=='دروس نهایی' for b in day['boxes']) else ''),day['hours'],day['tests'])
   for row in [1,3]:
    t.rows[row].height=Mm(31.8 if half==0 else 25.8)
    t.rows[row+1].height=Mm(5.5)

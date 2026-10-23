@@ -44,7 +44,11 @@ def check():
   def clean(t):
    for a,b in [('بازهٔ عددی ماز',''),('ص ماز','ص'),('مسیر مرور ۵۰درصدی؛ ',''),('مسیر مرور؛ ','')]:t=t.replace(a,b)
    return t
+  if d['id']=='1405-08-15':
+   from aban15_revision import validate as validate_aban15
+   validate_aban15(d)
   for wi,w in enumerate(d['scopes'],1):
+   if d['id']=='1405-08-15':continue
    for subject,field in [('ریاضی','math'),('فیزیک','physics')]:
     actual=[b['topic'] for day in d['days'] if day['week']==wi for b in day['boxes'] if b['subject'].startswith(subject)]
     assert actual==[clean(t) for t in w[field]],(d['id'],wi,field,'Topic order or scope mismatch')

@@ -171,6 +171,9 @@ for it in items:
   for g,a,b in w['bio']:
    covered={p for u in bio_units([(g,a,b)]) for p in range(u['start'],u['end']+1)}
    assert covered==set(range(a,b+1))
+ from aban15_revision import apply as apply_aban15,validate as validate_aban15
+ if it['id']=='1405-08-15':
+  apply_aban15(it);validate_aban15(it)
  (ROOT/'annual/data'/f"{it['id']}.json").write_text(json.dumps(it,ensure_ascii=False,indent=2)+'\n')
 summary=[{k:v for k,v in it.items() if k not in ['days','scopes','week_meta']} for it in items]
 (ROOT/'annual/manifest.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')

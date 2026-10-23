@@ -25,22 +25,29 @@ render=ROOT/ sys.argv[1]
 compare=ROOT/sys.argv[2] if len(sys.argv)>2 else None
 results={r['id']:r for r in json.loads((render/'results.json').read_text())}
 errors=[];checks=[];prev=None
+selected=set(sys.argv[3:])
+assert selected <= {e['id'] for e in json.loads((ROOT/'annual/manifest.json').read_text())}, 'Unknown selected plan'
+sys.path.insert(0,str(ROOT/'annual'))
+from aban15_revision import validate as validate_aban15
 for entry in json.loads((ROOT/'annual/manifest.json').read_text()):
+ if selected and entry['id'] not in selected:continue
  data=json.loads((ROOT/'annual/data'/(entry['id']+'.json')).read_text());days=data['days']
  assert len(days)==entry['weeks']*6
- for wi in range(1,entry['weeks']+1):
-  week=[d for d in days if d['week']==wi]
-  assert [d['day'] for d in week]==list(range(6))
-  assert sum(d['hours'] for d in week)==47 and sum(d['tests'] for d in week)==495
-  for prefix,count,tests in [('زیست',9,120),('ریاضی',6,150),('فیزیک',6,150),('شیمی',6,75)]:
-   bs=[b for d in week for b in d['boxes'] if b['subject'].startswith(prefix)]
-   assert len(bs)==count and sum(b['tests'] for b in bs)==tests
-  for d in week:
-   assert d['hours']==sum(b['hours'] for b in d['boxes'])
-   for b in d['boxes']:
-    if b['tests']:assert b['hours']==2 and b['tests']=={'زیست':20,'ریاضی':30,'فیزیک':30,'شیمی':25}[b['subject'].split()[0]]
-    else:assert b['hours']==(2 if b['subject'].startswith('فیزیک') else 1)
-   assert [b['subject'].split()[0] for b in d['boxes']]==(['زیست','ریاضی','زیست','ریاضی','زیست'] if d['day']%2==0 else ['فیزیک','شیمی','فیزیک','شیمی'])
+ if entry['id']=='1405-08-15':validate_aban15(data)
+ else:
+  for wi in range(1,entry['weeks']+1):
+   week=[d for d in days if d['week']==wi]
+   assert [d['day'] for d in week]==list(range(6))
+   assert sum(d['hours'] for d in week)==47 and sum(d['tests'] for d in week)==495
+   for prefix,count,tests in [('زیست',9,120),('ریاضی',6,150),('فیزیک',6,150),('شیمی',6,75)]:
+    bs=[b for d in week for b in d['boxes'] if b['subject'].startswith(prefix)]
+    assert len(bs)==count and sum(b['tests'] for b in bs)==tests
+   for d in week:
+    assert d['hours']==sum(b['hours'] for b in d['boxes'])
+    for b in d['boxes']:
+     if b['tests']:assert b['hours']==2 and b['tests']=={'زیست':20,'ریاضی':30,'فیزیک':30,'شیمی':25}[b['subject'].split()[0]]
+     else:assert b['hours']==(2 if b['subject'].startswith('فیزیک') else 1)
+    assert [b['subject'].split()[0] for b in d['boxes']]==(['زیست','ریاضی','زیست','ریاضی','زیست'] if d['day']%2==0 else ['فیزیک','شیمی','فیزیک','شیمی'])
  if entry['target']:
   target=jdatetime.date.fromisoformat(entry['target']);start=jdatetime.date.fromisoformat(entry['start'])
   assert target.weekday()==6 and start.weekday()==0
@@ -66,6 +73,11 @@ for entry in json.loads((ROOT/'annual/manifest.json').read_text()):
  subjects=Counter('☐ '+b['subject'] for day in days for b in day['boxes'])
  assert not (details-paragraphs) and not (subjects-paragraphs),('Word instructions/subjects',entry['id'])
  assert not (topics-paragraphs),('Stale or changed Word topics',entry['id'],topics-paragraphs)
+ preferences=Counter(b['preference'] for day in days for b in day['boxes'] if 'preference' in b)
+ assert not (preferences-paragraphs)
+ for p in xml.xpath('//w:p',namespaces=NS):
+  if ''.join(p.xpath('.//w:t/text()',namespaces=NS)) in preferences:
+   assert p.xpath('.//w:color[@w:val="707070"]',namespaces=NS), 'Optional suggestion must be lighter'
  expected=source_pages(docx);doc=fitz.open(pdf)
  assert len(doc)==len(expected)==entry['pages']
  pp=[]
@@ -89,6 +101,15 @@ for entry in json.loads((ROOT/'annual/manifest.json').read_text()):
 for name,h in json.loads((ROOT/'annual/preserved.json').read_text()).items():assert sha(ROOT/name)==h,name
 print('Character errors:',json.dumps(errors,ensure_ascii=False))
 if errors:sys.exit(1)
-qa=dict(status='passed',datedPlans=19,undatedRelativePlans=2,formula='47 hours / 495 tests per week',independentPixelComparison=bool(compare),pixelDpi=100,wordApplicationTested=False,checks=checks)
+if selected:
+ previous=json.loads((ROOT/'annual/QA.json').read_text())
+ for old in previous['checks']:
+  if old['id'] in selected:continue
+  entry=next(e for e in json.loads((ROOT/'annual/manifest.json').read_text()) if e['id']==old['id'])
+  assert sha(ROOT/'annual/data'/(old['id']+'.json'))==old['dataSha256']
+  for ext,key in [('docx','docxSha256'),('pdf','pdfSha256')]:assert sha(ROOT/entry['directory']/(entry['stem']+'.'+ext))==old[key]
+ checks=[next((c for c in checks if c['id']==old['id']),old) for old in previous['checks']]
+qa=dict(status='passed',datedPlans=19,undatedRelativePlans=2,formula='47 hours / 495 tests except approved 15 Aban: weeks 52h/520 and 51h/495',independentPixelComparison=bool(compare),pixelDpi=100,wordApplicationTested=False,checks=checks)
+qa['rendered_ids_this_run']=[c['id'] for c in checks if not selected or c['id'] in selected]
 (ROOT/'annual/QA.json').write_text(json.dumps(qa,ensure_ascii=False,indent=2)+'\n')
 print('PASS: calendar continuity, formula, native Word, embedded fonts, all-page text, image counts, preserved files'+(' and independent pixels' if compare else ''))

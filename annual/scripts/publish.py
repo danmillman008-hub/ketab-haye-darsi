@@ -3,6 +3,8 @@ from pathlib import Path
 import json,hashlib,shutil,sys,zipfile
 ROOT=Path(__file__).resolve().parents[2]
 render=ROOT/sys.argv[1]
+selected=set(sys.argv[2:])
+assert selected <= {e['id'] for e in json.loads((ROOT/'annual/manifest.json').read_text())}, 'Unknown selected plan'
 load=lambda p:json.loads((ROOT/p).read_text())
 manifest=load('annual/manifest.json');qa=load('annual/QA.json');style=load('annual/STYLE_QA.json');source=load('annual/SOURCE_QA.json')
 # Latest user instruction retires exact page equality, not source/semantic QA.
@@ -19,9 +21,13 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 # Validate the whole batch before overwriting any destination.
 for e in manifest:
  assert sha(ROOT/'annual/data'/(e['id']+'.json'))==data_checks[e['id']]['data_sha256']==source['data_hashes'][e['id']]==budget['data_hashes'][e['id']]==topics['data_hashes'][e['id']]==checks[e['id']]['dataSha256']
+ if selected and e['id'] not in selected:
+  for ext,key in [('docx','docxSha256'),('pdf','pdfSha256')]:assert sha(ROOT/e['directory']/(e['stem']+'.'+ext))==checks[e['id']][key]
+  continue
  assert sha(ROOT/'.work/annual/docx'/(e['id']+'.docx'))==checks[e['id']]['docxSha256']
  assert sha(render/(e['id']+'.pdf'))==checks[e['id']]['pdfSha256']
 for e in manifest:
+ if selected and e['id'] not in selected:continue
  dest=ROOT/e['directory'];dest.mkdir(parents=True,exist_ok=True)
  for ext,source in [('docx',ROOT/'.work/annual/docx'),('pdf',render)]:
   shutil.copyfile(source/(e['id']+'.'+ext),dest/(e['stem']+'.'+ext))
@@ -60,4 +66,4 @@ with zipfile.ZipFile(ROOT/'organized-deliverables.zip') as z:
    p=Path(e['directory'])/(e['stem']+'.'+ext)
    assert z.read(str(p))==(ROOT/p).read_bytes()
 for name,h in load('annual/preserved.json').items():assert sha(ROOT/name)==h,name
-print('Published 21 clean-form Word/PDF pairs; monthly indexes and ZIP verified; reports unchanged.')
+print('Published',len(selected) if selected else len(manifest),'Word/PDF pairs; monthly indexes and ZIP verified; reports unchanged.')

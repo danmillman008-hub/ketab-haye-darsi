@@ -1,8 +1,8 @@
 {
   "status": "passed",
   "baseline": "50b9922",
-  "unchanged_formula_and_calendar": true,
-  "instructions_hours_tests_unchanged": true,
+  "unchanged_calendar_and_formula_except_approved_15_aban": true,
+  "instructions_hours_tests_unchanged_except_approved_15_aban": true,
   "plans": 21,
   "student_source_notes_forbidden": true,
   "checks": [
@@ -16,7 +16,7 @@
     },
     {
       "id": "1405-08-15",
-      "data_sha256": "5cad567923a93dec7e2f8034902402446301dd75f51dd3d8edbeb7128552f57c"
+      "data_sha256": "65ed91b4200d3602d7fa18ed647c0b3f38ee4e8f06b7b7e4d1a076cfb1066057"
     },
     {
       "id": "1405-08-29",

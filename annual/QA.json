@@ -2,7 +2,7 @@
   "status": "passed",
   "datedPlans": 19,
   "undatedRelativePlans": 2,
-  "formula": "47 hours / 495 tests per week",
+  "formula": "47 hours / 495 tests except approved 15 Aban: weeks 52h/520 and 51h/495",
   "independentPixelComparison": true,
   "pixelDpi": 100,
   "wordApplicationTested": false,
@@ -73,33 +73,33 @@
     },
     {
       "id": "1405-08-15",
-      "docxSha256": "71a76321391bd7469e313667115e4d2239ca7f34720e9630cda585c9e7c4069d",
-      "pdfSha256": "2ab2d8c86a84d774a531b59a2fb1f5fed13ba7ea40cca411cae891ae24e0de62",
-      "dataSha256": "5cad567923a93dec7e2f8034902402446301dd75f51dd3d8edbeb7128552f57c",
+      "docxSha256": "12a04bb547881c71c026097b053ab1b0c29e2f997ae0647bf8e42cce4ed5a182",
+      "pdfSha256": "08fbc781a09f0f770481f2e30a3262a70929798b9d599fd9190adafb2dee6353",
+      "dataSha256": "65ed91b4200d3602d7fa18ed647c0b3f38ee4e8f06b7b7e4d1a076cfb1066057",
       "pages": [
         {
           "page": 1,
           "missingCharacters": 0,
           "extraCharacters": 0,
-          "pixelSha256At100dpi": "7f42c8df71c14e3653c85fc3432ecc7926896bf5a852a34eb027c6b957bddcd6"
+          "pixelSha256At100dpi": "9d42d0c5906ea52f887b7b8d40f0b0935e687f8a184748b4fd92a1f0fe230d3c"
         },
         {
           "page": 2,
           "missingCharacters": 0,
           "extraCharacters": 0,
-          "pixelSha256At100dpi": "b118c349ade60fb75407648dee54dc78be3c8fb853045e439450e56f8ca32ffe"
+          "pixelSha256At100dpi": "671783aed52429b59498684183de45bcc028346e38cc75d6c2b5a3343cc63b35"
         },
         {
           "page": 3,
           "missingCharacters": 0,
           "extraCharacters": 0,
-          "pixelSha256At100dpi": "0735d1154530142211631cb8f0b8d30307aca686a378507be97b61cca007be35"
+          "pixelSha256At100dpi": "903aa7ef9c3ce2010a9ee71f9f132292fb651d981db5594b89c505ddac3d0ff1"
         },
         {
           "page": 4,
           "missingCharacters": 0,
           "extraCharacters": 0,
-          "pixelSha256At100dpi": "8421aed1246e09baa70d41f11d8c56ddc429774c99d01616723ba12188bb7aa1"
+          "pixelSha256At100dpi": "9ef987148808aad401be1e69defe42f516bc2afde332a9248e42b2e97f86db95"
         }
       ]
     },
@@ -691,5 +691,8 @@
         }
       ]
     }
+  ],
+  "rendered_ids_this_run": [
+    "1405-08-15"
   ]
 }
